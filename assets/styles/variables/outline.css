@@ -1,0 +1,8 @@
+:root {
+    --outline-none: 0;
+    --outline-small: 1px;
+    --outline-medium: 2px;
+    --outline-large: 4px;
+    --outline-xlarge: 8px;
+    --outline-xxlarge: 10px;
+}

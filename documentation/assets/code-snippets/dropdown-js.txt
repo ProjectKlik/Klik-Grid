@@ -1,0 +1,8 @@
+standardInitControls({
+    onDropdownClick: (button, value) => {
+        if(button && value) {
+            // Handle dropdown click
+            console.log(`Dropdown ${button.textcontent.trim()} clicked, selected option: ${value}`);
+        }
+    }
+});

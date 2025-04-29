@@ -1,0 +1,75 @@
+/* Radio button container */
+label:has(> input[type="checkbox"]) {
+    /* Display */
+    display: flex;
+    align-items: center;
+
+    /* Box Model */
+    box-sizing: border-box;
+    gap: var(--gap-medium);
+
+    /* Visual */
+    cursor: pointer;
+}
+
+/* Radio button appearance */
+input[type="checkbox"] {
+    /* Display */
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Box Model */
+    border-radius: var(--radius-small);
+    background-color: transparent;
+    outline: var(--outline-medium) solid white;
+
+    /* Visual */
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+/* Hover state */
+input[type="checkbox"]:hover {
+    outline-width: 4px;
+}
+
+/* Checked state */
+input[type="checkbox"]:checked::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: var(--radius-small);
+    animation: grow-shrink-big var(--transition-fast) linear forwards;
+    animation-direction: reverse;
+}
+
+/* Radio label text */
+label:has(> input[type="checkbox"]) span {
+    /* Typography */
+    font-family: 'Noto Sans', sans-serif;
+    font-size: var(--font-size-large);
+    color: var(--color-neutral-50);
+}
+
+.checkbox-button-group {
+    display: flex;
+    box-sizing: border-box;
+    width: fit-content;
+
+    gap: var(--gap-xlarge);
+}
+
+.checkbox-button-group.vertical {
+    flex-direction: column;
+    height: 100%;
+}
+
+.checkbox-button-group.horizontal {
+    flex-direction: row;
+    width: 100%;
+}

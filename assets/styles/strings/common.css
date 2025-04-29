@@ -1,0 +1,47 @@
+:root {
+    --ok: "OK";
+    --yes: "Yes";
+    --no: "No";
+    --cancel: "Cancel";
+    --start: "Start";
+    --stop: "Stop";
+    --exit: "Exit";
+    --error: "Error";
+    --save: "Save";
+    --delete: "Delete";
+    --retry: "Retry";
+    --help: "Help";
+    --menu: "Menu";
+    --next: "Next";
+    --back: "Back";
+    --skip: "Skip";
+    --update: "Update";
+    --upload: "Upload";
+    --download: "Download";
+    --settings: "Settings";
+    --login: "Log-in";
+    --logout: "Log-out";
+}
+
+.string-ok::before { content: var(--ok); }
+.string-yes::before { content: var(--yes); }
+.string-no::before { content: var(--no); }
+.string-cancel::before { content: var(--cancel); }
+.string-start::before { content: var(--start); }
+.string-stop::before { content: var(--stop); }
+.string-exit::before { content: var(--exit); }
+.string-error::before { content: var(--error); }
+.string-save::before { content: var(--save); }
+.string-delete::before { content: var(--delete); }
+.string-retry::before { content: var(--retry); }
+.string-help::before { content: var(--help); }
+.string-menu::before { content: var(--menu); }
+.string-next::before { content: var(--next); }
+.string-back::before { content: var(--back); }
+.string-skip::before { content: var(--skip); }
+.string-update::before { content: var(--update); }
+.string-upload::before { content: var(--upload); }
+.string-download::before { content: var(--download); }
+.string-settings::before { content: var(--settings); }
+.string-login::before { content: var(--login); }
+.string-logout::before { content: var(--logout); }

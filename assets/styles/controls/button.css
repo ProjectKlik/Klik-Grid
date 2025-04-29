@@ -1,0 +1,143 @@
+/* Button Base */
+button {
+    /* Display */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-medium);
+
+    /* Typography */
+    font-family: 'Noto-Sans-Regular';
+    font-size: var(--font-size-large);
+    text-align: center;
+    color: var(--color-neutral-50);
+
+    /* Box Model */
+    box-sizing: border-box;
+    padding: var(--padding-large);
+    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline-offset: -2px;
+    border: none;
+    border-radius: var(--radius-small);
+
+    /* Visual */
+    background-color: transparent;
+    cursor: pointer;
+    animation: none;
+    transition: var(--transition-fast);
+}
+
+/* Button Types */
+button.type-info {
+    outline: var(--outline-small) solid var(--color-cyan-500);
+    color: var(--color-cyan-200);
+}
+
+button.type-warning {
+    outline: var(--outline-small) solid var(--color-yellow-500);
+    color: var(--color-yellow-200);
+}
+
+button.type-error {
+    outline: var(--outline-small) solid var(--color-red-500);  
+    color: var(--color-red-200);
+}
+
+button.type-success {
+    outline: var(--outline-small) solid var(--color-green-500);
+    color: var(--color-green-200);
+}
+
+/* Button Active State */
+button.active {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-950);
+}
+
+button.type-info.active {
+    background-color: var(--color-cyan-500);
+    color: var(--color-neutral-950);
+}
+
+button.type-warning.active {
+    background-color: var(--color-yellow-500);
+    color: var(--color-neutral-950);
+}
+
+button.type-error.active {
+    background-color: var(--color-red-500);
+    color: var(--color-neutral-50);
+}
+
+button.type-success.active {
+    background-color: var(--color-green-500);
+    color: var(--color-neutral-950);
+}
+
+/* Button Hover and Active States */
+button:hover {
+    outline-width: var(--outline-large);
+    animation: grow var(--transition-fast) forwards;
+}
+
+button:active {
+    animation: grow-shrink var(--transition-fast) forwards;
+}
+
+/* Button Icons */
+button > .fill-icon {
+    width: var(--icon-large);
+    height: var(--icon-large);
+    fill: var(--color-neutral-50);
+}
+
+button > .outline-icon {
+    width: var(--icon-large);
+    height: var(--icon-large);
+    fill: transparent;
+    stroke: var(--color-neutral-50);
+    stroke-width: var(--stroke-medium);
+}
+
+/* Active Button Icons */
+button.active > .fill-icon {
+    fill: var(--color-neutral-950);
+}
+
+button.active > .outline-icon {
+    stroke: var(--color-neutral-950);
+}
+
+/* Toggle Button Group */
+.toggle-button-group {
+    display: flex;
+    box-sizing: border-box;
+    gap: var(--gap-xlarge);
+}
+
+.toggle-button-group.vertical {
+    flex-direction: column;
+    height: 100%;
+}
+
+.toggle-button-group.horizontal {
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    box-sizing: border-box;
+    gap: var(--gap-xlarge);
+}
+
+.button-group.vertical {
+    flex-direction: column;
+    height: 100%;
+}
+
+.button-group.horizontal {
+    flex-direction: row;
+    width: 100%;
+}

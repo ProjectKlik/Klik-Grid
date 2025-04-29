@@ -1,0 +1,7 @@
+<div class="button-group horizontal">
+    <button data-button-value="Sample">Sample Button</button>
+    <button class="type-info" data-button-value="Info">Info Button</button>
+    <button class="type-warning" data-button-value="Warning">Warning Button</button>
+    <button class="type-error" data-button-value="Error">Error Button</button>
+    <button class="type-success" data-button-value="Success">Success Button</button>
+</div>

@@ -1,0 +1,33 @@
+standardInitControls({
+    onButtonClick: (button, value) => {
+        if (button && value) {
+
+            // Handle button click
+            switch (true) {
+                case value === 'Sample':
+                    console.log(`Button ${button.textContent.trim()} with value of ${value} clicked`);
+                    break;
+
+                case value === 'Info':
+                    console.log(`Button ${button.textContent.trim()} with value of ${value} clicked`);
+                    break;
+
+                case value === 'Warning':
+                    console.log(`Button ${button.textContent.trim()} with value of ${value} clicked`);
+                    break;
+
+                case value === 'Error':
+                    console.log(` ${button.textContent.trim()} with value of ${value} clicked`);
+                    break;
+                    
+                case value === 'Success':
+                    console.log(`Button ${button.textContent.trim()} with value of ${value} clicked`);
+                    break;
+
+                default:
+                    console.log(`Button ${button.textContent.trim()} has value not listed in switch statement`);
+                    break;
+            }
+        }
+    }
+});

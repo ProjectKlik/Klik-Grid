@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klik Grid Documentation</title>
+
+    <!-- Documentation Styles -->
+    <link rel="stylesheet" type="text/css" href="/documentation/assets/styles/documentation.css">
+
+    <!-- Modules -->
+    <link rel="stylesheet" href="/assets/styles/modules/normalizer.css">
+    <link rel="stylesheet" href="/assets/styles/modules/variables.css">
+    <link rel="stylesheet" href="/assets/styles/modules/colors.css">
+    <link rel="stylesheet" href="/assets/styles/modules/typography.css">
+    <link rel="stylesheet" href="/assets/styles/modules/animations.css">
+    <link rel="stylesheet" href="/assets/styles/modules/strings.css">
+    <link rel="stylesheet" href="/assets/styles/modules/standard-controls.css">
+    <link rel="stylesheet" href="/assets/styles/modules/data-controls.css">
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo-area">
+            <img id="logo-image" src="assets/images/project_klik.png">
+            <span id="logo-text">Project Klik</span>
+        </div>
+
+        <div id="version-tag">
+            <span id="version-tag-text">Alpha v1</span>
+        </div>
+    </div>
+    <div id="documentation-container">
+        <div id="sidebar" class="toggle-button-group page-switcher vertical">
+            <button data-toggle-value="introduction" class="active">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
+                    <path d="M19 16h-12a2 2 0 0 0 -2 2" />
+                    <path d="M9 8h6" />
+                </svg>
+                Introduction
+            </button>
+            <button data-toggle-value="controls">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                    <path d="M4 14m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                </svg>
+                Controls
+            </button>
+            <button data-toggle-value="colors">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
+                    <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                </svg>
+                Colors
+            </button>
+            <button data-toggle-value="fonts">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path d="M3 7v-2h13v2" />
+                    <path d="M10 5v14" />
+                    <path d="M12 19h-4" />
+                    <path d="M15 13v-1h6v1" />
+                    <path d="M18 12v7" />
+                    <path d="M17 19h2" />
+                </svg>
+                Fonts
+            </button>
+            <button data-toggle-value="animations">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M9.225 18.412a1.595 1.595 0 0 1 -1.225 .588c-.468 0 -.914 -.214 -1.225 -.588l-4.361 -5.248a1.844 1.844 0 0 1 0 -2.328l4.361 -5.248a1.595 1.595 0 0 1 1.225 -.588c.468 0 .914 .214 1.225 .588l4.361 5.248a1.844 1.844 0 0 1 0 2.328l-4.361 5.248z" />
+                    <path d="M17 5l4.586 5.836a1.844 1.844 0 0 1 0 2.328l-4.586 5.836" />
+                    <path d="M13 5l4.586 5.836a1.844 1.844 0 0 1 0 2.328l-4.586 5.836" />
+                </svg>
+                Animations
+            </button>
+            <button data-toggle-value="strings">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    <path
+                        d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
+                </svg>
+                Strings
+            </button>
+            <button data-toggle-value="scripts">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path d="M7 8l-4 4l4 4" />
+                    <path d="M17 8l4 4l-4 4" />
+                    <path d="M14 4l-4 16" />
+                </svg>
+                Scripts
+            </button>
+            <button data-toggle-value="variables">
+                <svg class="outline-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M5 4c-2.5 5 -2.5 10 0 16m14 -16c2.5 5 2.5 10 0 16m-10 -11h1c1 0 1 1 2.016 3.527c.984 2.473 .984 3.473 1.984 3.473h1" />
+                    <path d="M8 16c1.5 0 3 -2 4 -3.5s2.5 -3.5 4 -3.5" />
+                </svg>
+                Variables
+            </button>
+        </div>
+
+        <div id="content">
+            <div id="introduction" class="page shown" data-page-value="introduction">
+                <h1>🚀 Introduction</h1>
+                <p>
+                    Welcome to the documentation for <strong>Klik Grid!</strong> This documentation is designed to help
+                    you get started with Klik Grid and understand how to use it.
+                </p>
+                <p>
+                    Klik Grid is a collection of UI components, colors, fonts, animations, strings, scripts and
+                    variables that are designed
+                    to
+                    speed up developement. It is built for developers who want a consistent and easy to use structure
+                    for
+                    developing desktop apps with <strong>Wails</strong> or any other desktop frameworks of their choice.
+                </p>
+                <p>
+                    In order to use Klik Grid, you need to include the following folder in your project:
+                </p>
+                <ul>
+                    <li>📁 klik_grid</li>
+                </ul>
+                <p>
+                    After that, you need to include the following dependencies in your project:
+                </p>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>your_html.html</span>
+                        <button>Copy</button>
+                    </div>
+                    <pre><code content="/documentation/assets/code-snippets/installation-dependencies.txt"></code></pre>
+                </div>
+                <p>
+                    If you would like to, you can remove the <strong>documentation</strong> folder from your project,
+                    but it is recommended to keep it for reference, as it contains a lot of useful information.
+                    You can also remove the <strong>example_webpage</strong> folder, but it is recommended to keep it
+                    for reference, as it contains a good example of how to use Klik Grid.
+                </p>
+                <p>
+                    Now that you have Klik Grid in your project, you can start using it!
+                </p>
+            </div>
+            <div id="controls" class="page">
+                <h1>🕹️ Controls</h1>
+                <p>
+                    Here is a list of all the controls that are available in Klik Grid:
+                </p>
+                <hr>
+                <h2>Standard Controls</h2>
+                <p>
+                    In order to create following types of controls, it is required to include this dependency to your
+                    html file:
+                </p>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>your_html.html</span>
+                        <button>Copy</button>
+                    </div>
+                    <pre><code content="/documentation/assets/code-snippets/standard-controls-css.txt"></code></pre>
+                </div>
+                <p>
+                    As well as this dependency:
+                </p>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>your_html.html</span>
+                        <button>Copy</button>
+                    </div>
+                    <pre><code content="/documentation/assets/code-snippets/standard-controls-js.txt"></code></pre>
+                </div>
+                <br>
+                <fieldset>
+                    <legend>Button</legend>
+                    <div class="button-group horizontal">
+                        <button data-button-value="Sample">Sample Button</button>
+                        <button class="type-info" data-button-value="Info">Info Button</button>
+                        <button class="type-warning" data-button-value="Warning">Warning Button</button>
+                        <button class="type-error" data-button-value="Error">Error Button</button>
+                        <button class="type-success" data-button-value="Success">Success Button</button>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/button-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/button-js.txt"></code></pre>
+                    </div>
+                    <p>The <strong>button</strong> can hold these following properties:</p>
+                    <blockquote class="property">type-neutral, type-warning, type-error, type-success, data-button-value</blockquote>
+                    <p>The <strong>button group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Button with Icon</legend>
+                    <div class="button-group horizontal">
+                        <button>
+                            <svg class="fill-icon" viewBox="0 0 24 24">
+                                <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                            </svg>
+                            Filled Icon
+                        </button>
+                        <button>
+                            <svg class="outline-icon" viewBox="0 0 24 24">
+                                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                            </svg>
+                            Outline Icon
+                        </button>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/button-with-icon-html.txt"></code></pre>
+                    </div>
+                    <p>The <strong>button</strong> can hold these following properties:</p>
+                    <blockquote class="property">type-neutral, type-warning, type-error, type-success, data-button-value</blockquote>
+                    <p>The <strong>svg</strong> inside the button can hold these following properties:</p>
+                    <blockquote class="property">fill-icon, outline-icon</blockquote>
+                    <p>The <strong>button group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Toggleable Button Group</legend>
+                    <div id="toggle-button-showcaser" class="toggle-button-group sample-popup vertical">
+                        <button data-toggle-value="1" class="active">Button 1</button>
+                        <button data-toggle-value="2">Button 2</button>
+                        <button data-toggle-value="3">Button 3</button>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/toggleable-button-group-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/toggleable-button-group-js.txt"></code></pre>
+                    </div>
+                    <p>The <strong>toggle button group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Radio Button Group</legend>
+                    <div id="radio-button-showcaser" class="radio-button-group vertical">
+                        <label>
+                            <input type="radio" data-radio-value="1" name="sample-radio-button" checked>
+                            <span>Option 1</span>
+                        </label>
+                        <label>
+                            <input type="radio" data-radio-value="2" name="sample-radio-button">
+                            <span>Option 2</span>
+                        </label>
+                        <label>
+                            <input type="radio" data-radio-value="3" name="sample-radio-button">
+                            <span>Option 3</span>
+                        </label>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/radio-button-group-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/radio-button-group-js.txt"></code></pre>
+                    </div>
+                    <p>The <strong>radio button group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Checkbox Group</legend>
+                    <div id="checkbox-button-showcaser" class="checkbox-button-group vertical">
+                        <label>
+                            <input type="checkbox" data-checkbox-value="1" checked>
+                            <span>Option 1</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" data-checkbox-value="2">
+                            <span>Option 2</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" data-checkbox-value="3">
+                            <span>Option 3</span>
+                        </label>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/checkbox-button-group-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/checkbox-button-group-js.txt"></code></pre>
+                    </div>
+                    <p>The <strong>checkbox button group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Dropdown</legend>
+                    <div class="dropdown-container">
+                        <button class="dropdown-button">
+                            Sample Dropdown
+                            <svg class="fill-icon" viewBox="0 0 24 24">
+                                <path d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                            </svg>
+                        </button>
+
+                        <ul class="dropdown-list">
+                            <li data-dropdown-value="1">Option 1</li>
+                            <li data-dropdown-value="2">Option 2</li>
+                            <li data-dropdown-value="3">Option 3</li>
+                            <hr>
+                            <li data-dropdown-value="4">Option 4</li>
+                        </ul>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/slider-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/slider-js.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Slider</legend>
+                    <div class="slider-group vertical">
+                        <div class="slider-container">
+                            <div class="slider-title">Sample Slider</div>
+                            <div class="slider-wrapper">
+                              <input class="slider" type="range" min="0" max="100" value="50">
+                              <div class="slider-value">50</div>
+                            </div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-title">Filled Slider</div>
+                            <div class="slider-wrapper">
+                              <input class="slider" type="range" min="0" max="100" value="100">
+                              <div class="slider-value">100</div>
+                            </div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-title">Empty Slider</div>
+                            <div class="slider-wrapper">
+                              <input class="slider" type="range" min="0" max="100" value="0">
+                              <div class="slider-value">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/slider-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/slider-js.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+                <h2>Data Controls</h2>
+                <p>
+                    In order to create following types of controls, it is required to include this dependency to your
+                    html file:
+                </p>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>your_html.html</span>
+                        <button>Copy</button>
+                    </div>
+                    <pre><code content="/documentation/assets/code-snippets/data-controls-css.txt"></code></pre>
+                </div>
+                <p>
+                    As well as this dependency:
+                </p>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>your_html.html</span>
+                        <button>Copy</button>
+                    </div>
+                    <pre><code content="/documentation/assets/code-snippets/data-controls-js.txt"></code></pre>
+                </div>
+                <br>
+                <fieldset>
+                    <legend>Code Snippet</legend>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Sample Header</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code>Sample Code</code></pre>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/code-snippet-html.txt"></code></pre>
+                    </div>
+                    <p class="no-bottom-margin">Instead of using a text document path to add text to the code area, you can also directly write in the <strong>code</strong> tag</p>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Property</legend>
+                    <blockquote class="property">Sample Property</blockquote>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/property-html.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+            </div>
+            <div id="colors" class="page">
+                <h1>🎨 Colors</h1>
+                <p>
+                    Here is a list of all the colors that are available in Klik Grid:
+                </p>
+                <h2>Neutral Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-neutral-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-neutral-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Red Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-red-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-red-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Purple Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-purple-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-purple-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Blue Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-blue-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-blue-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Cyan Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-cyan-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-cyan-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Green Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-green-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-green-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Yellow Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-yellow-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-yellow-950</span>
+                    <div></div>
+                </div>
+                <br>
+
+                <h2>Orange Palette</h2>
+                <div class="color-showcaser">
+                    <span>--color-orange-50</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-100</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-200</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-300</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-400</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-500</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-600</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-700</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-800</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-900</span>
+                    <div></div>
+                </div>
+                <br>
+                <div class="color-showcaser">
+                    <span>--color-orange-950</span>
+                    <div></div>
+                </div>
+                <br>
+            </div>
+            <div id="fonts" class="page">
+                <h1>✒️ Fonts</h1>
+                <p>
+                    Here is a list of all the fonts that are available in Klik Grid:
+                </p>
+                <h2>Font Names</h2>
+                <ul class="no-dash">
+                    <li class="onest-thin">Onest-Thin</li>
+                    <li class="onest-regular">Onest-Regular</li>
+                    <li class="onest-bold">Onest-Bold</li><br>
+                    <li class="noto-sans-thin">Noto-Sans-Thin</li>
+                    <li class="noto-sans-regular">Noto-Sans-Regular</li>
+                    <li class="noto-sans-bold">Noto-Sans-Bold</li>
+                </ul>
+            </div>
+            <div id="animations" class="page">
+                <h1>💫 Animations</h1>
+                <p>
+                    Here is a list of all the animations that are available in Klik Grid:
+                </p>
+                <h2>Box Samples</h2>
+                <div id="animations-container">
+                    <div id="animation-box-grow">
+                        <p>--grow</p>
+                    </div>
+                    <div id="animation-box-grow-big">
+                        <p>--grow-big</p>
+                    </div>
+                    <div id="animation-box-shrink">
+                        <p>--shrink</p>
+                    </div>
+                    <div id="animation-box-shrink-big">
+                        <p>--shrink-big</p>
+                    </div>
+                    <div id="animation-box-grow-shrink">
+                        <p>--grow-shrink</p>
+                    </div>
+                    <div id="animation-box-grow-shrink-big">
+                        <p>--grow-shrink-big</p>
+                    </div>
+                    <div id="animation-box-fade-in-slide">
+                        <p>--fade-in-slide</p>
+                    </div>
+                    <div id="animation-box-fade-out-slide">
+                        <p>--fade-out-slide</p>
+                    </div>
+                </div>
+            </div>
+            <div id="strings" class="page">
+                <h1>📄 Strings</h1>
+                <p>
+                    Here is a list of all the strings that are available in Klik Grid:
+                </p>
+                <h2>String Content</h2>
+                <ul class="no-dash">
+                    <li class="string-ok"></li>
+                    <li class="string-yes"></li>
+                    <li class="string-no"></li>
+                    <li class="string-cancel"></li>
+                    <li class="string-start"></li>
+                    <li class="string-stop"></li>
+                    <li class="string-exit"></li>
+                    <li class="string-error"></li>
+                    <li class="string-save"></li>
+                    <li class="string-delete"></li>
+                    <li class="string-retry"></li>
+                    <li class="string-help"></li>
+                    <li class="string-menu"></li>
+                    <li class="string-next"></li>
+                    <li class="string-back"></li>
+                    <li class="string-skip"></li>
+                    <li class="string-update"></li>
+                    <li class="string-upload"></li>
+                    <li class="string-download"></li>
+                    <li class="string-settings"></li>
+                    <li class="string-login"></li>
+                    <li class="string-logout"></li>
+                </ul>
+                <h2>String Variables</h2>
+                <ul class="no-dash">
+                    <li>--ok</li>
+                    <li>--yes</li>
+                    <li>--no</li>
+                    <li>--cancel</li>
+                    <li>--start</li>
+                    <li>--stop</li>
+                    <li>--exit</li>
+                    <li>--error</li>
+                    <li>--save</li>
+                    <li>--delete</li>
+                    <li>--retry</li>
+                    <li>--help</li>
+                    <li>--menu</li>
+                    <li>--next</li>
+                    <li>--back</li>
+                    <li>--skip</li>
+                    <li>--update</li>
+                    <li>--upload</li>
+                    <li>--download</li>
+                    <li>--settings</li>
+                    <li>--login</li>
+                    <li>--logout</li>
+                </ul>
+            </div>
+            <div id="scripts" class="page">
+                <h1>📜 Scripts</h1>
+                <p>
+                    Here is a list of all the scripts that are available in Klik Grid:
+                </p>
+                <p>
+                    *coming soon*
+                </p>
+            </div>
+            <div id="variables" class="page">
+                <h1>💡 Variables</h1>
+                <p>
+                    Here is a list of all the variables that are available in Klik Grid:
+                </p>
+                <fieldset>
+                    <legend>Border Radius</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--radius-none: 0px;</li>
+                        <li>--radius-small: 4px;</li>
+                        <li>--radius-medium: 8px;</li>
+                        <li>--radius-large: 12px;</li>
+                        <li>--radius-xlarge: 50px;</li>
+                        <li>--radius-xxlarge: 100px;</li>
+                        <li>--radius-circle: 50%;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Border</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--border-none: 0px;</li>
+                        <li>--border-small: 1px;</li>
+                        <li>--border-medium: 2px;</li>
+                        <li>--border-large: 4px;</li>
+                        <li>--border-xlarge: 8px;</li>
+                        <li>--border-xxlarge: 12px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Font Size</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--font-size-small: 0.625em;</li>
+                        <li>--font-size-medium: 0.75em;</li>
+                        <li>--font-size-large: 0.875em;</li>
+                        <li>--font-size-xlarge: 1em;</li>
+                        <li>--font-size-xxlarge: 1.25em;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Gap</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--gap-small: 2px;</li>
+                        <li>--gap-medium: 4px;</li>
+                        <li>--gap-large: 8px;</li>
+                        <li>--gap-xlarge: 12px;</li>
+                        <li>--gap-xxlarge: 16px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Icon Size</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--icon-small: 12px;</li>
+                        <li>--icon-medium: 16px;</li>
+                        <li>--icon-large: 20px;</li>
+                        <li>--icon-xlarge: 24px;</li>
+                        <li>--icon-xxlarge: 32px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Margin</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--margin-none: 0px;</li>
+                        <li>--margin-small: 2px;</li>
+                        <li>--margin-medium: 4px;</li>
+                        <li>--margin-large: 6px;</li>
+                        <li>--margin-xlarge: 8px;</li>
+                        <li>--margin-xxlarge: 12px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Outline</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--outline-none: 0;</li>
+                        <li>--outline-small: 1px;</li>
+                        <li>--outline-medium: 2px;</li>
+                        <li>--outline-large: 4px;</li>
+                        <li>--outline-xlarge: 8px;</li>
+                        <li>--outline-xxlarge: 10px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Padding</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--padding-none: 0px;</li>
+                        <li>--padding-small: 2px;</li>
+                        <li>--padding-medium: 4px;</li>
+                        <li>--padding-large: 6px;</li>
+                        <li>--padding-xlarge: 8px;</li>
+                        <li>--padding-xxlarge: 12px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Shadow</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--shadow-top-hard: 0px -2px var(--color-neutral-800);</li>
+                        <li>--shadow-bottom-hard: 0px 2px var(--color-neutral-800);</li>
+                        <li>--shadow-left-hard: 2px 0px var(--color-neutral-800);</li>
+                        <li>--shadow-right-hard: -2px 0px var(--color-neutral-800);</li>
+                        <br>
+                        <li>--shadow-small: 0px 0px 3px var(--color-neutral-950);</li>
+                        <li>--shadow-medium: 0px 0px 6px var(--color-neutral-950);</li>
+                        <li>--shadow-large: 0px 0px 9px var(--color-neutral-950);</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Stroke</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--stroke-small: 1px;</li>
+                        <li>--stroke-medium: 2px;</li>
+                        <li>--stroke-large: 4px;</li>
+                        <li>--stroke-xlarge: 5px;</li>
+                        <li>--stroke-xxlarge: 8px;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Transition</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--transition-fast: 100ms;</li>
+                        <li>--transition-medium: 300ms;</li>
+                        <li>--transition-slow: 500ms;</li>
+                        <li>--transition-xslow: 1000ms;</li>
+                        <li>--transition-xxslow: 2000ms;</li>
+                    </ul>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Z-Index</legend>
+                    <ul class="no-dash no-margin">
+                        <li>--z-index-below: -1;</li>
+                        <li>--z-index-low: 10;</li>
+                        <li>--z-index-medium: 50;</li>
+                        <li>--z-index-high: 100;</li>
+                        <li>--z-index-overlay: 999;</li>
+                    </ul>
+                </fieldset>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentation Scripts -->
+    <script type="module" src="/documentation/assets/scripts/documentation.js"></script>
+
+    <!-- Modules -->
+    <script type="module" src="/assets/scripts/modules/standard-controls.js"></script>
+    <script type="module" src="/assets/scripts/modules/data-controls.js"></script>
+</body>
+
+</html>

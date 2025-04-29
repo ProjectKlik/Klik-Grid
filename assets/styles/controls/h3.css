@@ -1,0 +1,7 @@
+h3 {
+    margin: var(--margin-xxlarge) var(--margin-none);
+    
+    font-family: Noto-Sans-Bold;
+    font-weight: bold;
+    color: var(--color-neutral-50);
+}

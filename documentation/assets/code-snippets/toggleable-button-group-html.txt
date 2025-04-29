@@ -1,0 +1,5 @@
+<div class="toggle-button-group sample-popup vertical">
+    <button data-toggle-value="1" class="active">Button 1</button>
+    <button data-toggle-value="2">Button 2</button>
+    <button data-toggle-value="3">Button 3</button>
+</div>

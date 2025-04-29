@@ -1,0 +1,8 @@
+:root {
+    --border-none: 0px;
+    --border-small: 1px;
+    --border-medium: 2px;
+    --border-large: 4px;
+    --border-xlarge: 8px;
+    --border-xxlarge: 12px;
+}

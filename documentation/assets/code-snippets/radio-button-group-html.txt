@@ -1,0 +1,14 @@
+<div class="radio-button-group vertical">
+    <label>
+        <input type="radio" data-radio-value="1" name="sample-radio-button" checked>
+        <span>Option 1</span>
+    </label>
+    <label>
+        <input type="radio" data-radio-value="2" name="sample-radio-button">
+        <span>Option 2</span>
+    </label>
+    <label>
+        <input type="radio" data-radio-value="3" name="sample-radio-button">
+        <span>Option 3</span>
+    </label>
+</div>

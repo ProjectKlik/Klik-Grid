@@ -1,0 +1,7 @@
+<div class="code-container">
+    <div class="code-header">
+        <span>Header</span>
+        <button>Copy</button>
+    </div>
+    <pre><code content="path/to/your/code.txt"></code></pre>
+</div>

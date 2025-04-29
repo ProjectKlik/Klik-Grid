@@ -1,0 +1,62 @@
+/* Container */
+.dropdown-container {
+    width: fit-content;
+}
+
+/* Dropdown List */
+.dropdown-container > .dropdown-list {
+    /* Display */
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    margin-top: var(--margin-medium);
+
+    /* Box Model */
+    outline: var(--outline-small) solid var(--color-neutral-50);
+    border-radius: var(--radius-small);
+    padding: var(--padding-xlarge);
+    gap: var(--gap-medium);
+
+    /* Typography */
+    font-family: 'Noto-Sans-Regular';
+    font-size: var(--font-size-large);
+    text-align: center;
+    color: var(--color-neutral-50);
+
+    /* Visual */
+    background-color: var(--color-neutral-900);
+    list-style: none;
+}
+
+/* Active Dropdown List */
+.dropdown-container.active .dropdown-list {
+    /* Display */
+    display: flex;
+}
+
+/* Dropdown List Items */
+.dropdown-container > .dropdown-list > li {
+    /* Typography */
+    font-family: 'Noto-Sans-Regular';
+    font-size: var(--font-size-xlarge);
+    text-align: center;
+    color: var(--color-neutral-50);
+
+    /* Box Model */
+    padding: var(--padding-medium);
+    border-radius: var(--radius-small);
+
+    /* Visual */
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+/* List Item Hover Effect */
+.dropdown-container > .dropdown-list > li:hover {
+    background-color: var(--color-neutral-800);
+}
+
+/* Horizontal Line */
+.dropdown-container > .dropdown-list > hr {
+    width: 100%;
+}

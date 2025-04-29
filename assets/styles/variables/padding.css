@@ -1,0 +1,8 @@
+:root {
+    --padding-none: 0px;
+    --padding-small: 2px;
+    --padding-medium: 4px;
+    --padding-large: 6px;
+    --padding-xlarge: 8px;
+    --padding-xxlarge: 12px;
+}

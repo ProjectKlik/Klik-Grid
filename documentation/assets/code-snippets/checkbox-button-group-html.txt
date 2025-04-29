@@ -1,0 +1,14 @@
+<div class="checkbox-button-group vertical">
+    <label>
+        <input type="checkbox" data-checkbox-value="1" checked>
+        <span>Option 1</span>
+    </label>
+    <label>
+        <input type="checkbox" data-checkbox-value="2">
+        <span>Option 2</span>
+    </label>
+    <label>
+        <input type="checkbox" data-checkbox-value="3">
+        <span>Option 3</span>
+    </label>
+</div>

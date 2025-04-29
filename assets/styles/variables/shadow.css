@@ -1,0 +1,10 @@
+:root {
+    --shadow-top-hard: 0px -2px var(--color-neutral-800);
+    --shadow-bottom-hard: 0px 2px var(--color-neutral-800);
+    --shadow-left-hard: 2px 0px var(--color-neutral-800);
+    --shadow-right-hard: -2px 0px var(--color-neutral-800);
+    
+    --shadow-small: 0px 0px 3px var(--color-neutral-950);
+    --shadow-medium: 0px 0px 6px var(--color-neutral-950);
+    --shadow-large: 0px 0px 9px var(--color-neutral-950);
+}

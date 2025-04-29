@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Onest-Thin";
+    font-weight: 200;
+    src: url(../../fonts/onest-font.ttf);
+}
+
+@font-face {
+    font-family: "Onest-Regular";
+    font-weight: 400;
+    src: url(../../fonts/onest-font.ttf);
+}
+
+@font-face {
+    font-family: "Onest-Bold";
+    font-weight: 700;
+    src: url(../../fonts/onest-font.ttf);
+}

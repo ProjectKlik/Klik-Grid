@@ -1,0 +1,7 @@
+<!-- Modules -->
+<link rel="stylesheet" href="/assets/styles/modules/normalizer.css">
+<link rel="stylesheet" href="/assets/styles/modules/variables.css">
+<link rel="stylesheet" href="/assets/styles/modules/colors.css">
+<link rel="stylesheet" href="/assets/styles/modules/typography.css">
+<link rel="stylesheet" href="/assets/styles/modules/animations.css">
+<link rel="stylesheet" href="/assets/styles/modules/strings.css">

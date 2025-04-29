@@ -1,0 +1,23 @@
+<div class="slider-group vertical">
+    <div class="slider-container">
+        <div class="slider-title">Sample Slider</div>
+        <div class="slider-wrapper">
+            <input class="slider" type="range" min="0" max="100" value="50">
+            <div class="slider-value">50</div>
+        </div>
+    </div>
+    <div class="slider-container">
+        <div class="slider-title">Filled Slider</div>
+        <div class="slider-wrapper">
+            <input class="slider" type="range" min="0" max="100" value="100">
+            <div class="slider-value">100</div>
+        </div>
+    </div>
+    <div class="slider-container">
+        <div class="slider-title">Empty Slider</div>
+        <div class="slider-wrapper">
+            <input class="slider" type="range" min="0" max="100" value="0">
+            <div class="slider-value">0</div>
+        </div>
+    </div>
+</div>

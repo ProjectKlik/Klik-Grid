@@ -1,0 +1,8 @@
+p {
+    font-family: Noto-Sans-Regular;
+    color: var(--color-neutral-50);
+}
+
+p.no-bottom-margin {
+    margin-bottom: var(--margin-none);
+}

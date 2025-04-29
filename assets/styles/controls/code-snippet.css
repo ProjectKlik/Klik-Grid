@@ -1,0 +1,41 @@
+/* Code Container */
+.code-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    /* Spacing and Borders */
+    margin: var(--margin-none);
+    border-radius: var(--radius-small);
+    background-color: transparent;
+    border: var(--border-medium) solid var(--color-neutral-800);
+}
+
+/* Code Header */
+.code-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--padding-xlarge);
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-50);
+    font-family: 'Noto-Sans-Regular';
+}
+
+/* Code Styler Block */
+.code-container pre {
+    margin: var(--margin-none);
+    padding: var(--padding-xlarge);
+    white-space: pre-wrap;
+}
+
+/* Code Text Itself */
+.code-container code {
+    color: var(--color-neutral-50);
+}
+
+/* Copy Button */
+.code-header button {
+    margin-left: auto;
+}

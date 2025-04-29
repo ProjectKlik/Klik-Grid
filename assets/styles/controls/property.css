@@ -1,0 +1,12 @@
+.property {
+    /* Display */
+    width: fit-content;
+    margin: var(--margin-none);
+    padding: var(--padding-medium);
+    border-radius: var(--radius-small);
+
+    /* Typography */
+    font-family: monospace;
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-50);
+}
