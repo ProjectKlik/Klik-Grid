@@ -1,0 +1,5 @@
+<div class="text-input-group vertical">
+    <input type="text" placeholder="Text Input" class="text-input">
+    <input type="text" placeholder="Number Only" class="text-input number">
+    <input type="text" placeholder="Max 8 characters" maxlength="8" class="text-input">
+</div>

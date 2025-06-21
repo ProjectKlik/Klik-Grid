@@ -32,6 +32,7 @@
 .dropdown-container.active .dropdown-list {
     /* Display */
     display: flex;
+    z-index: var(--z-index-overlay);
 }
 
 /* Dropdown List Items */

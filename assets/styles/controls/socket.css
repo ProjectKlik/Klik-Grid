@@ -1,0 +1,8 @@
+.socket {
+    min-width: 60px;
+    min-height: 60px;
+    background-color: var(--color-neutral-800);
+    outline: var(--outline-medium) solid var(--color-neutral-500);
+    margin: var(--margin-small);
+    border-radius: var(--radius-small);
+}

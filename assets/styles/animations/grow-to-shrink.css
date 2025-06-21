@@ -1,4 +1,4 @@
-@keyframes grow-shrink {
+@keyframes grow-to-shrink {
     0% {
         transform: scale(1.05);
     }

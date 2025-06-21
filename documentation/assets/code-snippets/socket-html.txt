@@ -1,0 +1,9 @@
+<div id="socket-showcaser" class="socket-container">
+    <div id="sample-socket-1" class="socket">
+        <div id="sample-socket-item-1" class="socket-item" draggable="true">Item 1</div>
+    </div>
+    <div id="sample-socket-2" class="socket">
+        <div id="sample-socket-item-2" class="socket-item" draggable="true">Item 2</div>
+    </div>
+    <div id="sample-socket-3" class="socket"></div>
+</div>

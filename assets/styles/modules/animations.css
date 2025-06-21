@@ -1,8 +1,13 @@
 @import "../animations/grow.css";
+@import "../animations/grow-to-normal.css";
 @import "../animations/grow-big.css";
+@import "../animations/grow-big-to-normal.css";
 @import "../animations/shrink.css";
+@import "../animations/shrink-to-normal.css";
 @import "../animations/shrink-big.css";
-@import "../animations/grow-shrink.css";
-@import "../animations/grow-shrink-big.css";
+@import "../animations/shrink-big-to-normal.css";
+@import "../animations/grow-to-shrink.css";
+@import "../animations/grow-to-shrink-big.css";
 @import "../animations/fade-in-slide.css";
 @import "../animations/fade-out-slide.css";
+@import "../animations/spin-clockwise.css";

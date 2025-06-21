@@ -1,3 +1,11 @@
 hr {
-    background-color: var(--color-neutral-50);
+    border: var(--border-small) solid var(--color-neutral-700);
+}
+
+hr.max-width {
+    width: calc(100% - var(--border-small) * 2);
+}
+
+hr.no-margin {
+    margin: var(--margin-none);
 }

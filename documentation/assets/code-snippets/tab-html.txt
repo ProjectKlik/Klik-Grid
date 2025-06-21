@@ -1,0 +1,6 @@
+<div class="tab-group horizontal">
+    <div class="tab-selection"></div>
+    <div class="tab active" data-tab-value="First">Tab 1</div>
+    <div class="tab" data-tab-value="Second">Tab 2</div>
+    <div class="tab" data-tab-value="Third">Tab 3</div>
+</div>

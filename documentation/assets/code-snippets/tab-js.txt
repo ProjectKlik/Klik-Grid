@@ -1,0 +1,8 @@
+standardInitControls({
+    onTabClick: (tab, value) => {
+        if(tab, value) {
+            // Handle tab click
+            console.log(`Tab ${tab} clicked, value: ${value}`);
+        }
+    }
+});

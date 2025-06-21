@@ -17,9 +17,29 @@
 .slider {
     flex-grow: 1;
     height: 8px;
-    background: linear-gradient(to right, var(--color-neutral-50) 0%, var(--color-neutral-800) 0%);
+    background: linear-gradient(to right, var(--color-neutral-50) 0%, var(--color-neutral-50) 50%, var(--color-neutral-800) 50%, var(--color-neutral-800) 100%);
     border-radius: var(--radius-small);
     margin: var(--margin-none);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    border: var(--border-none);
+    border-radius: var(--radius-circle);
+    cursor: pointer;
+    background-color: var(--color-neutral-950);
+    outline: var(--outline-medium) solid white;
+    outline-offset: -2px;
+    transition: var(--transition-fast);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    outline-width: var(--outline-large);
 }
 
 .slider::-moz-range-thumb {

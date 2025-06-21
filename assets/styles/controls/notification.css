@@ -1,0 +1,153 @@
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: var(--z-index-overlay);
+}
+
+.notification {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    padding: var(--padding-xxlarge);
+    background: var(--color-neutral-900);
+    border: var(--border-small) solid var(--color-neutral-700);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-medium);
+    transform: translateX(350px) translateY(0);
+    opacity: 0;
+    transition: var(--transition-medium);
+    overflow: hidden;
+}
+
+.notification.show {
+    transform: translateX(0) translateY(var(--current-y, 0));
+    opacity: 1;
+}
+
+.notification.hide {
+    transform: translateX(350px) translateY(var(--current-y, 0));
+    opacity: 0;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--margin-medium);
+}
+
+.notification-title {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-medium);
+    color: white;
+    font-family: 'Noto-Sans-Regular';
+    line-height: 1;
+}
+
+.notification-message {
+    color: white;
+    font-family: 'Noto-Sans-Regular';
+    font-size: small;
+}
+
+.notification-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-circle);
+}
+
+.notification.info .notification-icon {
+    background: var(--color-cyan-500);
+}
+
+.notification.error .notification-icon {
+    background: var(--color-red-500);
+}
+
+.notification.warning .notification-icon {
+    background: var(--color-yellow-500);
+}
+
+.notification.success .notification-icon {
+    background: var(--color-green-500);
+}
+
+.notification.special .notification-icon {
+    background: linear-gradient(to right, var(--color-red-400), var(--color-purple-400));
+    animation: spin-clockwise var(--transition-xxslow) linear infinite;
+}
+
+.notification.special {
+    border: 2px solid transparent;
+    border-radius: var(--radius-large);
+    background: var(--color-neutral-900);
+}
+
+.notification.special::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-large);
+    padding: 4px;
+    background: linear-gradient(90deg, 
+        var(--color-red-400) 0%,
+        var(--color-purple-400) 12.5%,
+        var(--color-neutral-700) 25%,
+        var(--color-neutral-700) 37.5%,
+        var(--color-red-400) 50%,
+        var(--color-purple-400) 62.5%,
+        var(--color-neutral-700) 75%,
+        var(--color-neutral-700) 87.5%,
+        var(--color-red-400) 100%
+    );
+    background-size: 200% 100%;
+    animation: border-flow var(--transition-xxslow) linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+@keyframes border-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.notification.notification.special .notification-progress {
+    visibility: hidden;
+}
+
+.notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    transition: width var(--transition-fast);
+}
+
+.notification.info .notification-progress {
+    background: var(--color-cyan-500);
+}
+
+.notification.error .notification-progress {
+    background: var(--color-red-500);
+}
+
+.notification.warning .notification-progress {
+    background: var(--color-yellow-500);
+}
+
+.notification.success .notification-progress {
+    background: var(--color-green-500);
+}
+
+.notification.special .notification-progress {
+    background: linear-gradient(to right, var(--color-red-400), var(--color-purple-400))
+}

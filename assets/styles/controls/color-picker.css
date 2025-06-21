@@ -1,0 +1,222 @@
+/* Button */
+.colorpicker-preview {
+    width: 50px;
+    height: 20px;
+    border-radius: var(--radius-small);
+    background-color: red;
+}
+
+.colorpicker-popup {
+    /* Display */
+    display: none;
+    flex-direction: column;
+    margin-top: var(--margin-medium);
+    width: fit-content;
+    position: absolute;
+
+    /* Box Model */
+    outline: var(--outline-small) solid var(--color-neutral-50);
+    border-radius: var(--radius-small);
+    padding: var(--padding-xlarge);
+    gap: var(--gap-xxlarge);
+
+    /* Visual */
+    background-color: var(--color-neutral-900);
+    z-index: var(--z-index-overlay);
+}
+
+.colorpicker-popup.active {
+    display: flex;
+}
+
+.colorpicker-popup-content {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-xlarge);
+    height: 250px;
+}
+
+.colorpicker-popup-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+    flex: 1;
+}
+
+.colorpicker-popup-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+    flex: 1;
+}
+
+.colorpicker-popup-action {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-large);
+}
+
+.colorpicker-popup-action>* {
+    flex: 1;
+}
+
+/* Color Selection Div */
+.colorpicker-color-canvas-container {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.colorpicker-color-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: red;
+    border-radius: var(--radius-small);
+    cursor: crosshair;
+}
+
+.colorpicker-color-canvas-marker {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-circle);
+    border: var(--border-medium) solid var(--color-neutral-50);
+    transform: translate(-50%, -50%);
+    top: 0px;
+    left: 200px;
+    pointer-events: none;
+}
+
+/* Color Row */
+.colorpicker-color-row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    border-radius: var(--radius-small);
+    overflow: hidden;
+}
+
+.colorpicker-picker-old-preview {
+    flex: 1;
+    min-height: 24px;
+    background-color: red;
+}
+
+.colorpicker-picker-new-preview {
+    flex: 1;
+    min-height: 24px;
+    background-color: red;
+}
+
+/* Hue Selection Div */
+.colorpicker-hue-slider-container {
+    position: relative;
+}
+
+.colorpicker-hue-slider {
+    width: 100%;
+    height: 20px;
+    display: block;
+    background-color: red;
+    border-radius: var(--radius-small);
+}
+
+.colorpicker-hue-slider-marker {
+    position: absolute;
+    top: 0;
+    left: -2.5px;
+    width: 5px;
+    height: 20px;
+    background-color: white;
+    border-radius: var(--radius-small);
+    pointer-events: none;
+}
+
+/* Alpha Selection Div */
+.colorpicker-alpha-slider-container {
+    position: relative;
+}
+
+.colorpicker-alpha-slider {
+    width: 100%;
+    height: 20px;
+    display: block;
+    background-color: gray;
+    border-radius: var(--radius-small);
+}
+
+.colorpicker-alpha-slider-marker {
+    position: absolute;
+    top: 0;
+    right: -2.5px;
+    width: 5px;
+    height: 20px;
+    background-color: white;
+    border-radius: var(--radius-small);
+    pointer-events: none;
+}
+
+/* Hex Code Div */
+.colorpicker-hex-code-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--gap-small);
+    box-sizing: border-box;
+}
+
+.colorpicker-hex-code {
+    width: auto;
+}
+
+/* Color Swatch Div */
+.colorpicker-swatch-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: var(--gap-small);
+    box-sizing: border-box;
+}
+
+.colorpicker-swatch-label {
+    font-family: 'Noto Sans';
+    font-size: var(--font-size-large);
+    color: var(--color-neutral-50);
+}
+
+.colorpicker-swatch-grid {
+    border: var(--border-small) solid var(--color-neutral-50);
+    border-radius: var(--radius-small);
+    padding: var(--padding-large);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--gap-medium);
+    height: 112px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.colorpicker-swatch-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.colorpicker-swatch-color {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+}
+
+.colorpicker-swatch-color.selected {
+    outline: var(--border-small) solid var(--color-neutral-50);
+}
+
+.colorpicker-swatch-color:hover {
+    animation: grow-big var(--transition-fast) forwards;
+}
+
+.colorpicker-swatch-color:not(:hover) {
+    animation: grow-big-to-normal var(--transition-fast) forwards;
+}

@@ -1,0 +1,17 @@
+document.getElementById('dialog-overlay').style.display = 'block';
+
+window.showMessageBox(
+'Sample Message Box Title',
+'Sample Message Box Description',
+[
+    { text: 'Yes', buttonValue: 'Yes MSGBOX Button' },
+    { text: 'No', buttonValue: 'No MSGBOX Button' }
+],
+(button, value) => { // Custom callback
+    if (value === 'Yes MSGBOX Button') {
+        console.log('User Confirmed');
+    }
+    else {
+        console.log('User Declined')
+    }
+});

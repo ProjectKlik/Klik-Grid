@@ -6,3 +6,7 @@ p {
 p.no-bottom-margin {
     margin-bottom: var(--margin-none);
 }
+
+p.no-margin {
+    margin: var(--margin-none);
+}

@@ -4,6 +4,12 @@ import { radioButton } from '../controls/radio-button.js';
 import { checkboxButton } from '../controls/checkbox-button.js';
 import { dropdown } from '../controls/dropdown.js';
 import { slider } from '../controls/slider.js';
+import { textInput } from '../controls/text-input.js';
+import { tab } from '../controls/tab.js';
+import { separator } from '../controls/separator.js';
+import { socket } from '../controls/socket.js';
+import { messageBox } from '../controls/message-box.js';
+import { notification } from '../controls/notification.js';
 
 export function initControls(callbacks = {}) {
     button(callbacks.onButtonClick);
@@ -12,4 +18,10 @@ export function initControls(callbacks = {}) {
     checkboxButton(callbacks.onCheckboxButtonClick);
     dropdown(callbacks.onDropdownClick);
     slider(callbacks.onSliderMove);
+    textInput(callbacks.onTextInput);
+    tab(callbacks.onTabClick);
+    separator(callbacks.onSeparatorDrag);
+    socket(callbacks.onSocketDrag);
+    messageBox(callbacks.onMessageBoxButtonClick);
+    notification(callbacks.onNotificationClose);
 }

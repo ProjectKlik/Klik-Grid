@@ -9,7 +9,7 @@ export function slider(callback) {
 
         function updateSliderBackground(slider) {
             const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-            slider.style.background = `linear-gradient(to right, var(--color-neutral-50) ${value}%, var(--color-neutral-800) ${value}%)`;
+            slider.style.background = `linear-gradient(to right, var(--color-neutral-50) ${value}%, var(--color-neutral-50) ${value}%, var(--color-neutral-800) ${value}%, var(--color-neutral-800) ${value}%)`;
         }
 
         // Update immediately

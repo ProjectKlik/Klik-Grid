@@ -3,13 +3,43 @@ body {
     flex-direction: column;
 }
 
-ul.no-dash {
-    list-style-type: none;
-    padding: var(--padding-none);
+#loading-screen {
+    background-color: var(--color-neutral-900);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: var(--z-index-overlay);
 }
 
-ul.no-margin {
-    margin: var(--margin-none);
+#loading-container {
+    position: absolute;
+    display: flex;
+    gap: var(--gap-xxlarge);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading-text {
+    font-family: Onest-Bold;
+    font-size: var(--font-size-xxlarge);
+    font-weight: bold;
+    color: var(--color-neutral-50);
+}
+
+#loading-logo {
+    width: 64px;
+    height: 64px;
+    animation: spin-clockwise var(--transition-xslow) linear infinite;
+}
+
+#loading-logo:hover {
+    animation-play-state: paused;
 }
 
 /* Header */
@@ -87,7 +117,6 @@ ul.no-margin {
 
     background-color: var(--color-neutral-900);
 
-    overflow: hidden;
     height: 100%;
     flex: 1;
 }
@@ -95,6 +124,40 @@ ul.no-margin {
 /* Control Page */
 #toggle-button-showcaser {
     width: 200px;
+}
+
+#scroller-showcaser {
+    width: 250px;
+    height: 100px;
+}
+
+#separator-showcaser {
+    width: 800px;
+    height: 350px;
+}
+
+#socket-showcaser {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-large);
+}
+
+.socket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socket-item {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-neutral-900);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto-Sans-Regular';
+    font-size: var(--font-size-small);
 }
 
 /* Color Page */
@@ -138,24 +201,40 @@ ul.no-margin {
     animation: grow var(--transition-slow) infinite;
 }
 
+#animation-box-grow-to-normal {
+    animation: grow-to-normal var(--transition-slow) infinite;
+}
+
 #animation-box-grow-big {
     animation: grow-big var(--transition-slow) infinite;
+}
+
+#animation-box-grow-big-to-normal {
+    animation: grow-big-to-normal var(--transition-slow) infinite;
 }
 
 #animation-box-shrink {
     animation: shrink var(--transition-slow) infinite;
 }
 
+#animation-box-shrink-to-normal {
+    animation: shrink-to-normal var(--transition-slow) infinite;
+}
+
 #animation-box-shrink-big {
     animation: shrink-big var(--transition-slow) infinite;
 }
 
-#animation-box-grow-shrink {
-    animation: grow-shrink var(--transition-slow) infinite;
+#animation-box-shrink-big-to-normal {
+    animation: shrink-big-to-normal var(--transition-slow) infinite;
 }
 
-#animation-box-grow-shrink-big {
-    animation: grow-shrink-big var(--transition-slow) infinite;
+#animation-box-grow-to-shrink {
+    animation: grow-to-shrink var(--transition-slow) infinite;
+}
+
+#animation-box-grow-to-shrink-big {
+    animation: grow-to-shrink-big var(--transition-slow) infinite;
 }
 
 #animation-box-fade-in-slide {
@@ -164,6 +243,10 @@ ul.no-margin {
 
 #animation-box-fade-out-slide {
     animation: fade-out-slide var(--transition-slow) infinite;
+}
+
+#animation-box-spin-clockwise {
+    animation: spin-clockwise var(--transition-xxslow) linear infinite;
 }
 
 /* Font Page */

@@ -2,3 +2,12 @@ ul {
     font-family: Noto-Sans-Regular;
     color: var(--color-neutral-50);
 }
+
+ul.no-dash {
+    list-style-type: none;
+    padding: var(--padding-none);
+}
+
+ul.no-margin {
+    margin: var(--margin-none);
+}

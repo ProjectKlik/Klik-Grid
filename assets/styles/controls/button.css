@@ -81,7 +81,7 @@ button:hover {
 }
 
 button:active {
-    animation: grow-shrink var(--transition-fast) forwards;
+    animation: grow-to-shrink var(--transition-fast) forwards;
 }
 
 /* Button Icons */

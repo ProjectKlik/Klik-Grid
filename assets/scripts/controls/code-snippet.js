@@ -21,8 +21,26 @@ export function codeSnippet(callback) {
             // Store the original text of the button
             const originalText = button.innerText;
 
-            // Copy the code to clipboard
-            navigator.clipboard.writeText(codeBlock.textContent);
+            try {
+                // Copy the code to clipboard
+                await navigator.clipboard.writeText(codeBlock.textContent);
+            }
+            catch {
+                // Fallback for unsupported browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = codeBlock.textContent;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                
+                document.body.appendChild(textarea);
+
+                textarea.focus();
+                textarea.select();
+
+                document.execCommand('copy');
+                
+                document.body.removeChild(textarea);
+            }
 
             // Change the button text to "Copied!"
             button.innerText = 'Copied!';
@@ -31,7 +49,7 @@ export function codeSnippet(callback) {
             setTimeout(() => {
                 button.innerText = originalText;
             }, 2000);
-            
+
             // Call callback if provided and pass the button and value
             if (callback) callback(true);
         });

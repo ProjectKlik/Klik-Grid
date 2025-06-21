@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    overflow: hidden;
 
     /* Spacing and Borders */
     margin: var(--margin-none);
@@ -14,6 +13,8 @@
 
 /* Code Header */
 .code-header {
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
