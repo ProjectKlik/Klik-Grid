@@ -1,73 +1,72 @@
-let globalCallback = null;
+let messageBoxCallback = null;
 
 export function messageBox(callback) {
-    // Store the callback for use by the API functions
-    globalCallback = callback;
-
-    // Make it globally accessible
+    messageBoxCallback = callback;
     window.showMessageBox = showMessageBox;
 }
 
 function showMessageBox(title, description, buttons = [], customCallback = null) {
-    // Create container elements
+    const container = getMessageBoxContainer();
+    container.innerHTML = createMessageBoxHTML(title, description, buttons, customCallback);
+
+    // Attach event listeners to the new buttons
+    container.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+            const text = button.textContent;
+            const value = button.dataset.buttonValue;
+
+            button.closest('.message-box-container')?.remove();
+            customCallback?.(text, value);
+            messageBoxCallback?.(text, value);
+        });
+    });
+
+    return container;
+}
+
+/* ===================== */
+/* HELPER FUNCTIONS */
+/* ===================== */
+
+function getMessageBoxContainer() {
     let container = document.querySelector('.message-box-container');
     if (!container) {
         container = document.createElement('div');
         container.className = 'message-box-container';
-        document.body.appendChild(container)
+        document.body.appendChild(container);
     }
-
-    const box = document.createElement('div');
-    box.className = 'message-box';
-
-    // Title
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'message-box-title';
-    const h3 = document.createElement('h3');
-    h3.textContent = title;
-    titleDiv.appendChild(h3);
-
-    // Description
-    const descDiv = document.createElement('div');
-    descDiv.className = 'message-box-description';
-    const span = document.createElement('span');
-    span.textContent = description;
-    descDiv.appendChild(span);
-
-    // Action
-    const actionDiv = document.createElement('div');
-    actionDiv.className = 'message-box-action';
-
-    // Create buttons
-    buttons.forEach(({ text, className, buttonValue, onClick }) => {
-        const button = document.createElement('button');
-        button.textContent = text;
-        if (className) {
-            button.className = className;
-        }
-        if (buttonValue !== undefined) {
-            button.dataset.buttonValue = buttonValue;
-        }
-
-        button.addEventListener('click', () => {
-            // Call custom onClick if provided
-            onClick?.();
-
-            // Execute callbacks
-            customCallback?.(text, buttonValue);
-            globalCallback?.(text, buttonValue);
-
-            container.remove();
-        });
-
-        actionDiv.appendChild(button);
-    });
-
-    // Append all parts
-    box.appendChild(titleDiv);
-    box.appendChild(descDiv);
-    box.appendChild(actionDiv);
-    container.appendChild(box);
-
     return container;
+}
+
+function createMessageBoxHTML(title, description, buttons, customCallback) {
+    return `
+    <div class="message-box">
+      <div class="message-box-title">
+        <h3>${escapeHTML(title)}</h3>
+      </div>
+      <div class="message-box-description">
+        <span>${escapeHTML(description)}</span>
+      </div>
+      <div class="message-box-action">
+        ${buttons.map(btn => createButtonHTML(btn)).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function createButtonHTML({ text, className, buttonValue }) {
+    const classes = className ? ` ${className}` : '';
+    const dataValue = buttonValue !== undefined ? ` data-button-value="${escapeHTML(buttonValue)}"` : '';
+    return `<button class="msg-btn${classes}"${dataValue}>${escapeHTML(text)}</button>`;
+}
+
+// Basic HTML escaping for security
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag]));
 }

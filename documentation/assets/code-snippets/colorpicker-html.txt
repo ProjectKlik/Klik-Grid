@@ -34,64 +34,7 @@
          <div class="colorpicker-popup-right">
             <div class="colorpicker-swatch-container">
                <span class="colorpicker-swatch-label">Color Swatches:</span>
-               <div class="colorpicker-swatch-grid">
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: black;"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-neutral-900);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-neutral-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-neutral-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-neutral-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-neutral-100);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: white;"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-red-200);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-orange-200);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-yellow-200);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-green-200);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-cyan-200);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-blue-200);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-800);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-700);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-600);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-500);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-400);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-300);"></div>
-                  <div class="colorpicker-swatch-color unremovable" style="background-color: var(--color-purple-200);"></div>
-               </div>
+               <div class="colorpicker-swatch-grid"></div>
                <button class="colorpicker-swatch-action-add" data-button-value="Add Swatch Button">Add Swatch</button>
                <button class="colorpicker-swatch-action-remove" data-button-value="Remove Swatch Button">Remove Swatch</button>
             </div>

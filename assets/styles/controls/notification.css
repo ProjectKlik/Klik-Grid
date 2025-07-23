@@ -1,153 +1,204 @@
+/* ===================== */
+/* NOTIFICATION CONTAINER */
+/* ===================== */
 .notification-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: var(--z-index-overlay);
+  /* Positioning */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: var(--z-index-overlay);
 }
 
+/* ===================== */
+/* NOTIFICATION BASE */
+/* ===================== */
 .notification {
-    position: absolute;
-    right: 0;
-    width: 300px;
-    padding: var(--padding-xxlarge);
-    background: var(--color-neutral-900);
-    border: var(--border-small) solid var(--color-neutral-700);
-    border-radius: var(--radius-large);
-    box-shadow: var(--shadow-medium);
-    transform: translateX(350px) translateY(0);
-    opacity: 0;
-    transition: var(--transition-medium);
-    overflow: hidden;
+  /* Positioning */
+  position: absolute;
+  right: 0;
+  
+  /* Dimensions */
+  width: 300px;
+  padding: var(--padding-xxlarge);
+  
+  /* Visual */
+  background: var(--color-neutral-900);
+  border: var(--border-small) solid var(--color-neutral-700);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  
+  /* Animation */
+  transform: translateX(350px) translateY(0);
+  opacity: 0;
+  transition: var(--transition-medium);
 }
 
+/* Notification states */
 .notification.show {
-    transform: translateX(0) translateY(var(--current-y, 0));
-    opacity: 1;
+  transform: translateX(0) translateY(var(--current-y, 0));
+  opacity: 1;
 }
 
 .notification.hide {
-    transform: translateX(350px) translateY(var(--current-y, 0));
-    opacity: 0;
+  transform: translateX(350px) translateY(var(--current-y, 0));
+  opacity: 0;
 }
 
+/* ===================== */
+/* NOTIFICATION SECTIONS */
+/* ===================== */
 .notification-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: var(--margin-medium);
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* Spacing */
+  margin-bottom: var(--margin-medium);
 }
 
 .notification-title {
-    display: flex;
-    flex-direction: row;
-    gap: var(--gap-medium);
-    color: white;
-    font-family: 'Noto-Sans-Regular';
-    line-height: 1;
+  /* Layout */
+  display: flex;
+  gap: var(--gap-medium);
+  
+  /* Typography */
+  color: var(--color-neutral-50);
+  font-family: 'Noto-Sans-Regular';
+  line-height: 1;
 }
 
 .notification-message {
-    color: white;
-    font-family: 'Noto-Sans-Regular';
-    font-size: small;
+  /* Typography */
+  color: var(--color-neutral-50);
+  font-family: 'Noto-Sans-Regular';
+  font-size: var(--font-size-small);
 }
 
 .notification-icon {
-    width: 18px;
-    height: 18px;
-    border-radius: var(--radius-circle);
+  /* Dimensions */
+  width: 18px;
+  height: 18px;
+  
+  /* Visual */
+  border-radius: var(--radius-circle);
 }
 
-.notification.info .notification-icon {
+/* ===================== */
+/* NOTIFICATION VARIANTS */
+/* ===================== */
+/* Info variant */
+.notification.info {
+  & .notification-icon {
     background: var(--color-cyan-500);
+  }
+  & .notification-progress {
+    background: var(--color-cyan-500);
+  }
 }
 
-.notification.error .notification-icon {
+/* Error variant */
+.notification.error {
+  & .notification-icon {
     background: var(--color-red-500);
+  }
+  & .notification-progress {
+    background: var(--color-red-500);
+  }
 }
 
-.notification.warning .notification-icon {
+/* Warning variant */
+.notification.warning {
+  & .notification-icon {
     background: var(--color-yellow-500);
+  }
+  & .notification-progress {
+    background: var(--color-yellow-500);
+  }
 }
 
-.notification.success .notification-icon {
+/* Success variant */
+.notification.success {
+  & .notification-icon {
     background: var(--color-green-500);
+  }
+  & .notification-progress {
+    background: var(--color-green-500);
+  }
 }
 
-.notification.special .notification-icon {
+/* Special variant */
+.notification.special {
+  /* Visual */
+  border: 2px solid transparent;
+  background: var(--color-neutral-900);
+  
+  & .notification-icon {
     background: linear-gradient(to right, var(--color-red-400), var(--color-purple-400));
     animation: spin-clockwise var(--transition-xxslow) linear infinite;
-}
-
-.notification.special {
-    border: 2px solid transparent;
-    border-radius: var(--radius-large);
-    background: var(--color-neutral-900);
-}
-
-.notification.special::before {
+  }
+  
+  & .notification-progress {
+    background: linear-gradient(to right, var(--color-red-400), var(--color-purple-400));
+    visibility: hidden;
+  }
+  
+  &::before {
     content: '';
     position: absolute;
     inset: -2px;
     border-radius: var(--radius-large);
     padding: 4px;
     background: linear-gradient(90deg, 
-        var(--color-red-400) 0%,
-        var(--color-purple-400) 12.5%,
-        var(--color-neutral-700) 25%,
-        var(--color-neutral-700) 37.5%,
-        var(--color-red-400) 50%,
-        var(--color-purple-400) 62.5%,
-        var(--color-neutral-700) 75%,
-        var(--color-neutral-700) 87.5%,
-        var(--color-red-400) 100%
+      var(--color-red-400) 0%,
+      var(--color-purple-400) 12.5%,
+      var(--color-neutral-700) 25%,
+      var(--color-neutral-700) 37.5%,
+      var(--color-red-400) 50%,
+      var(--color-purple-400) 62.5%,
+      var(--color-neutral-700) 75%,
+      var(--color-neutral-700) 87.5%,
+      var(--color-red-400) 100%
     );
     background-size: 200% 100%;
     animation: border-flow var(--transition-xxslow) linear infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+  }
 }
 
-@keyframes border-flow {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-}
-
-.notification.notification.special .notification-progress {
-    visibility: hidden;
-}
-
+/* ===================== */
+/* NOTIFICATION PROGRESS */
+/* ===================== */
 .notification-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    transition: width var(--transition-fast);
+  /* Positioning */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  
+  /* Dimensions */
+  height: 2px;
+  
+  /* Animation */
+  transition: width var(--transition-fast);
 }
 
-.notification.info .notification-progress {
-    background: var(--color-cyan-500);
-}
-
-.notification.error .notification-progress {
-    background: var(--color-red-500);
-}
-
-.notification.warning .notification-progress {
-    background: var(--color-yellow-500);
-}
-
-.notification.success .notification-progress {
-    background: var(--color-green-500);
-}
-
-.notification.special .notification-progress {
-    background: linear-gradient(to right, var(--color-red-400), var(--color-purple-400))
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }

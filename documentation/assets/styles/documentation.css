@@ -160,6 +160,12 @@ body {
     font-size: var(--font-size-small);
 }
 
+.action-history-sample {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+}
+
 /* Color Page */
 .color-showcaser {
     display: flex;
@@ -177,6 +183,19 @@ body {
     margin-left: 24px;
     outline: var(--outline-medium) solid var(--color-neutral-500);
     outline-style: dashed;
+}
+
+/* Utilities Page */
+.injector-sample {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xlarge);
+}
+
+.injector-sample-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
 }
 
 /* Animation Page */

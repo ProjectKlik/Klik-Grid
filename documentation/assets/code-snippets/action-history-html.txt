@@ -1,0 +1,5 @@
+<div class="action-history-container">
+    <div class="action-history-header">Action History</div>
+    <div class="action-history-content">
+    </div>
+</div>

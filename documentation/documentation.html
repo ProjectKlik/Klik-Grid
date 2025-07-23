@@ -38,7 +38,7 @@
         </div>
 
         <div id="version-tag">
-            <span id="version-tag-text">Alpha v1.1</span>
+            <span id="version-tag-text">Alpha v1.2</span>
         </div>
     </div>
 
@@ -97,13 +97,13 @@
                 </svg>
                 Strings
             </button>
-            <button data-toggle-value="scripts">
+            <button data-toggle-value="utilities">
                 <svg class="outline-icon" viewBox="0 0 24 24">
                     <path d="M7 8l-4 4l4 4" />
                     <path d="M17 8l4 4l-4 4" />
                     <path d="M14 4l-4 16" />
                 </svg>
-                Scripts
+                Utilities
             </button>
             <button data-toggle-value="variables">
                 <svg class="outline-icon" viewBox="0 0 24 24">
@@ -254,7 +254,7 @@
                 <br>
                 <fieldset>
                     <legend>Toggleable Button Group</legend>
-                    <div id="toggle-button-showcaser" class="toggle-button-group sample-popup vertical">
+                    <div id="toggle-button-showcaser" class="toggle-button-group sample-toggle-button vertical">
                         <button data-toggle-value="1" class="active">Button 1</button>
                         <button data-toggle-value="2">Button 2</button>
                         <button data-toggle-value="3">Button 3</button>
@@ -364,9 +364,30 @@
 
                         <ul class="dropdown-list">
                             <li data-dropdown-value="1">Option 1</li>
-                            <li data-dropdown-value="2">Option 2</li>
+                            <li class="has-submenu" data-dropdown-value="2">
+                                Option 2
+                                <svg class="fill-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                                </svg>
+                                <ul class="dropdown-submenu">
+                                    <li data-dropdown-value="2.1">Suboption 2.1</li>
+                                    <li class="has-submenu" data-dropdown-value="2.2">
+                                        Suboption 2.2
+                                        <svg class="fill-icon" viewBox="0 0 24 24">
+                                            <path
+                                                d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                                        </svg>
+                                        <ul class="dropdown-submenu">
+                                            <li data-dropdown-value="2.2.1">Deep 2.2.1</li>
+                                            <li data-dropdown-value="2.2.2">Deep 2.2.2</li>
+                                        </ul>
+                                    </li>
+                                    <li data-dropdown-value="2.3">Suboption 2.3</li>
+                                </ul>
+                            </li>
                             <li data-dropdown-value="3">Option 3</li>
-                            <hr>
+                            <hr />
                             <li data-dropdown-value="4">Option 4</li>
                         </ul>
                     </div>
@@ -608,9 +629,20 @@
                     <div class="button-group horizontal">
                         <button class="notification-button" data-button-value="Sample Info Notification">Info</button>
                         <button class="notification-button" data-button-value="Sample Error Notification">Error</button>
-                        <button class="notification-button" data-button-value="Sample Warning Notification">Warning</button>
-                        <button class="notification-button" data-button-value="Sample Success Notification">Success</button>
-                        <button class="notification-button" data-button-value="Sample Special Notification">Special</button>
+                        <button class="notification-button"
+                            data-button-value="Sample Warning Notification">Warning</button>
+                        <button class="notification-button"
+                            data-button-value="Sample Success Notification">Success</button>
+                        <button class="notification-button"
+                            data-button-value="Sample Special Notification">Special</button>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/notification-js.txt"></code></pre>
                     </div>
                 </fieldset>
                 <br>
@@ -639,7 +671,7 @@
                 <br>
                 <fieldset>
                     <legend>Color Picker</legend>
-                    <div class="colorpicker-container" data-picker-value="Sample Color Picker">
+                    <div class="colorpicker-container" data-colorpicker-value="Sample Color Picker">
                         <button class="colorpicker-showpicker">
                             <div class="colorpicker-preview"></div>
                             <svg class="fill-icon" viewBox="0 0 24 24">
@@ -684,127 +716,7 @@
                                 <div class="colorpicker-popup-right">
                                     <div class="colorpicker-swatch-container">
                                         <span class="colorpicker-swatch-label">Color Swatches:</span>
-                                        <div class="colorpicker-swatch-grid">
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: black;"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-neutral-900);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-neutral-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-neutral-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-neutral-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-neutral-100);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: white;"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-red-200);"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-orange-200);"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-yellow-200);"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-green-200);"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-cyan-200);"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-blue-200);"></div>
-
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-800);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-700);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-600);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-500);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-400);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-300);"></div>
-                                            <div class="colorpicker-swatch-color unremovable"
-                                                style="background-color: var(--color-purple-200);"></div>
-                                        </div>
+                                        <div class="colorpicker-swatch-grid"></div>
                                         <button class="colorpicker-swatch-action-add"
                                             data-button-value="Add Swatch Button">Add Swatch</button>
                                         <button class="colorpicker-swatch-action-remove"
@@ -835,6 +747,72 @@
                             <button>Copy</button>
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/colorpicker-js.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Curve Editor</legend>
+                    <div class="curve-editor-container" data-curve-editor-value="Sample Curve Editor">
+                        <button class="curve-editor-showeditor">
+                            <canvas class="curve-editor-preview" width="64" height="64"></canvas>
+                            <svg class="fill-icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                            </svg>
+                        </button>
+
+                        <div class="curve-editor-popup active">
+                            <div class="curve-editor-popup-content">
+                                <div class="curve-editor-popup-left">
+                                    <div class="curve-editor-canvas-container">
+                                        <canvas class="curve-editor-editing-canvas" width="256" height="256"></canvas>
+                                        <div class="curve-editor-points-container"></div>
+                                    </div>
+
+                                    <div class="curve-editor-popup-action">
+                                        <div class="toggle-button-group curve-editor-action-buttons-1 horizontal">
+                                            <button class="curve-editor-popup-action-edit-points active">Edit</button>
+                                            <button class="curve-editor-popup-action-add-points">Add</button>
+                                        </div>
+                                        <div class="button-group curve-editor-action-buttons-2 vertical">
+                                            <button class="curve-editor-popup-action-reset-curve">Reset Curve</button>
+                                        </div>
+                                        <div class="button-group curve-editor-action-buttons-3 horizontal">
+                                            <button class="curve-editor-popup-action-ok">Ok</button>
+                                            <button class="curve-editor-popup-action-cancel">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="curve-editor-popup-right">
+                                    <div class="curve-editor-preset-container">
+                                        <span class="curve-editor-preset-label">Curve Presets:</span>
+                                        <div class="curve-editor-preset-grid">
+                                        </div>
+                                        <button class="curve-editor-preset-action-add"
+                                            data-button-value="Add Preset Button">Add Preset</button>
+                                        <button class="curve-editor-preset-action-remove"
+                                            data-button-value="Remove Preset Button">Remove Preset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/curve-editor-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/curve-editor-js.txt"></code></pre>
                     </div>
                 </fieldset>
                 <br>
@@ -892,6 +870,40 @@
                             <button>Copy</button>
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/property-html.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Action History</legend>
+                    <div class="action-history-sample">
+                        <div class="button-group horizontal">
+                            <button data-button-value="Sample Undo Action">Undo</button>
+                            <button data-button-value="Sample Redo Action">Redo</button>
+                            <button data-button-value="Sample Add Action">Do Action</button>
+                            <button data-button-value="Sample Clear Actions">Clear All Actions</button>
+                        </div>
+
+                        <div class="action-history-container">
+                            <div class="action-history-header">Action History</div>
+                            <div class="action-history-content">
+                            </div>
+                        </div>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/action-history-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/action-history-js.txt"></code></pre>
                     </div>
                 </fieldset>
                 <br>
@@ -1476,14 +1488,44 @@
                     <li>--logout</li>
                 </ul>
             </div>
-            <div id="scripts" class="page shown">
-                <h1>📜 Scripts</h1>
+            <div id="utilities" class="page shown">
+                <h1>📜 Utilities</h1>
                 <p>
-                    Here is a list of all the scripts that are available in Klik Grid:
+                    Here is a list of all the utilities that are available in Klik Grid:
                 </p>
-                <p>
-                    *coming soon*
-                </p>
+                <fieldset>
+                    <legend>Injector Script</legend>
+                    <div class="injector-sample">
+                        <div class="button-group horizontal">
+                            <button data-button-value="Sample Inject HTML">Inject HTML</button>
+                            <button data-button-value="Sample Inject CSS">Inject CSS</button>
+                            <button data-button-value="Sample Inject JS">Inject JS</button>
+                        </div>
+
+                        <div class="injector-sample-container">
+
+                        </div>
+                    </div>
+                    <p>
+                        In order to use this script, it is required to include this dependency to your
+                        html file:
+                    </p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/injector-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/injector-js-2.txt"></code></pre>
+                    </div>
+                </fieldset>
             </div>
             <div id="variables" class="page shown">
                 <h1>💡 Variables</h1>
@@ -1519,11 +1561,11 @@
                 <fieldset>
                     <legend>Font Size</legend>
                     <ul class="no-dash no-margin">
-                        <li>--font-size-small: 0.625em;</li>
-                        <li>--font-size-medium: 0.75em;</li>
-                        <li>--font-size-large: 0.875em;</li>
-                        <li>--font-size-xlarge: 1em;</li>
-                        <li>--font-size-xxlarge: 1.25em;</li>
+                        <li>--font-size-small: 0.625rem;</li>
+                        <li>--font-size-medium: 0.75rem;</li>
+                        <li>--font-size-large: 0.875rem;</li>
+                        <li>--font-size-xlarge: 1rem;</li>
+                        <li>--font-size-xxlarge: 1.25rem;</li>
                     </ul>
                 </fieldset>
                 <br>
@@ -1643,6 +1685,9 @@
     <script type="module" src="/assets/scripts/modules/standard-controls.js"></script>
     <script type="module" src="/assets/scripts/modules/drawing-controls.js"></script>
     <script type="module" src="/assets/scripts/modules/data-controls.js"></script>
+
+    <!-- Utilities -->
+    <script type="module" src="/assets/scripts/utilities/injector.js"></script>
 </body>
 
 </html>

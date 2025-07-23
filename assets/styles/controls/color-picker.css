@@ -1,4 +1,6 @@
-/* Button */
+/* ==================== */
+/* Color Picker Preview */
+/* ==================== */
 .colorpicker-preview {
     width: 50px;
     height: 20px;
@@ -6,22 +8,27 @@
     background-color: red;
 }
 
+/* ================= */
+/* Color Picker Popup */
+/* ================= */
 .colorpicker-popup {
-    /* Display */
+    /* Layout */
     display: none;
-    flex-direction: column;
-    margin-top: var(--margin-medium);
-    width: fit-content;
     position: absolute;
-
-    /* Box Model */
-    outline: var(--outline-small) solid var(--color-neutral-50);
-    border-radius: var(--radius-small);
+    flex-direction: column;
+    width: fit-content;
+    
+    /* Spacing */
+    margin-top: var(--margin-medium);
     padding: var(--padding-xlarge);
     gap: var(--gap-xxlarge);
-
-    /* Visual */
+    
+    /* Appearance */
+    outline: var(--outline-small) solid var(--color-neutral-50);
+    border-radius: var(--radius-small);
     background-color: var(--color-neutral-900);
+    
+    /* Stacking */
     z-index: var(--z-index-overlay);
 }
 
@@ -36,13 +43,7 @@
     height: 250px;
 }
 
-.colorpicker-popup-left {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-large);
-    flex: 1;
-}
-
+.colorpicker-popup-left,
 .colorpicker-popup-right {
     display: flex;
     flex-direction: column;
@@ -56,11 +57,13 @@
     gap: var(--gap-large);
 }
 
-.colorpicker-popup-action>* {
+.colorpicker-popup-action > * {
     flex: 1;
 }
 
-/* Color Selection Div */
+/* ==================== */
+/* Color Canvas Section */
+/* ==================== */
 .colorpicker-color-canvas-container {
     position: relative;
     width: 200px;
@@ -80,15 +83,17 @@
     position: absolute;
     width: 5px;
     height: 5px;
-    border-radius: var(--radius-circle);
-    border: var(--border-medium) solid var(--color-neutral-50);
-    transform: translate(-50%, -50%);
     top: 0px;
     left: 200px;
+    border: var(--border-medium) solid var(--color-neutral-50);
+    border-radius: var(--radius-circle);
+    transform: translate(-50%, -50%);
     pointer-events: none;
 }
 
-/* Color Row */
+/* ================= */
+/* Color Row Section */
+/* ================= */
 .colorpicker-color-row {
     display: flex;
     width: 100%;
@@ -97,19 +102,16 @@
     overflow: hidden;
 }
 
-.colorpicker-picker-old-preview {
-    flex: 1;
-    min-height: 24px;
-    background-color: red;
-}
-
+.colorpicker-picker-old-preview,
 .colorpicker-picker-new-preview {
     flex: 1;
     min-height: 24px;
     background-color: red;
 }
 
-/* Hue Selection Div */
+/* ====================== */
+/* Hue Slider Components */
+/* ====================== */
 .colorpicker-hue-slider-container {
     position: relative;
 }
@@ -133,7 +135,9 @@
     pointer-events: none;
 }
 
-/* Alpha Selection Div */
+/* ======================== */
+/* Alpha Slider Components */
+/* ======================== */
 .colorpicker-alpha-slider-container {
     position: relative;
 }
@@ -157,7 +161,9 @@
     pointer-events: none;
 }
 
-/* Hex Code Div */
+/* ===================== */
+/* Hex Code Input Section */
+/* ===================== */
 .colorpicker-hex-code-container {
     display: flex;
     flex-direction: column;
@@ -170,12 +176,14 @@
     width: auto;
 }
 
-/* Color Swatch Div */
+/* ====================== */
+/* Color Swatch Section */
+/* ====================== */
 .colorpicker-swatch-container {
     display: flex;
     flex-direction: column;
     width: 200px;
-    gap: var(--gap-small);
+    gap: var(--gap-large);
     box-sizing: border-box;
 }
 
@@ -186,13 +194,13 @@
 }
 
 .colorpicker-swatch-grid {
-    border: var(--border-small) solid var(--color-neutral-50);
-    border-radius: var(--radius-small);
-    padding: var(--padding-large);
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: var(--gap-medium);
     height: 112px;
+    padding: var(--padding-large);
+    border: var(--border-small) solid var(--color-neutral-50);
+    border-radius: var(--radius-small);
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;

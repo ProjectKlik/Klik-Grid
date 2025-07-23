@@ -1,18 +1,6 @@
-/* Radio button container */
-label:has(> input[type="radio"]) {
-    /* Display */
-    display: flex;
-    align-items: center;
-
-    /* Box Model */
-    box-sizing: border-box;
-    gap: var(--gap-medium);
-
-    /* Visual */
-    cursor: pointer;
-}
-
-/* Radio button appearance */
+/* ===================== */
+/* RADIO BASE STYLES */
+/* ===================== */
 input[type="radio"] {
     /* Display */
     appearance: none;
@@ -26,29 +14,29 @@ input[type="radio"] {
     border-radius: var(--radius-circle);
     background-color: transparent;
     outline: var(--outline-medium) solid white;
+    outline-offset: -2px;
 
     /* Visual */
     cursor: pointer;
     transition: var(--transition-fast);
 }
 
-/* Hover state */
-input[type="radio"]:hover {
-    outline-width: 4px;
+/* ===================== */
+/* RADIO LABEL SYSTEM */
+/* ===================== */
+label:has(> input[type="radio"]) {
+    /* Display */
+    display: flex;
+    align-items: center;
+
+    /* Box Model */
+    box-sizing: border-box;
+    gap: var(--gap-medium);
+
+    /* Visual */
+    cursor: pointer;
 }
 
-/* Checked state */
-input[type="radio"]:checked::after {
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    border-radius: var(--radius-circle);
-    animation: grow-to-shrink-big var(--transition-fast) linear forwards;
-    animation-direction: reverse;
-}
-
-/* Radio label text */
 label:has(> input[type="radio"]) span {
     /* Typography */
     font-family: 'Noto Sans', sans-serif;
@@ -56,11 +44,30 @@ label:has(> input[type="radio"]) span {
     color: var(--color-neutral-50);
 }
 
+/* ===================== */
+/* RADIO STATES */
+/* ===================== */
+input[type="radio"]:hover {
+    outline-width: 4px;
+}
+
+input[type="radio"]:checked::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: var(--radius-circle);
+    animation: grow-to-shrink-big var(--transition-fast) linear forwards;
+    animation-direction: reverse;
+}
+
+/* ===================== */
+/* RADIO GROUP CONTAINERS */
+/* ===================== */
 .radio-button-group {
     display: flex;
     box-sizing: border-box;
     width: fit-content;
-
     gap: var(--gap-xlarge);
 }
 

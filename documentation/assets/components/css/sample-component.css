@@ -1,0 +1,17 @@
+.sample-component {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    padding: var(--padding-large);
+    background-color: var(--color-neutral-900);
+    outline: var(--outline-small) solid var(--color-neutral-700);
+    border-radius: var(--radius-medium);
+    gap: var(--gap-large);
+}
+
+.sample-component h2 {
+    font-family: 'Noto-Sans-Regular';
+    font-size: var(--font-size-xxlarge);
+    color: var(--color-neutral-50);
+    line-height: 0;
+}

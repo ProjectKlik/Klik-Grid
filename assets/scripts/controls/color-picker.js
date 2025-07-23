@@ -1,10 +1,71 @@
 export function colorPicker(callback) {
-    document.querySelectorAll('.colorpicker-container').forEach(container => {
-        // Skip if already initialized
-        if (container.dataset.colorPickerInitialized) return;
-        container.dataset.colorPickerInitialized = 'true';
+    document.querySelectorAll('.colorpicker-container:not([data-initialized])').forEach(container => {
+        // Mark as initialized to prevent duplicate handlers
+        container.dataset.initialized = 'true';
 
-        // Element References
+        // ==== COLOR PRESETS ====
+        const systemPreset = [
+            'black',
+            '--color-neutral-900',
+            '--color-neutral-700',
+            '--color-neutral-500',
+            '--color-neutral-300',
+            '--color-neutral-100',
+            'white',
+            '--color-red-800',
+            '--color-red-700',
+            '--color-red-600',
+            '--color-red-500',
+            '--color-red-400',
+            '--color-red-300',
+            '--color-red-200',
+            '--color-orange-800',
+            '--color-orange-700',
+            '--color-orange-600',
+            '--color-orange-500',
+            '--color-orange-400',
+            '--color-orange-300',
+            '--color-orange-200',
+            '--color-yellow-800',
+            '--color-yellow-700',
+            '--color-yellow-600',
+            '--color-yellow-500',
+            '--color-yellow-400',
+            '--color-yellow-300',
+            '--color-yellow-200',
+            '--color-green-800',
+            '--color-green-700',
+            '--color-green-600',
+            '--color-green-500',
+            '--color-green-400',
+            '--color-green-300',
+            '--color-green-200',
+            '--color-cyan-800',
+            '--color-cyan-700',
+            '--color-cyan-600',
+            '--color-cyan-500',
+            '--color-cyan-400',
+            '--color-cyan-300',
+            '--color-cyan-200',
+            '--color-blue-800',
+            '--color-blue-700',
+            '--color-blue-600',
+            '--color-blue-500',
+            '--color-blue-400',
+            '--color-blue-300',
+            '--color-blue-200',
+            '--color-purple-800',
+            '--color-purple-700',
+            '--color-purple-600',
+            '--color-purple-500',
+            '--color-purple-400',
+            '--color-purple-300',
+            '--color-purple-200'
+        ];
+
+        let userPresets = JSON.parse(localStorage.getItem('colorPickerUserPresets')) || [];
+
+        // ==== DOM ELEMENT REFERENCES ====
         const elements = {
             container,
             popup: container.querySelector('.colorpicker-popup'),
@@ -27,52 +88,98 @@ export function colorPicker(callback) {
             cancelButton: container.querySelector('.colorpicker-popup-action-cancel'),
         };
 
-        // Canvas Sizes Setup
-        const colorCanvasRect = elements.colorCanvas.getBoundingClientRect();
-        elements.colorCanvas.width = colorCanvasRect.width;
-        elements.colorCanvas.height = colorCanvasRect.height;
+        // ==== CANVAS SETUP ====
+        initCanvasSizes();
 
-        const hueSliderRect = elements.hueSlider.getBoundingClientRect();
-        elements.hueSlider.width = hueSliderRect.width;
-        elements.hueSlider.height = hueSliderRect.height;
-
-        const alphaSliderRect = elements.alphaSlider.getBoundingClientRect();
-        elements.alphaSlider.width = alphaSliderRect.width;
-        elements.alphaSlider.height = alphaSliderRect.height;
-
-        // Canvas Contexts and Data
         const colorCanvasContext = elements.colorCanvas.getContext('2d');
-        const colorCanvasImageData = colorCanvasContext.createImageData(elements.colorCanvas.width, elements.colorCanvas.height);
+        const colorCanvasImageData = colorCanvasContext.createImageData(
+            elements.colorCanvas.width, elements.colorCanvas.height
+        );
         const colorCanvasData = colorCanvasImageData.data;
-
         const hueSliderContext = elements.hueSlider.getContext('2d');
         const alphaSliderContext = elements.alphaSlider.getContext('2d');
 
-        // Marker Half-Width Calculations for Centering
-        const markerHalfWidths = { hue: elements.hueSliderMarker.offsetWidth / 2, alpha: elements.alphaSliderMarker.offsetWidth / 2 };
-
-        // State Variables
+        // ==== COLOR PICKER STATE ====
         const currentColor = { r: 255, g: 0, b: 0, a: 255 };
+
+        const markerHalfWidths = {
+            hue: elements.hueSliderMarker.offsetWidth / 2,
+            alpha: elements.alphaSliderMarker.offsetWidth / 2
+        };
+
         let isDragging = {
             colorCanvasMarker: false,
             hueSliderMarker: false,
             alphaSliderMarker: false,
         };
 
-        // --- Helper Functions ---
+        // ==== INITIALIZE COLOR PICKER ====
+        initColorPicker();
+
+        // ==== HELPER: INITIALIZING UTILTIES ====
+        function initCanvasSizes() {
+            const colorCanvasRect = elements.colorCanvas.getBoundingClientRect();
+            elements.colorCanvas.width = colorCanvasRect.width;
+            elements.colorCanvas.height = colorCanvasRect.height;
+
+            const hueSliderRect = elements.hueSlider.getBoundingClientRect();
+            elements.hueSlider.width = hueSliderRect.width;
+            elements.hueSlider.height = hueSliderRect.height;
+
+            const alphaSliderRect = elements.alphaSlider.getBoundingClientRect();
+            elements.alphaSlider.width = alphaSliderRect.width;
+            elements.alphaSlider.height = alphaSliderRect.height;
+        }
+
+        function initColorPicker() {
+            elements.colorCanvasMarker.style.left = `${elements.colorCanvas.width - 1}px`;
+            elements.colorCanvasMarker.style.top = '0px';
+            elements.preview.style.backgroundColor = rgbaToString(currentColor);
+
+            initializePresets();
+            updateColorCanvas();
+            updateHueCanvas();
+            updateAlphaCanvas();
+            updatePreviewColor(0, 0);
+            updateHexField();
+            swatchEventListenerUpdater();
+            elements.popup.classList.remove('active');
+        }
+
+        function initializePresets() {
+            elements.colorSwatchGrid.innerHTML = '';
+
+            systemPreset.forEach(preset => {
+                const swatch = document.createElement('div');
+                swatch.className = 'colorpicker-swatch-color unremovable';
+                swatch.style.backgroundColor = preset.startsWith('--') ? `var(${preset})` : preset;
+                elements.colorSwatchGrid.appendChild(swatch);
+            });
+
+            userPresets.forEach(preset => {
+                const swatch = document.createElement('div');
+                swatch.className = 'colorpicker-swatch-color';
+                swatch.style.backgroundColor = rgbaToString(preset);
+                elements.colorSwatchGrid.appendChild(swatch);
+            });
+
+            updateColorSwatches();
+        }
+
+        // ==== HELPER: UPDATE UTILTIES ====
         function updateColorCanvas() {
             for (let y = 0; y < elements.colorCanvas.height; y++) {
-                const vFactor = Math.min(1, elements.colorCanvas.height > 1 ? y / (elements.colorCanvas.height - 1) : 0);
+                const vFactor = Math.min(1, elements.colorCanvas.height > 1 ?
+                    y / (elements.colorCanvas.height - 1) : 0);
 
                 for (let x = 0; x < elements.colorCanvas.width; x++) {
-                    const hFactor = Math.min(1, elements.colorCanvas.width > 1 ? x / (elements.colorCanvas.width - 1) : 0);
+                    const hFactor = Math.min(1, elements.colorCanvas.width > 1 ?
+                        x / (elements.colorCanvas.width - 1) : 0);
 
-                    // Horizontal blend: white to selected color
                     const rBlend = 255 * (1 - hFactor) + currentColor.r * hFactor;
                     const gBlend = 255 * (1 - hFactor) + currentColor.g * hFactor;
                     const bBlend = 255 * (1 - hFactor) + currentColor.b * hFactor;
 
-                    // Vertical fade to black (simulating brightness)
                     const r = rBlend * (1 - vFactor);
                     const g = gBlend * (1 - vFactor);
                     const b = bBlend * (1 - vFactor);
@@ -90,18 +197,15 @@ export function colorPicker(callback) {
 
         function updateHueCanvas() {
             const gradient = hueSliderContext.createLinearGradient(0, 0, elements.hueSlider.width, 0);
-
             for (let i = 0; i <= 360; i += 60) {
                 gradient.addColorStop(i / 360, `hsl(${i}, 100%, 50%)`);
             }
-
             hueSliderContext.fillStyle = gradient;
             hueSliderContext.fillRect(0, 0, elements.hueSlider.width, elements.hueSlider.height);
         }
 
         function updateAlphaCanvas() {
             const patternSize = 10;
-
             const checkerCanvas = document.createElement('canvas');
             checkerCanvas.width = patternSize * 2;
             checkerCanvas.height = patternSize * 2;
@@ -119,7 +223,6 @@ export function colorPicker(callback) {
 
             const { r, g, b } = currentColor;
             const gradient = alphaSliderContext.createLinearGradient(0, 0, elements.alphaSlider.width, 0);
-
             gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0)`);
             gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 1)`);
             alphaSliderContext.fillStyle = gradient;
@@ -128,40 +231,42 @@ export function colorPicker(callback) {
 
         function updateHexField() {
             elements.hexCodeField.value = rgbaToHex(currentColor);
+        }
 
-            if (callback) {
-                callback(currentColor.r, currentColor.g, currentColor.b, elements.container.dataset.pickerValue);
-            }
+        function updateColorSwatches() {
+            elements.colorSwatches = container.querySelectorAll('.colorpicker-swatch-color');
+        }
+
+        function updateAllCanvases() {
+            const hsv = rgbToHsv(currentColor.r, currentColor.g, currentColor.b);
+            const tempColor = hslToRgb(hsv.h, 1, 0.5);
+            const originalColor = { ...currentColor };
+
+            currentColor.r = tempColor.r;
+            currentColor.g = tempColor.g;
+            currentColor.b = tempColor.b;
+            updateColorCanvas();
+
+            currentColor.r = originalColor.r;
+            currentColor.g = originalColor.g;
+            currentColor.b = originalColor.b;
+            currentColor.a = originalColor.a;
+
+            updateAlphaCanvas();
         }
 
         function updatePreviewColor(x, y) {
             const color = getColorAtPosition(x, y);
-
             if (color) {
                 currentColor.r = color.r;
                 currentColor.g = color.g;
                 currentColor.b = color.b;
-                elements.newColorPreview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
+                elements.newColorPreview.style.backgroundColor = rgbaToString(currentColor);
                 updateAlphaCanvas();
             }
         }
 
-        function getColorAtPosition(x, y) {
-            const pixelX = Math.round(x);
-            const pixelY = Math.round(y);
-
-            if (pixelX >= 0 && pixelX < elements.colorCanvas.width && pixelY >= 0 && pixelY < elements.colorCanvas.height) {
-                const index = (pixelY * elements.colorCanvas.width + pixelX) * 4;
-                const r = colorCanvasData[index];
-                const g = colorCanvasData[index + 1];
-                const b = colorCanvasData[index + 2];
-                const a = colorCanvasData[index + 3];
-                return { r, g, b, a };
-            }
-
-            return null;
-        }
-
+        // ==== HELPER: MOVE MARKERS ====
         function moveColorCanvasMarker(e) {
             const rect = elements.colorCanvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -180,7 +285,6 @@ export function colorPicker(callback) {
         function moveHueSliderMarker(e) {
             const rect = elements.hueSlider.getBoundingClientRect();
             const x = e.clientX - rect.left;
-
             const normalizedX = Math.max(0, Math.min(x / rect.width, 1));
             const quantizedX = quantizeToSteps(normalizedX, 255);
             const clampedX = quantizedX * rect.width;
@@ -197,14 +301,13 @@ export function colorPicker(callback) {
             const luminance = 1 - (canvasMarkerY / (elements.colorCanvas.height - 1));
 
             const { r, g, b } = hslToRgb(hue, saturation, luminance);
-
             const baseHue = hslToRgb(hue, 1, 0.5);
+
             currentColor.r = baseHue.r;
             currentColor.g = baseHue.g;
             currentColor.b = baseHue.b;
 
             elements.newColorPreview.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${currentColor.a / 255})`;
-
             updateColorCanvas();
             updateAlphaCanvas();
             updatePreviewColor(canvasMarkerX, canvasMarkerY);
@@ -214,73 +317,37 @@ export function colorPicker(callback) {
         function moveAlphaSliderMarker(e) {
             const rect = elements.alphaSlider.getBoundingClientRect();
             const x = e.clientX - rect.left;
-
             const normalizedX = Math.max(0, Math.min(x / rect.width, 1));
             const quantizedX = quantizeToSteps(normalizedX, 255);
             const clampedX = quantizedX * rect.width;
 
             elements.alphaSliderMarker.style.left = `${clampedX - markerHalfWidths.alpha}px`;
-
-            const alphaFactor = clampedX / rect.width;
-            currentColor.a = Math.round(alphaFactor * 255);
-            elements.newColorPreview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
-
+            currentColor.a = Math.round(quantizedX * 255);
+            elements.newColorPreview.style.backgroundColor = rgbaToString(currentColor);
             updateAlphaCanvas();
             updateHexField();
         }
 
-        function handleHexInputBlur() {
-            const hex = this.value.trim();
-            if (!isValidHex(hex)) {
-                updateHexField(); // Revert to previous value
-                return;
-            }
-
-            const rgba = hexToRgba(hex);
-            if (!rgba) {
-                updateHexField();
-                return;
-            }
-
-            // Update currentColor directly with the RGBA values
+        // ==== HELPER: COLOR UPDATES ====
+        function updateColorFromRgba(rgba) {
             currentColor.r = rgba.r;
             currentColor.g = rgba.g;
             currentColor.b = rgba.b;
             currentColor.a = rgba.a;
 
-            // Get HSV for positioning the markers correctly
             const hsv = rgbToHsv(rgba.r, rgba.g, rgba.b);
+            positionMarkersFromHsv(hsv);
+            updateAllCanvases();
+            elements.newColorPreview.style.backgroundColor = rgbaToString(currentColor);
+            updateHexField();
+        }
 
-            // Position the hue slider marker
+        function positionMarkersFromHsv(hsv) {
+            // Hue slider
             const hueX = (hsv.h / 360) * elements.hueSlider.width;
             elements.hueSliderMarker.style.left = `${hueX - markerHalfWidths.hue}px`;
 
-            // Update the base hue for the color canvas (this is what the canvas shows as the "pure" color)
-            const newHslRgb = hslToRgb(hsv.h, 1, 0.5);
-            // But don't overwrite currentColor! Instead, use this for canvas updates only
-            const tempColor = { r: newHslRgb.r, g: newHslRgb.g, b: newHslRgb.b };
-
-            // Temporarily store current color
-            const originalColor = { ...currentColor };
-
-            // Set the base hue color for canvas rendering
-            currentColor.r = tempColor.r;
-            currentColor.g = tempColor.g;
-            currentColor.b = tempColor.b;
-
-            // Update the canvas with the pure hue
-            updateColorCanvas();
-
-            // Restore the actual selected color
-            currentColor.r = originalColor.r;
-            currentColor.g = originalColor.g;
-            currentColor.b = originalColor.b;
-            currentColor.a = originalColor.a;
-
-            // Update alpha canvas with the actual color
-            updateAlphaCanvas();
-
-            // Position the color canvas marker based on saturation and value
+            // Color canvas
             const x = hsv.s * (elements.colorCanvas.width - 1);
             const y = (1 - hsv.v) * (elements.colorCanvas.height - 1);
             const clampedX = Math.max(0, Math.min(x, elements.colorCanvas.width - 1));
@@ -288,73 +355,29 @@ export function colorPicker(callback) {
             elements.colorCanvasMarker.style.left = `${clampedX}px`;
             elements.colorCanvasMarker.style.top = `${clampedY}px`;
 
-            // Position the alpha slider marker
+            // Alpha slider
             const alphaX = (currentColor.a / 255) * elements.alphaSlider.width;
             elements.alphaSliderMarker.style.left = `${alphaX - markerHalfWidths.alpha}px`;
-
-            // Update the preview with the actual selected color
-            elements.newColorPreview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
-
-            // Update hex field to ensure it shows the correct value
-            updateHexField();
         }
 
+        // ==== HELPER: SWATCH SELECTION ====
         function selectSwatch(e) {
             const style = getComputedStyle(e.currentTarget);
             let colorValue = style.backgroundColor;
 
-            // Handle CSS variables if present
             if (colorValue.startsWith('var(')) {
                 const varName = colorValue.match(/var\((--[^)]*)\)/)[1];
                 colorValue = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
             }
 
-            // Convert the color value to RGBA
             const rgba = parseCssColorToRgba(colorValue);
-
             if (rgba) {
-                currentColor.r = rgba.r;
-                currentColor.g = rgba.g;
-                currentColor.b = rgba.b;
-                currentColor.a = rgba.a;
-
-                // Update the color picker state based on the selected swatch color
-                const hsv = rgbToHsv(rgba.r, rgba.g, rgba.b);
-
-                const hueX = (hsv.h / 360) * elements.hueSlider.width;
-                elements.hueSliderMarker.style.left = `${hueX - markerHalfWidths.hue}px`;
-
-                const tempColor = hslToRgb(hsv.h, 1, 0.5);
-                const originalColor = { ...currentColor };
-                currentColor.r = tempColor.r;
-                currentColor.g = tempColor.g;
-                currentColor.b = tempColor.b;
-                updateColorCanvas();
-                currentColor.r = originalColor.r;
-                currentColor.g = originalColor.g;
-                currentColor.b = originalColor.b;
-                currentColor.a = originalColor.a;
-
-                updateAlphaCanvas();
-
-                const x = hsv.s * (elements.colorCanvas.width - 1);
-                const y = (1 - hsv.v) * (elements.colorCanvas.height - 1);
-                const clampedX = Math.max(0, Math.min(x, elements.colorCanvas.width - 1));
-                const clampedY = Math.max(0, Math.min(y, elements.colorCanvas.height - 1));
-                elements.colorCanvasMarker.style.left = `${clampedX}px`;
-                elements.colorCanvasMarker.style.top = `${clampedY}px`;
-
-                const alphaX = (currentColor.a / 255) * elements.alphaSlider.width;
-                elements.alphaSliderMarker.style.left = `${alphaX - markerHalfWidths.alpha}px`;
-
-                elements.newColorPreview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
-                updateHexField();
+                updateColorFromRgba(rgba);
             }
         }
 
         function swatchEventListenerUpdater() {
             elements.colorSwatches.forEach(swatch => {
-
                 if (swatch.dataset.addedListener) return;
                 swatch.dataset.addedListener = 'true';
 
@@ -366,159 +389,50 @@ export function colorPicker(callback) {
             });
         }
 
-        function loadSavedSwatches() {
-            const savedSwatches = JSON.parse(localStorage.getItem('savedSwatches')) || [];
-
-            for (let rgba of savedSwatches) {
-                const swatch = document.createElement('div');
-                swatch.classList.add('colorpicker-swatch-color');
-                swatch.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
-
-                elements.colorSwatchGrid.appendChild(swatch);
-            }
-
-            elements.colorSwatches = container.querySelectorAll('.colorpicker-swatch-color');
-        }
-
+        // ==== HELPER: MISC UTILITIES ====
         function quantizeToSteps(value, steps = 255) {
             return Math.round(value * steps) / steps;
         }
 
         function revertToOldColor() {
             const oldColorRgba = parseCssColorToRgba(elements.oldColorPreview.style.backgroundColor);
-
-            currentColor.r = oldColorRgba.r;
-            currentColor.g = oldColorRgba.g;
-            currentColor.b = oldColorRgba.b;
-            currentColor.a = oldColorRgba.a;
+            updateColorFromRgba(oldColorRgba);
         }
 
-        // --- Event Listeners ---
-        elements.colorCanvas.addEventListener('mousedown', (e) => {
-            isDragging.colorCanvasMarker = true;
-            moveColorCanvasMarker(e);
-        });
-
-        elements.hueSlider.addEventListener('mousedown', (e) => {
-            isDragging.hueSliderMarker = true;
-            moveHueSliderMarker(e);
-        });
-
-        elements.alphaSlider.addEventListener('mousedown', (e) => {
-            isDragging.alphaSliderMarker = true;
-            moveAlphaSliderMarker(e);
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging.colorCanvasMarker) moveColorCanvasMarker(e);
-            if (isDragging.hueSliderMarker) moveHueSliderMarker(e);
-            if (isDragging.alphaSliderMarker) moveAlphaSliderMarker(e);
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = {
-                colorCanvasMarker: false,
-                hueSliderMarker: false,
-                alphaSliderMarker: false,
-            };
-        });
-
-        elements.hexCodeField.addEventListener('blur', handleHexInputBlur);
-
-        elements.showPicker.addEventListener('click', () => {
-            if (elements.popup.classList.contains('active')) {
-                elements.popup.classList.remove('active');
-            }
-            else {
-                elements.oldColorPreview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
-                elements.popup.classList.add('active');
-                const canvasMarkerX = parseFloat(elements.colorCanvasMarker.style.left) || 0;
-                const canvasMarkerY = parseFloat(elements.colorCanvasMarker.style.top) || 0;
-                updatePreviewColor(canvasMarkerX, canvasMarkerY);
-            }
-        });
-
-        elements.addSwatchButton.addEventListener('click', () => {
-            const rgba = {
-                r: currentColor.r,
-                g: currentColor.g,
-                b: currentColor.b,
-                a: currentColor.a / 255
-            };
-
-            const newSwatch = document.createElement('div');
-            newSwatch.classList.add('colorpicker-swatch-color');
-            newSwatch.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
-
-            elements.colorSwatchGrid.appendChild(newSwatch);
-
-            elements.colorSwatches = container.querySelectorAll('.colorpicker-swatch-color');
-
-            swatchEventListenerUpdater();
-
-            let savedSwatches = JSON.parse(localStorage.getItem('savedSwatches')) || [];
-            savedSwatches.push(rgba);
-            localStorage.setItem('savedSwatches', JSON.stringify(savedSwatches));
-        });
-
-        elements.removeSwatchButton.addEventListener('click', () => {
-            for (let swatch of elements.colorSwatches) {
-                if (swatch.classList.contains('selected') && !swatch.classList.contains('unremovable')) {
-                    const style = getComputedStyle(swatch);
-                    const bgColor = style.backgroundColor;
-
-                    const match = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d.]*)?\)/);
-                    if (match) {
-                        const [, r, g, b, a] = match;
-                        const targetColor = {
-                            r: parseInt(r),
-                            g: parseInt(g),
-                            b: parseInt(b),
-                            a: parseFloat(a || 1)
-                        };
-
-                        let savedSwatches = JSON.parse(localStorage.getItem('savedSwatches')) || [];
-
-                        savedSwatches = savedSwatches.filter(swatch =>
-                            !(swatch.r === targetColor.r &&
-                                swatch.g === targetColor.g &&
-                                swatch.b === targetColor.b &&
-                                swatch.a === targetColor.a)
-                        );
-
-                        localStorage.setItem('savedSwatches', JSON.stringify(savedSwatches));
-                    }
-
-                    swatch.remove();
-                    break;
-                }
+        function handleHexInputBlur() {
+            const hex = this.value.trim();
+            if (!isValidHex(hex)) {
+                updateHexField();
+                return;
             }
 
-            elements.colorSwatches = container.querySelectorAll('.colorpicker-swatch-color');
-        });
-
-        elements.okButton.addEventListener('click', () => {
-            elements.preview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
-            elements.popup.classList.remove('active');
-        });
-
-        elements.cancelButton.addEventListener('click', () => {
-            revertToOldColor();
-
-            elements.popup.classList.remove('active');
-        });
-
-        // Close dropdown if clicking outside
-        window.addEventListener('click', (event) => {
-            if (elements.popup.classList.contains('active')) {
-                if (!elements.popup.contains(event.target) && !elements.showPicker.contains(event.target)) {
-                    revertToOldColor();
-                    elements.popup.classList.remove('active');
-                }
+            const rgba = hexToRgba(hex);
+            if (!rgba) {
+                updateHexField();
+                return;
             }
-        });
 
-        // --- Color Conversion Functions ---
+            updateColorFromRgba(rgba);
+        }
+
+        function getColorAtPosition(x, y) {
+            const pixelX = Math.round(x);
+            const pixelY = Math.round(y);
+
+            if (pixelX >= 0 && pixelX < elements.colorCanvas.width &&
+                pixelY >= 0 && pixelY < elements.colorCanvas.height) {
+                const index = (pixelY * elements.colorCanvas.width + pixelX) * 4;
+                return {
+                    r: colorCanvasData[index],
+                    g: colorCanvasData[index + 1],
+                    b: colorCanvasData[index + 2],
+                    a: colorCanvasData[index + 3]
+                };
+            }
+            return null;
+        }
+
+        // ==== COLOR CONVERSION FUNCTIONS ====
         function hslToRgb(h, s, l) {
             h /= 360;
             let r, g, b;
@@ -543,10 +457,7 @@ export function colorPicker(callback) {
         }
 
         function rgbToHsv(r, g, b) {
-            r /= 255;
-            g /= 255;
-            b /= 255;
-
+            r /= 255; g /= 255; b /= 255;
             const max = Math.max(r, g, b), min = Math.min(r, g, b);
             let h, s, v = max;
             const d = max - min;
@@ -554,61 +465,41 @@ export function colorPicker(callback) {
 
             if (max === min) {
                 h = 0;
-            }
-            else {
+            } else {
                 switch (max) {
-                    case r:
-                        h = (g - b) / d + (g < b ? 6 : 0);
-                        break;
-                    case g:
-                        h = (b - r) / d + 2;
-                        break;
-                    case b:
-                        h = (r - g) / d + 4;
-                        break;
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
                 }
                 h *= 60;
             }
-
             return { h, s, v };
         }
 
         function rgbaToHex({ r, g, b, a }) {
-            const toHex = (n) => {
-                // Ensure `n` is an integer and clamped to 0-255
-                const clamped = Math.round(Math.min(255, Math.max(0, n)));
-                return clamped.toString(16).padStart(2, '0').toUpperCase();
-            };
-            if (a !== 255) {
-                return `#${toHex(r)}${toHex(g)}${toHex(b)}${toHex(a)}`;
-            }
-            else {
-                return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-            }
+            const toHex = (n) => Math.round(Math.min(255, Math.max(0, n)))
+                .toString(16).padStart(2, '0').toUpperCase();
+
+            return a !== 255 ?
+                `#${toHex(r)}${toHex(g)}${toHex(b)}${toHex(a)}` :
+                `#${toHex(r)}${toHex(g)}${toHex(b)}`;
         }
 
         function hexToRgba(hex) {
             hex = hex.replace(/^#/, '');
-
             let r, g, b, a = 255;
 
             if (hex.length === 3 || hex.length === 4) {
                 r = parseInt(hex[0] + hex[0], 16);
                 g = parseInt(hex[1] + hex[1], 16);
                 b = parseInt(hex[2] + hex[2], 16);
-                if (hex.length === 4) {
-                    a = parseInt(hex[3] + hex[3], 16);
-                }
-            }
-            else if (hex.length === 6 || hex.length === 8) {
+                if (hex.length === 4) a = parseInt(hex[3] + hex[3], 16);
+            } else if (hex.length === 6 || hex.length === 8) {
                 r = parseInt(hex.substring(0, 2), 16);
                 g = parseInt(hex.substring(2, 4), 16);
                 b = parseInt(hex.substring(4, 6), 16);
-                if (hex.length === 8) {
-                    a = parseInt(hex.substring(6, 8), 16);
-                }
-            }
-            else {
+                if (hex.length === 8) a = parseInt(hex.substring(6, 8), 16);
+            } else {
                 return null;
             }
 
@@ -638,23 +529,127 @@ export function colorPicker(callback) {
             return null;
         }
 
+        function rgbaToString({ r, g, b, a }) {
+            return `rgba(${r}, ${g}, ${b}, ${a / 255})`;
+        }
 
-        // --- Initialization ---
-        const x = colorCanvasRect.left;
-        const clampedX = Math.max(0, Math.min(x, colorCanvasRect.width - 1));
-        elements.colorCanvasMarker.style.left = `${clampedX}px`;
-        elements.colorCanvasMarker.style.top = `${0}px`;
+        // ==== EVENT LISTENERS: DRAGGING ====
+        elements.colorCanvas.addEventListener('mousedown', (e) => {
+            isDragging.colorCanvasMarker = true;
+            moveColorCanvasMarker(e);
+        });
 
-        elements.preview.style.backgroundColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, ${currentColor.a / 255})`;
+        elements.hueSlider.addEventListener('mousedown', (e) => {
+            isDragging.hueSliderMarker = true;
+            moveHueSliderMarker(e);
+        });
 
-        updateColorCanvas();
-        updateHueCanvas();
-        updateAlphaCanvas();
-        updatePreviewColor(clampedX, 0);
-        updateHexField();
-        loadSavedSwatches();
-        swatchEventListenerUpdater();
+        elements.alphaSlider.addEventListener('mousedown', (e) => {
+            isDragging.alphaSliderMarker = true;
+            moveAlphaSliderMarker(e);
+        });
 
-        elements.popup.classList.remove('active');
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging.colorCanvasMarker) moveColorCanvasMarker(e);
+            if (isDragging.hueSliderMarker) moveHueSliderMarker(e);
+            if (isDragging.alphaSliderMarker) moveAlphaSliderMarker(e);
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = {
+                colorCanvasMarker: false,
+                hueSliderMarker: false,
+                alphaSliderMarker: false,
+            };
+        });
+
+        // ==== EVENT LISTENERS: ON/OFF & HEX CODE ====
+        elements.showPicker.addEventListener('click', () => {
+            if (elements.popup.classList.contains('active')) {
+                elements.popup.classList.remove('active');
+            } else {
+                elements.oldColorPreview.style.backgroundColor = rgbaToString(currentColor);
+                elements.popup.classList.add('active');
+                const canvasMarkerX = parseFloat(elements.colorCanvasMarker.style.left) || 0;
+                const canvasMarkerY = parseFloat(elements.colorCanvasMarker.style.top) || 0;
+                updatePreviewColor(canvasMarkerX, canvasMarkerY);
+            }
+        });
+
+        elements.hexCodeField.addEventListener('blur', handleHexInputBlur);
+
+        // ==== EVENT LISTENERS: ADD/REMOVE SWATCHES ====
+        elements.addSwatchButton.addEventListener('click', () => {
+            const rgba = {
+                r: currentColor.r,
+                g: currentColor.g,
+                b: currentColor.b,
+                a: currentColor.a
+            };
+
+            const newSwatch = document.createElement('div');
+            newSwatch.classList.add('colorpicker-swatch-color');
+            newSwatch.style.backgroundColor = rgbaToString(rgba);
+            elements.colorSwatchGrid.appendChild(newSwatch);
+            updateColorSwatches();
+            swatchEventListenerUpdater();
+
+            userPresets.push(rgba);
+            localStorage.setItem('colorPickerUserPresets', JSON.stringify(userPresets));
+        });
+
+        elements.removeSwatchButton.addEventListener('click', () => {
+            for (let swatch of elements.colorSwatches) {
+                if (swatch.classList.contains('selected') && !swatch.classList.contains('unremovable')) {
+                    const style = getComputedStyle(swatch);
+                    const bgColor = style.backgroundColor;
+                    const rgbaMatch = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+
+                    if (rgbaMatch) {
+                        const r = parseInt(rgbaMatch[1]);
+                        const g = parseInt(rgbaMatch[2]);
+                        const b = parseInt(rgbaMatch[3]);
+                        // Handle both formats: rgba(R,G,B,A) and rgb(R,G,B)
+                        const a = rgbaMatch[4] ? Math.round(parseFloat(rgbaMatch[4]) * 255) : 255;
+
+                        userPresets = userPresets.filter(savedColor =>
+                            !(savedColor.r === r &&
+                                savedColor.g === g &&
+                                savedColor.b === b &&
+                                savedColor.a === a)
+                        );
+                        localStorage.setItem('colorPickerUserPresets', JSON.stringify(userPresets));
+                    }
+
+                    swatch.remove();
+                    break;
+                }
+            }
+            updateColorSwatches();
+        });
+
+        // ==== EVENT LISTENERS: OK/CANCEL ====
+        elements.okButton.addEventListener('click', () => {
+            elements.preview.style.backgroundColor = rgbaToString(currentColor);
+            elements.popup.classList.remove('active');
+            if (callback) {
+                callback(currentColor.r, currentColor.g, currentColor.b, elements.container.dataset.colorpickerValue);
+            }
+        });
+
+        elements.cancelButton.addEventListener('click', () => {
+            revertToOldColor();
+            elements.popup.classList.remove('active');
+        });
+
+        // ==== EVENT LISTENER: CLOSE ON OUTSIDE CLICK ====
+        window.addEventListener('click', (event) => {
+            if (elements.popup.classList.contains('active') &&
+                !elements.popup.contains(event.target) &&
+                !elements.showPicker.contains(event.target)) {
+                revertToOldColor();
+                elements.popup.classList.remove('active');
+            }
+        });
     });
 }

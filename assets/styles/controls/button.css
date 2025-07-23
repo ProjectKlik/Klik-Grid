@@ -1,6 +1,8 @@
-/* Button Base */
+/* ===================== */
+/* BUTTON BASE STYLES */
+/* ===================== */
 button {
-    /* Display */
+    /* Flex Layout */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,40 +22,47 @@ button {
     border: none;
     border-radius: var(--radius-small);
 
-    /* Visual */
+    /* Visual Effects */
     background-color: transparent;
     cursor: pointer;
     animation: none;
     transition: var(--transition-fast);
 }
 
-/* Button Types */
+
+/* ===================== */
+/* BUTTON TYPE VARIANTS */
+/* ===================== */
 button.type-info {
-    outline: var(--outline-small) solid var(--color-cyan-500);
+    outline-color: var(--color-cyan-500);
     color: var(--color-cyan-200);
 }
 
 button.type-warning {
-    outline: var(--outline-small) solid var(--color-yellow-500);
+    outline-color: var(--color-yellow-500);
     color: var(--color-yellow-200);
 }
 
 button.type-error {
-    outline: var(--outline-small) solid var(--color-red-500);  
+    outline-color: var(--color-red-500);  
     color: var(--color-red-200);
 }
 
 button.type-success {
-    outline: var(--outline-small) solid var(--color-green-500);
+    outline-color: var(--color-green-500);
     color: var(--color-green-200);
 }
 
-/* Button Active State */
+
+/* ===================== */
+/* ACTIVE STATE STYLES */
+/* ===================== */
 button.active {
     background-color: var(--color-neutral-50);
     color: var(--color-neutral-950);
 }
 
+/* Type-specific active states */
 button.type-info.active {
     background-color: var(--color-cyan-500);
     color: var(--color-neutral-950);
@@ -74,7 +83,10 @@ button.type-success.active {
     color: var(--color-neutral-950);
 }
 
-/* Button Hover and Active States */
+
+/* ===================== */
+/* INTERACTION STATES */
+/* ===================== */
 button:hover {
     outline-width: var(--outline-large);
     animation: grow var(--transition-fast) forwards;
@@ -84,7 +96,10 @@ button:active {
     animation: grow-to-shrink var(--transition-fast) forwards;
 }
 
-/* Button Icons */
+
+/* ===================== */
+/* BUTTON ICONS */
+/* ===================== */
 button > .fill-icon {
     width: var(--icon-large);
     height: var(--icon-large);
@@ -99,7 +114,7 @@ button > .outline-icon {
     stroke-width: var(--stroke-medium);
 }
 
-/* Active Button Icons */
+/* Active state icons */
 button.active > .fill-icon {
     fill: var(--color-neutral-950);
 }
@@ -108,35 +123,26 @@ button.active > .outline-icon {
     stroke: var(--color-neutral-950);
 }
 
-/* Toggle Button Group */
-.toggle-button-group {
-    display: flex;
-    box-sizing: border-box;
-    gap: var(--gap-xlarge);
-}
 
-.toggle-button-group.vertical {
-    flex-direction: column;
-    height: 100%;
-}
-
-.toggle-button-group.horizontal {
-    flex-direction: row;
-    width: 100%;
-}
-
-/* Button Group */
+/* ===================== */
+/* BUTTON GROUP CONTAINERS */
+/* ===================== */
+.toggle-button-group,
 .button-group {
     display: flex;
     box-sizing: border-box;
-    gap: var(--gap-xlarge);
+    gap: var(--gap-large);
 }
 
+/* Vertical layout */
+.toggle-button-group.vertical,
 .button-group.vertical {
     flex-direction: column;
     height: 100%;
 }
 
+/* Horizontal layout */
+.toggle-button-group.horizontal,
 .button-group.horizontal {
     flex-direction: row;
     width: 100%;

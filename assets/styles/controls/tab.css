@@ -1,35 +1,71 @@
+/* ===================== */
+/* TAB GROUP (CONTAINER) */
+/* ===================== */
 .tab-group {
+    /* Layout */
     display: flex;
     position: relative;
-    background-color: var(--color-neutral-800);
-    padding: var(--padding-large);
+
+    /* Box Model */
     width: fit-content;
-    border-radius: var(--radius-medium);
+    padding: var(--padding-large);
     gap: var(--gap-large);
+    border-radius: var(--radius-medium);
+
+    /* Visual */
+    background-color: var(--color-neutral-800);
 }
 
+/* ===================== */
+/* TAB SELECTION INDICATOR */
+/* ===================== */
 .tab-selection {
+    /* Positioning */
     position: absolute;
+    z-index: var(--z-index-low);
+
+    /* Dimensions */
     height: calc(100% - 2 * var(--padding-large));
+
+    /* Visual */
     background-color: white;
     border-radius: var(--radius-small);
+
+    /* Animation */
     transition: var(--transition-fast);
-    z-index: var(--z-index-low);
 }
 
+/* ===================== */
+/* TAB ITEMS */
+/* ===================== */
 .tab {
     /* Typography */
     font-family: 'Noto-Sans-Regular';
     font-size: var(--font-size-large);
-    text-align: center;
     color: var(--color-neutral-50);
+    text-align: center;
 
-    cursor: pointer;
+    /* Box Model */
     padding: var(--padding-medium);
+
+    /* Interaction */
+    cursor: pointer;
     z-index: var(--z-index-medium);
     transition: var(--transition-fast);
 }
 
+/* ===================== */
+/* TAB STATES */
+/* ===================== */
 .tab.active {
     color: var(--color-neutral-950);
+}
+
+/* ===================== */
+/* OPTIONAL ENHANCEMENTS */
+/* ===================== */
+
+/* Hover Effect (if desired) */
+.tab:hover:not(.active) {
+    animation: grow var(--transition-fast) forwards;
 }

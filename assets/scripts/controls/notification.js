@@ -1,152 +1,132 @@
-let globalCallback = null;
-let notifications = [];
+let notificationCallback = null;
+let activeNotifications = [];
 
 export function notification(callback) {
-    // Store the callback for use by the API functions
-    globalCallback = callback;
-
-    // Make it globally accessible
-    window.showNotification = showNotification;
+    notificationCallback = callback;
+    window.showNotification = createNotification;
 }
 
-function showNotification(type, title, message, duration = 5000, customCallback = null) {
-    // Generate unique ID
+function createNotification(type, title, message, duration = 5000, customCallback = null) {
     const id = Date.now() + Math.random();
-    
-    // Create container elements
-    let notificationContainer = document.querySelector('.notification-container');
-    if (!notificationContainer) {
-        notificationContainer = document.createElement('div');
-        notificationContainer.className = 'notification-container';
-        document.body.appendChild(notificationContainer);
-    }
+    const container = getNotificationContainer();
+    const notification = buildNotificationHTML(id, type, title, message);
 
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.setAttribute('data-notification-id', id);
-
-    const notificationHeader = document.createElement('div');
-    notificationHeader.className = 'notification-header';
-
-    // Title
-    const notificationTitle = document.createElement('div');
-    notificationTitle.className = 'notification-title';
-
-    const notificationIcon = document.createElement('div');
-    notificationIcon.className = 'notification-icon';
-    notificationTitle.appendChild(notificationIcon);
-
-    notificationTitle.appendChild(document.createTextNode(title));
-
-    notificationHeader.appendChild(notificationTitle);
-
-    // Close
-    const closeButton = document.createElement('button');
-    closeButton.className = 'notification-close';
-    closeButton.innerHTML = '&times;';
-
-    closeButton.addEventListener('click', () => closeNotification(id));
-    notificationHeader.appendChild(closeButton);
-
-    notification.appendChild(notificationHeader);
-
-    // Message
-    const notificationMessage = document.createElement('div');
-    notificationMessage.className = 'notification-message';
-    notificationMessage.textContent = message;
-    notification.appendChild(notificationMessage);
-
-    // Progress Bar
-    const notificationProgress = document.createElement('div');
-    notificationProgress.className = 'notification-progress';
-    notificationProgress.style.width = '100%';
-    notification.appendChild(notificationProgress);
-
-    // Add to notifications array
-    notifications.unshift({ id, element: notification });
-
-    // Add to DOM
-    notificationContainer.appendChild(notification);
-    
-    updateNotificationPositions();
+    container.insertAdjacentHTML('beforeend', notification);
+    const notificationEl = container.lastElementChild;
 
     // Force reflow to ensure initial state is rendered
-    notification.offsetHeight;
+    notificationEl.offsetHeight;
 
     // Trigger show animation with slight delay
     setTimeout(() => {
-        notification.classList.add('show');
+        notificationEl.classList.add('show');
     }, 10);
 
-    // Start progress bar animation
-    const progressBar = notification.querySelector('.notification-progress');
-    let width = 100;
-    const interval = setInterval(() => {
-        width -= (100 / duration) * 50; // Update every 50ms
-        progressBar.style.width = Math.max(0, width) + '%';
+    // Setup interactions
+    setupNotificationBehavior(notificationEl, id, type, title, message, duration, customCallback);
 
-        if (width <= 0) {
-            clearInterval(interval);
-            closeNotification(id);
-        }
-    }, 50);
-
-    // Store interval for cleanup if manually closed
-    notification.setAttribute('data-interval', interval);
-
-    // Add click handler for the notification
-    notification.addEventListener('click', () => {
-        customCallback?.(type, title, message);
-        globalCallback?.(type, title, message);
-    });
+    // Track notification
+    activeNotifications.unshift({ id, element: notificationEl });
+    updatePositions();
 
     return id;
 }
 
-function closeNotification(id) {
-    const notification = document.querySelector(`[data-notification-id="${id}"]`);
-    if (!notification) return;
+/* ===================== */
+/* HELPER FUNCTIONS */
+/* ===================== */
 
-    // Clear progress interval
-    const interval = notification.getAttribute('data-interval');
-    if (interval) {
-        clearInterval(parseInt(interval));
+function getNotificationContainer() {
+    let container = document.querySelector('.notification-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'notification-container';
+        document.body.appendChild(container);
     }
-
-    // Remove from notifications array
-    const index = notifications.findIndex(n => n.id === id);
-    if (index > -1) {
-        notifications.splice(index, 1);
-    }
-
-    // Add hide class for smooth exit
-    notification.classList.add('hide');
-
-    // Update positions for remaining notifications with a slight delay
-    setTimeout(() => {
-        updateNotificationPositions();
-    }, 50);
-
-    // Remove from DOM after animation
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-        }
-    }, 500);
-    
-    // Call the global callback when notification is closed
-    globalCallback?.('close', id);
+    return container;
 }
 
-function updateNotificationPositions() {
-    notifications.forEach((notif, index) => {
-        const element = document.querySelector(`[data-notification-id="${notif.id}"]`);
-        if (element) {
-            const position = index * (element.offsetHeight + 8);
-            element.style.setProperty('--current-y', `${position}px`);
-        }
+function buildNotificationHTML(id, type, title, message) {
+    return `
+    <div class="notification ${type}" data-notification-id="${id}">
+      <div class="notification-header">
+        <div class="notification-title">
+          <div class="notification-icon"></div>
+          ${escapeHTML(title)}
+        </div>
+        <button class="notification-close">&times;</button>
+      </div>
+      <div class="notification-message">${escapeHTML(message)}</div>
+      <div class="notification-progress" style="width:100%"></div>
+    </div>
+  `;
+}
+
+function setupNotificationBehavior(el, id, type, title, message, duration, customCallback) {
+    // Close button
+    el.querySelector('.notification-close').addEventListener('click', () => closeNotification(id));
+
+    // Click handler
+    el.addEventListener('click', () => {
+        customCallback?.(type, title, message);
+        notificationCallback?.(type, title, message);
+    });
+
+    // Auto-close timer
+    if (duration > 0) {
+        const progressBar = el.querySelector('.notification-progress');
+        let width = 100;
+        const interval = setInterval(() => {
+            width -= (100 / duration) * 50;
+            progressBar.style.width = `${Math.max(0, width)}%`;
+            if (width <= 0) closeNotification(id);
+        }, 50);
+
+        el.dataset.interval = interval;
+    }
+}
+
+function closeNotification(id) {
+    const index = activeNotifications.findIndex(n => n.id === id);
+    if (index === -1) return;
+
+    const [notification] = activeNotifications.splice(index, 1);
+    const element = notification.element;
+
+    // Cleanup interval
+    if (element.dataset.interval) {
+        clearInterval(parseInt(element.dataset.interval));
+    }
+
+    // Animate out
+    element.classList.add('hide');
+
+    // Update positions with slight delay
+    setTimeout(updatePositions, 50);
+
+    // Remove from DOM after animation completes
+    setTimeout(() => {
+        element.remove();
+        notificationCallback?.('close', id);
+    }, 500);
+}
+
+function updatePositions() {
+    activeNotifications.forEach((notif, index) => {
+        notif.element.style.setProperty('--current-y', `${index * (notif.element.offsetHeight + 8)}px`);
     });
 }
 
-// Make closeNotification globally accessible if needed
+// Basic HTML escaping
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag]));
+}
+
+// Make globally accessible
 window.closeNotification = closeNotification;

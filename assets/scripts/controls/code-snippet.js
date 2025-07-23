@@ -1,5 +1,8 @@
 export function codeSnippet(callback) {
-    document.querySelectorAll('.code-container').forEach(container => {
+    document.querySelectorAll('.code-container:not([data-initialized])').forEach(container => {
+        // Mark as initialized to prevent duplicate handlers
+        container.dataset.initialized = 'true';
+
         const button = container.querySelector('.code-header button');
         const codeBlock = container.querySelector('code');
         const filePath = codeBlock.getAttribute('content');
@@ -31,14 +34,14 @@ export function codeSnippet(callback) {
                 textarea.value = codeBlock.textContent;
                 textarea.style.position = 'fixed';
                 textarea.style.opacity = '0';
-                
+
                 document.body.appendChild(textarea);
 
                 textarea.focus();
                 textarea.select();
 
                 document.execCommand('copy');
-                
+
                 document.body.removeChild(textarea);
             }
 
@@ -50,8 +53,8 @@ export function codeSnippet(callback) {
                 button.innerText = originalText;
             }, 2000);
 
-            // Call callback if provided and pass the button and value
-            if (callback) callback(true);
+            // Call callback if successfully copied
+            callback?.(true);
         });
     });
 }

@@ -1,76 +1,123 @@
+/* ===================== */
+/* MESSAGE BOX CONTAINER */
+/* ===================== */
 .message-box-container {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-    min-width: 300px;
-    z-index: var(--z-index-overlay);
+  /* Positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-index-overlay);
+  
+  /* Layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Dimensions */
+  width: 100%;
+  height: 100%;
+  min-width: 300px;
+  min-height: 300px;
 }
 
+/* ===================== */
+/* MESSAGE BOX */
+/* ===================== */
 .message-box {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: auto;
-    border-radius: var(--radius-large);
-    background-color: var(--color-neutral-900);
-    box-shadow: var(--shadow-large);
-    animation: grow-to-shrink var(--transition-medium) forwards;
-    overflow: hidden;
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  
+  /* Dimensions */
+  width: 50%;
+  height: auto;
+  
+  /* Visual */
+  background-color: var(--color-neutral-900);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-large);
+  overflow: hidden;
+  
+  /* Animation */
+  animation: grow-to-shrink var(--transition-medium) forwards;
 }
 
+/* ===================== */
+/* MESSAGE BOX SECTIONS */
+/* ===================== */
 .message-box-title {
-    display: flex;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    max-height: 40px;
-    width: 100%;
-    background-color: var(--color-neutral-800);
-    padding: var(--padding-medium);
-
-    color: white;
-    font-family: 'Noto-Sans-Regular';
-    line-height: 0;
+  /* Layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Box Model */
+  width: 100%;
+  height: 40px;
+  max-height: 40px;
+  padding: var(--padding-medium);
+  box-sizing: border-box;
+  
+  /* Visual */
+  background-color: var(--color-neutral-800);
+  
+  /* Typography */
+  color: var(--color-neutral-50);
+  font-family: 'Noto-Sans-Regular';
+  line-height: 1;
 }
 
 .message-box-description {
-    flex: 1;
-    min-height: 200px;
-    padding: var(--padding-xxlarge);
-
-    color: white;
-    font-family: 'Noto-Sans-Regular';
+  /* Layout */
+  flex: 1;
+  
+  /* Box Model */
+  min-height: 200px;
+  padding: var(--padding-xxlarge);
+  
+  /* Typography */
+  color: var(--color-neutral-50);
+  font-family: 'Noto-Sans-Regular';
 }
 
 .message-box-action {
-    height: 50px;
-    max-height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    flex-direction: row;
-    gap: var(--gap-large);
-    padding: var(--padding-large);
-    background-color: var(--color-neutral-800);
+  /* Layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  
+  /* Box Model */
+  width: 100%;
+  height: 50px;
+  max-height: 50px;
+  padding: var(--padding-large);
+  box-sizing: border-box;
+  gap: var(--gap-large);
+  
+  /* Visual */
+  background-color: var(--color-neutral-800);
 }
 
+/* Action buttons */
 .message-box-action > * {
-    min-width: 100px;
+  min-width: 100px;
 }
 
+/* ===================== */
+/* DIALOG OVERLAY */
+/* ===================== */
 #dialog-overlay {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(2px);
-    background-color: color-mix(in srgb, var(--color-neutral-950), transparent 50%);
-    z-index: var(--z-index-overlay);
+  /* Positioning */
+  position: fixed;
+  display: none;
+  z-index: var(--z-index-overlay);
+  
+  /* Dimensions */
+  width: 100%;
+  height: 100%;
+  
+  /* Visual */
+  background-color: color-mix(in srgb, var(--color-neutral-950), transparent 50%);
+  backdrop-filter: blur(2px);
 }

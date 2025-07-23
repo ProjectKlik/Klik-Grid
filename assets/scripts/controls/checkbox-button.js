@@ -1,14 +1,20 @@
 export function checkboxButton(callback) {
     document.querySelectorAll('.checkbox-button-group').forEach(group => {
-        const buttons = group.querySelectorAll('input[type="checkbox"]');
-        buttons.forEach(btn => {
-            // Skip if already initialized
-            if (btn.dataset.toggleInitialized) return;
-            btn.dataset.toggleInitialized = 'true';
+        group.querySelectorAll('input[type="checkbox"]:not([data-initialized])').forEach(checkbox => {
+            // Mark as initialized to prevent duplicate handlers
+            checkbox.dataset.initialized = 'true';
 
-            btn.addEventListener('change', () => {
-                // Call callback if provided and pass the button and value
-                if (callback) callback(btn, btn.dataset.checkboxValue);
+            // Get the associated label text
+            const labelText = checkbox.closest('label')?.querySelector('span')?.textContent || '';
+
+            checkbox.addEventListener('change', () => {
+                // Pass the checkbox element, its label, its data-radio-value and its state to callback
+                callback?.(
+                    checkbox,
+                    labelText,
+                    checkbox.dataset.checkboxValue,
+                    checkbox.checked
+                );
             });
         });
     });

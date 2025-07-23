@@ -1,0 +1,269 @@
+/* ==================== */
+/* Curve Editor Preview */
+/* ==================== */
+.curve-editor-preview {
+    /* Box Model */
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-small);
+    
+    /* Background */
+    background-color: var(--color-neutral-900);
+    background-image: radial-gradient(
+        circle,
+        var(--color-neutral-800) 1px,
+        transparent 1px
+    );
+    background-position: 0 0;
+    background-size: 16px 16px;
+    
+    /* Border */
+    outline: var(--outline-small) solid var(--color-neutral-500);
+}
+
+
+/* ==================== */
+/* Curve Editor Popup */
+/* ==================== */
+.curve-editor-popup {
+    /* Layout */
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    width: fit-content;
+    
+    /* Spacing */
+    margin-top: var(--margin-medium);
+    padding: var(--padding-xlarge);
+    gap: var(--gap-xxlarge);
+    
+    /* Appearance */
+    background-color: var(--color-neutral-900);
+    border-radius: var(--radius-small);
+    outline: var(--outline-small) solid var(--color-neutral-50);
+    
+    /* Stacking */
+    z-index: var(--z-index-overlay);
+}
+
+.curve-editor-popup.active {
+    display: flex;
+}
+
+.curve-editor-popup-content {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-xlarge);
+    height: fit-content;
+}
+
+.curve-editor-popup-left,
+.curve-editor-popup-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+    flex: 1;
+}
+
+
+/* ==================== */
+/* Editing Canvas */
+/* ==================== */
+.curve-editor-editing-canvas {
+    /* Box Model */
+    width: 256px;
+    height: 256px;
+    border-radius: var(--radius-medium);
+    
+    /* Background */
+    background-color: var(--color-neutral-900);
+    background-image: radial-gradient(
+        circle,
+        var(--color-neutral-800) 2px,
+        transparent 2px
+    );
+    background-position: 0 0;
+    background-size: 32px 32px;
+    
+    /* Border */
+    outline: var(--outline-small) solid var(--color-neutral-500);
+}
+
+.curve-editor-points-container {
+    /* Positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Behavior */
+    pointer-events: none;
+    z-index: 10;
+}
+
+
+/* ==================== */
+/* Control Points */
+/* ==================== */
+.curve-editor-main-point,
+.curve-editor-control-point {
+    /* Positioning */
+    position: absolute;
+    
+    /* Box Model */
+    border-radius: 50%;
+    
+    /* Behavior */
+    cursor: pointer;
+    pointer-events: auto;
+    transition: outline-width var(--transition-fast);
+    z-index: 10;
+}
+
+.curve-editor-main-point {
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-red-600);
+    outline: var(--outline-small) solid var(--color-neutral-50);
+}
+
+.curve-editor-main-point.active {
+    background-color: var(--color-red-600);
+}
+
+.curve-editor-main-point.fixed {
+    background-color: var(--color-neutral-900);
+}
+
+.curve-editor-control-point {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-blue-600);
+    outline: var(--outline-small) solid var(--color-neutral-50);
+    z-index: 11;
+}
+
+/* Point States */
+.curve-editor-main-point:hover,
+.curve-editor-control-point:hover,
+.curve-editor-main-point.dragging,
+.curve-editor-control-point.dragging {
+    outline: var(--outline-large) solid var(--color-neutral-50);
+}
+
+.curve-editor-main-point.dragging,
+.curve-editor-control-point.dragging {
+    z-index: 20;
+}
+
+
+/* ==================== */
+/* Control Line */
+/* ==================== */
+.curve-editor-control-line {
+    /* Positioning */
+    position: absolute;
+    z-index: 5;
+    
+    /* Box Model */
+    height: 2px;
+    
+    /* Appearance */
+    background-color: transparent;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        var(--color-neutral-50) 5px,
+        var(--color-neutral-50) 10px
+    );
+    
+    /* Behavior */
+    pointer-events: none;
+    transform-origin: 0 50%;
+}
+
+
+/* ==================== */
+/* Action Section */
+/* ==================== */
+.curve-editor-popup-action {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+}
+
+.curve-editor-action-buttons-1,
+.curve-editor-action-buttons-2,
+.curve-editor-action-buttons-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.curve-editor-action-buttons-1 > *,
+.curve-editor-action-buttons-2 > *,
+.curve-editor-action-buttons-3 > * {
+    flex: 1;
+}
+
+
+/* ==================== */
+/* Preset Section */
+/* ==================== */
+.curve-editor-preset-container {
+    display: flex;
+    flex-direction: column;
+    width: 256px;
+    height: fit-content;
+    gap: var(--gap-large);
+    box-sizing: border-box;
+}
+
+.curve-editor-preset-grid {
+    /* Layout */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-medium);
+    
+    /* Box Model */
+    height: 128px;
+    padding: var(--padding-large);
+    
+    /* Appearance */
+    border: var(--border-small) solid var(--color-neutral-50);
+    border-radius: var(--radius-small);
+    
+    /* Scrolling */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.curve-editor-preset-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.curve-editor-preset {
+    /* Box Model */
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    border-radius: var(--radius-small);
+    
+    /* Background */
+    background-color: var(--color-neutral-900);
+    background-image: radial-gradient(
+        circle,
+        var(--color-neutral-800) 1px,
+        transparent 1px
+    );
+    background-position: 0 0;
+    background-size: 16px 16px;
+    
+    /* Border */
+    outline: var(--outline-small) solid var(--color-neutral-500);
+}
+
+.curve-editor-preset.selected {
+    outline: var(--outline-small) solid var(--color-neutral-50);
+}

@@ -1,0 +1,3 @@
+window.inject("./assets/components/html/sample-component.html", "injector-sample-container");
+window.inject("./assets/components/css/sample-component.css");
+window.inject("./assets/components/js/sample-component.js");

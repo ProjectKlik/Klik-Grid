@@ -1,0 +1,5 @@
+window.showNotification('info', 'Info', 'Sample Info Notification');
+window.showNotification('error', 'Error', 'Sample Error Notification');
+window.showNotification('warning', 'Warning', 'Sample Warning Notification');
+window.showNotification('success', 'Success', 'Sample Success Notification');
+window.showNotification('special', 'Special', 'Sample Special Notification');
