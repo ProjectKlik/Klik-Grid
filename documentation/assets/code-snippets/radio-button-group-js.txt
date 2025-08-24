@@ -1,8 +1,0 @@
-standardInitControls({
-    onRadioButtonClick: (button, value) => {
-        if(button && value) {
-            // Handle radio button click
-            console.log(`Radio button ${button.nextElementSibling.textContent.trim()} with value of ${value} clicked!`);
-        }
-    }
-});

@@ -1,0 +1,5 @@
+window.createSocket(
+    'PARENTELEMENT', // For specifying where to create
+    '', // For adding class to the socket container
+    '' // For adding class to the socket
+);

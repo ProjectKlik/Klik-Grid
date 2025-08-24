@@ -4,7 +4,7 @@ body {
 }
 
 #loading-screen {
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@ body {
     font-family: Onest-Bold;
     font-size: var(--font-size-xxlarge);
     font-weight: bold;
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 #loading-logo {
@@ -50,7 +50,7 @@ body {
     min-height: 50px;
 
     box-sizing: border-box;
-    background-color: var(--color-neutral-950);
+    background-color: var(--surface-0);
     box-shadow: var(--shadow-bottom-hard);
     padding: var(--padding-none) var(--padding-xxlarge);
     z-index: var(--z-index-low);
@@ -77,7 +77,7 @@ body {
     font-family: Onest-Bold;
     font-size: var(--font-size-xlarge);
     font-weight: bold;
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
     padding: var(--padding-medium);
 }
 
@@ -91,7 +91,7 @@ body {
     font-size: var(--font-size-xxlarge);
     line-height: 0px;
     font-weight: bold;
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 /* Container */
@@ -102,12 +102,18 @@ body {
 }
 
 #sidebar {
+    display: flex;
     flex-direction: column;
 
     width: 250px;
 
     padding: var(--padding-xxlarge);
-    background-color: var(--color-neutral-950);
+    background-color: var(--surface-0);
+}
+
+#sidebar > * {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #content {
@@ -115,15 +121,17 @@ body {
 
     padding: var(--padding-none) var(--padding-xxlarge);
 
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
 
     height: 100%;
     flex: 1;
 }
 
 /* Control Page */
-#toggle-button-showcaser {
-    width: 200px;
+#button-showcaser {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xlarge);
 }
 
 #scroller-showcaser {
@@ -152,8 +160,8 @@ body {
     display: flex;
     width: 50px;
     height: 50px;
-    background-color: var(--color-neutral-900);
-    color: white;
+    background-color: var(--surface-3);
+    color: var(--text-primary);
     justify-content: center;
     align-items: center;
     font-family: 'Noto-Sans-Regular';
@@ -173,7 +181,7 @@ body {
 }
 
 .color-showcaser span {
-    color: white;
+    color: var(--text-primary);
     font-family: 'Noto-Sans-Regular';
 }
 
@@ -211,7 +219,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    border: 2px solid white;
+    border: 2px solid var(--control-border-normal);
     border-radius: 10px;
     padding: 10px;
 }

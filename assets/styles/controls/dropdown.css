@@ -20,8 +20,8 @@
     border-radius: var(--radius-small);
     
     /* Visual */
-    outline: var(--outline-small) solid var(--color-neutral-50);
-    background-color: var(--color-neutral-900);
+    outline: var(--outline-small) solid var(--control-border-normal);
+    background-color: var(--surface-1);
     list-style: none;
 }
 
@@ -49,7 +49,7 @@
     /* Typography */
     font-family: 'Noto-Sans-Regular';
     font-size: var(--font-size-large);
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
     
     /* Interaction */
     cursor: pointer;
@@ -57,7 +57,7 @@
 }
 
 .dropdown-list li:hover {
-    background-color: var(--color-neutral-800);
+    background-color: var(--surface-0);
 }
 
 /* ===================== */
@@ -72,12 +72,12 @@
 }
 
 .dropdown-list li .fill-icon {
-    fill: var(--color-neutral-50);
+    fill: var(--control-fg-primary);
 }
 
 .dropdown-list li .outline-icon {
     fill: transparent;
-    stroke: var(--color-neutral-50);
+    stroke: var(--control-fg-primary);
     stroke-width: var(--stroke-medium);
 }
 
@@ -113,8 +113,8 @@
     border-radius: var(--radius-small);
     
     /* Visual */
-    outline: var(--outline-small) solid var(--color-neutral-50);
-    background-color: var(--color-neutral-900);
+    outline: var(--outline-small) solid var(--control-border-normal);
+    background-color: var(--surface-1);
     list-style: none;
     
     /* Layering */

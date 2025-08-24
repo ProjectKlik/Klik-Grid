@@ -1,0 +1,10 @@
+window.createSlider(
+    'Slider Title', // For the slider title
+    0, // Minimum slider value
+    100, // Maximum slider value
+    25, // Current slider value
+    'PARENTELEMENT', // For specifying where to create
+    '', // For adding class to the slider group
+    '', // For adding class to the slider
+    'vertical' // For specifying what orientation to list the sliders within slider group
+);

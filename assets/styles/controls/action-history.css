@@ -9,7 +9,7 @@
     margin: var(--margin-none);
     border-radius: var(--radius-small);
     background-color: transparent;
-    border: var(--border-medium) solid var(--color-neutral-800);
+    border: var(--border-medium) solid var(--surface-2);
 }
 
 /* Action History Header */
@@ -20,8 +20,8 @@
     flex-direction: row;
     align-items: center;
     padding: var(--padding-xlarge);
-    background-color: var(--color-neutral-800);
-    color: var(--color-neutral-50);
+    background-color: var(--surface-2);
+    color: var(--text-primary);
     font-family: 'Noto-Sans-Regular';
 }
 
@@ -40,7 +40,7 @@
     flex-direction: row;
     align-items: center;
     padding: var(--padding-large);
-    background-color: var(--color-neutral-800);
+    background-color: var(--surface-2);
     border-radius: var(--radius-small);
     gap: var(--gap-large);
 }
@@ -55,9 +55,9 @@
     align-items: center;
     width: 24px;
     height: 24px;
-    background-color: var(--color-neutral-950);
+    background-color: var(--surface-1);
     border-radius: var(--radius-small);
-    border: var(--border-small) solid var(--color-neutral-50);
+    border: var(--border-small) solid var(--control-border-normal);
 }
 
 .action-history-item .info {
@@ -68,11 +68,11 @@
 .action-history-item .info .text {
     font-family: 'Noto-Sans-Regular';
     font-size: var(--font-size-large);
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 .action-history-item .info .time {
     font-family: 'Noto-Sans-Regular';
     font-size: var(--font-size-small);
-    color: var(--color-neutral-300);
+    color: var(--text-disabled);
 }

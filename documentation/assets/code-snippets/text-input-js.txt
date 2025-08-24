@@ -1,8 +1,0 @@
-standardInitControls({
-    onTextInput: (input, value) => {
-        if(input) {
-            // Handle text input
-            console.log(`Text input ${input.placeholder} changed to ${value}`);
-        }
-    }
-});

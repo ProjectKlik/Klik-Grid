@@ -1,0 +1,5 @@
+window.createCurveEditor(
+    'PARENTELEMENT', // For specifying where to create
+    'Sample Curve Editor', // For the curve editor data value
+    '' // For adding class to the curve editor
+);

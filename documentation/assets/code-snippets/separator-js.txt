@@ -1,8 +1,0 @@
-standardInitControls({
-    onSeparatorDrag: (container, dragbar) => {
-        if(container && dragbar) {
-            // Handle separator move
-            console.log(`Container ${container}'s dragbar moved with value of: ${dragbar}`);
-        }
-    }
-});

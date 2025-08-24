@@ -1,8 +1,0 @@
-standardInitControls({
-    onCheckboxButtonClick: (button, value) => {
-        if(button && value) {
-            // Handle checkbox button click
-            console.log(`Checkbox button ${button.textContent.trim()} with value of ${value} clicked!`);
-        }
-    }
-});

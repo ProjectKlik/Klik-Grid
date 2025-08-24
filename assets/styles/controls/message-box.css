@@ -33,7 +33,7 @@
   height: auto;
   
   /* Visual */
-  background-color: var(--color-neutral-900);
+  background-color: var(--surface-1);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-large);
   overflow: hidden;
@@ -59,10 +59,10 @@
   box-sizing: border-box;
   
   /* Visual */
-  background-color: var(--color-neutral-800);
+  background-color: var(--surface-2);
   
   /* Typography */
-  color: var(--color-neutral-50);
+  color: var(--text-primary);
   font-family: 'Noto-Sans-Regular';
   line-height: 1;
 }
@@ -76,7 +76,7 @@
   padding: var(--padding-xxlarge);
   
   /* Typography */
-  color: var(--color-neutral-50);
+  color: var(--text-primary);
   font-family: 'Noto-Sans-Regular';
 }
 
@@ -96,7 +96,7 @@
   gap: var(--gap-large);
   
   /* Visual */
-  background-color: var(--color-neutral-800);
+  background-color: var(--surface-2);
 }
 
 /* Action buttons */
@@ -118,6 +118,6 @@
   height: 100%;
   
   /* Visual */
-  background-color: color-mix(in srgb, var(--color-neutral-950), transparent 50%);
+  background-color: color-mix(in srgb, var(--surface-0), transparent 50%);
   backdrop-filter: blur(2px);
 }

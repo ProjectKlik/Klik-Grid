@@ -1,0 +1,24 @@
+standardInitControls({
+    onButtonClick: async (button, value) => {
+        if (!button || !value) return;
+
+        // Handle button click
+        switch (value) {
+            // Simple log cases
+            case 'Sample':
+            case 'Info':
+            case 'Warning':
+            case 'Error':
+            case 'Success':
+            case 'Filled Icon':
+            case 'Outline Icon':
+                console.log(`Button ${button.textContent.trim()} with value of ${value} clicked`);
+                break;
+
+            // Default
+            default:
+                console.log(`Button "${button.textContent.trim()}" (${value}) clicked`);
+                break;
+        }
+    }
+});

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html theme="dark" lang="en_US">
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,7 @@
 
     <!-- Documentation Styles -->
     <link rel="stylesheet" type="text/css" href="/documentation/assets/styles/documentation.css">
+    <link rel="stylesheet" href="/documentation/assets/styles/strings/documentation-strings.css">
 
     <!-- Modules -->
     <link rel="stylesheet" href="/assets/styles/modules/normalizer.css">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="/assets/styles/modules/typography.css">
     <link rel="stylesheet" href="/assets/styles/modules/animations.css">
     <link rel="stylesheet" href="/assets/styles/modules/strings.css">
+    <link rel="stylesheet" href="/assets/styles/modules/themes.css">
     <link rel="stylesheet" href="/assets/styles/modules/standard-controls.css">
     <link rel="stylesheet" href="/assets/styles/modules/drawing-controls.css">
     <link rel="stylesheet" href="/assets/styles/modules/data-controls.css">
@@ -38,81 +40,91 @@
         </div>
 
         <div id="version-tag">
-            <span id="version-tag-text">Alpha v1.2</span>
+            <span id="version-tag-text">Alpha v1.3</span>
         </div>
     </div>
 
     <div id="documentation-container">
-        <div id="sidebar" class="toggle-button-group page-switcher vertical">
-            <button data-toggle-value="introduction" class="active">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
-                    <path d="M19 16h-12a2 2 0 0 0 -2 2" />
-                    <path d="M9 8h6" />
-                </svg>
-                Introduction
-            </button>
-            <button data-toggle-value="controls">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                    <path d="M4 14m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                </svg>
-                Controls
-            </button>
-            <button data-toggle-value="colors">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path
-                        d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
-                    <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                </svg>
-                Colors
-            </button>
-            <button data-toggle-value="fonts">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path d="M3 7v-2h13v2" />
-                    <path d="M10 5v14" />
-                    <path d="M12 19h-4" />
-                    <path d="M15 13v-1h6v1" />
-                    <path d="M18 12v7" />
-                    <path d="M17 19h2" />
-                </svg>
-                Fonts
-            </button>
-            <button data-toggle-value="animations">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path
-                        d="M9.225 18.412a1.595 1.595 0 0 1 -1.225 .588c-.468 0 -.914 -.214 -1.225 -.588l-4.361 -5.248a1.844 1.844 0 0 1 0 -2.328l4.361 -5.248a1.595 1.595 0 0 1 1.225 -.588c.468 0 .914 .214 1.225 .588l4.361 5.248a1.844 1.844 0 0 1 0 2.328l-4.361 5.248z" />
-                    <path d="M17 5l4.586 5.836a1.844 1.844 0 0 1 0 2.328l-4.586 5.836" />
-                    <path d="M13 5l4.586 5.836a1.844 1.844 0 0 1 0 2.328l-4.586 5.836" />
-                </svg>
-                Animations
-            </button>
-            <button data-toggle-value="strings">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path
-                        d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
-                </svg>
-                Strings
-            </button>
-            <button data-toggle-value="utilities">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path d="M7 8l-4 4l4 4" />
-                    <path d="M17 8l4 4l-4 4" />
-                    <path d="M14 4l-4 16" />
-                </svg>
-                Utilities
-            </button>
-            <button data-toggle-value="variables">
-                <svg class="outline-icon" viewBox="0 0 24 24">
-                    <path
-                        d="M5 4c-2.5 5 -2.5 10 0 16m14 -16c2.5 5 2.5 10 0 16m-10 -11h1c1 0 1 1 2.016 3.527c.984 2.473 .984 3.473 1.984 3.473h1" />
-                    <path d="M8 16c1.5 0 3 -2 4 -3.5s2.5 -3.5 4 -3.5" />
-                </svg>
-                Variables
-            </button>
+        <div id="sidebar">
+            <div class="toggle-button-group page-switcher vertical">
+                <button data-toggle-value="introduction" class="active">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
+                        <path d="M19 16h-12a2 2 0 0 0 -2 2" />
+                        <path d="M9 8h6" />
+                    </svg>
+                    Introduction
+                </button>
+                <button data-toggle-value="controls">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                        <path d="M4 14m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                    </svg>
+                    Controls
+                </button>
+                <button data-toggle-value="colors">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
+                        <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                        <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                        <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    </svg>
+                    Colors
+                </button>
+                <button data-toggle-value="fonts">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path d="M3 7v-2h13v2" />
+                        <path d="M10 5v14" />
+                        <path d="M12 19h-4" />
+                        <path d="M15 13v-1h6v1" />
+                        <path d="M18 12v7" />
+                        <path d="M17 19h2" />
+                    </svg>
+                    Fonts
+                </button>
+                <button data-toggle-value="animations">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M9.225 18.412a1.595 1.595 0 0 1 -1.225 .588c-.468 0 -.914 -.214 -1.225 -.588l-4.361 -5.248a1.844 1.844 0 0 1 0 -2.328l4.361 -5.248a1.595 1.595 0 0 1 1.225 -.588c.468 0 .914 .214 1.225 .588l4.361 5.248a1.844 1.844 0 0 1 0 2.328l-4.361 5.248z" />
+                        <path d="M17 5l4.586 5.836a1.844 1.844 0 0 1 0 2.328l-4.586 5.836" />
+                        <path d="M13 5l4.586 5.836a1.844 1.844 0 0 1 0 2.328l-4.586 5.836" />
+                    </svg>
+                    Animations
+                </button>
+                <button data-toggle-value="strings">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                        <path
+                            d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
+                    </svg>
+                    Strings
+                </button>
+                <button data-toggle-value="utilities">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path d="M7 8l-4 4l4 4" />
+                        <path d="M17 8l4 4l-4 4" />
+                        <path d="M14 4l-4 16" />
+                    </svg>
+                    Utilities
+                </button>
+                <button data-toggle-value="variables">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M5 4c-2.5 5 -2.5 10 0 16m14 -16c2.5 5 2.5 10 0 16m-10 -11h1c1 0 1 1 2.016 3.527c.984 2.473 .984 3.473 1.984 3.473h1" />
+                        <path d="M8 16c1.5 0 3 -2 4 -3.5s2.5 -3.5 4 -3.5" />
+                    </svg>
+                    Variables
+                </button>
+                <button data-toggle-value="settings">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                    </svg>
+                    Settings
+                </button>
+            </div>
         </div>
 
         <div id="content">
@@ -128,7 +140,7 @@
                     to
                     speed up developement. It is built for developers who want a consistent and easy to use structure
                     for
-                    developing desktop apps with <strong>Wails</strong> or any other desktop frameworks of their choice.
+                    developing desktop apps with <strong><a href="https://wails.io/" target="_blank" rel="noopener noreferrer" style="color: #FF5733;">Wails</a></strong> or any other desktop frameworks of their choice.
                 </p>
                 <p>
                     In order to use Klik Grid, you need to include the following folder in your project:
@@ -149,8 +161,6 @@
                 <p>
                     If you would like to, you can remove the <strong>documentation</strong> folder from your project,
                     but it is recommended to keep it for reference, as it contains a lot of useful information.
-                    You can also remove the <strong>example_webpage</strong> folder, but it is recommended to keep it
-                    for reference, as it contains a good example of how to use Klik Grid.
                 </p>
                 <p>
                     Now that you have Klik Grid in your project, you can start using it!
@@ -187,12 +197,37 @@
                 <br>
                 <fieldset>
                     <legend>Button</legend>
-                    <div class="button-group horizontal">
-                        <button data-button-value="Sample">Sample Button</button>
-                        <button class="type-info" data-button-value="Info">Info Button</button>
-                        <button class="type-warning" data-button-value="Warning">Warning Button</button>
-                        <button class="type-error" data-button-value="Error">Error Button</button>
-                        <button class="type-success" data-button-value="Success">Success Button</button>
+                    <div id="button-showcaser">
+                        <div class="button-group horizontal">
+                            <button data-button-value="Sample">Sample Button</button>
+                            <button class="type-info" data-button-value="Info">Info Button</button>
+                            <button class="type-warning" data-button-value="Warning">Warning Button</button>
+                            <button class="type-error" data-button-value="Error">Error Button</button>
+                            <button class="type-success" data-button-value="Success">Success Button</button>
+                        </div>
+                        <div class="button-group horizontal">
+                            <button class="flat" data-button-value="Sample">Sample Button</button>
+                            <button class="flat type-info" data-button-value="Info">Info Button</button>
+                            <button class="flat type-warning" data-button-value="Warning">Warning Button</button>
+                            <button class="flat type-error" data-button-value="Error">Error Button</button>
+                            <button class="flat type-success" data-button-value="Success">Success Button</button>
+                        </div>
+                        <div class="button-group horizontal">
+                            <button data-button-value="Filled Icon">
+                                <svg class="fill-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                                </svg>
+                                Filled Icon
+                            </button>
+                            <button data-button-value="Outline Icon">
+                                Outline Icon
+                                <svg class="outline-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <p>In order to create it, you need to write this code:</p>
                     <div class="code-container">
@@ -202,59 +237,53 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/button-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
-                    <div class="code-container">
-                        <div class="code-header">
-                            <span>your_javascript.js</span>
-                            <button>Copy</button>
-                        </div>
-                        <pre><code content="/documentation/assets/code-snippets/button-js.txt"></code></pre>
-                    </div>
-                    <p>The <strong>button</strong> can hold these following properties:</p>
-                    <blockquote class="property">type-neutral, type-warning, type-error, type-success, data-button-value
-                    </blockquote>
-                    <p>The <strong>button group</strong> can hold these following properties:</p>
-                    <blockquote class="property">vertical, horizontal</blockquote>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Button with Icon</legend>
-                    <div class="button-group horizontal">
-                        <button>
-                            <svg class="fill-icon" viewBox="0 0 24 24">
-                                <path
-                                    d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
-                            </svg>
-                            Filled Icon
-                        </button>
-                        <button>
-                            <svg class="outline-icon" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                            </svg>
-                            Outline Icon
-                        </button>
-                    </div>
-                    <p>In order to create it, you need to write this code:</p>
+                    <p>or this, programmatically:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_html.html</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/button-with-icon-html.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/button-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/button-js-2.txt"></code></pre>
                     </div>
                     <p>The <strong>button</strong> can hold these following properties:</p>
-                    <blockquote class="property">type-neutral, type-warning, type-error, type-success, data-button-value
+                    <blockquote class="property">flat, type-info, type-warning, type-error, type-success,
+                        data-button-value
                     </blockquote>
-                    <p>The <strong>svg</strong> inside the button can hold these following properties:</p>
-                    <blockquote class="property">fill-icon, outline-icon</blockquote>
                     <p>The <strong>button group</strong> can hold these following properties:</p>
                     <blockquote class="property">vertical, horizontal</blockquote>
+                    <p>The <strong>programmatical creation</strong> of buttons can hold these following properties:</p>
+                    <blockquote class="property">Button Name, Button Data Value, Button Group Parent, Button Type,
+                        Button Group Orientation, Button Icon, Button Icon Location</blockquote>
+                    <br>
+                    <p><strong>Button Group Parent</strong> can accept id with <strong>#</strong> or a class with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p><strong>Button Type</strong> can accept <strong>flat</strong>, <strong>type-info</strong>,
+                        <strong>type-warning</strong>, <strong>type-error</strong> and <strong>type-success</strong>. If
+                        nothing is specified, it defaults to <strong>standard, no style</strong> button type.
+                    </p>
+                    <p><strong>Button Group Orientation</strong> can accept <strong>horizontal</strong> or
+                        <strong>vertical</strong>
+                        property. If nothing is specified, it defaults to <strong>horizontal</strong>.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Button Icon Location</strong> can accept <strong>before</strong>
+                        or <strong>after</strong> property. If nothing is specified, it defaults to
+                        <strong>before</strong>.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
                     <legend>Toggleable Button Group</legend>
-                    <div id="toggle-button-showcaser" class="toggle-button-group sample-toggle-button vertical">
+                    <div class="toggle-button-group sample-toggle-button wrap vertical">
                         <button data-toggle-value="1" class="active">Button 1</button>
                         <button data-toggle-value="2">Button 2</button>
                         <button data-toggle-value="3">Button 3</button>
@@ -265,7 +294,15 @@
                             <span>your_html.html</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/toggleable-button-group-html.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/toggle-button-html.txt"></code></pre>
+                    </div>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/toggle-button-js-1.txt"></code></pre>
                     </div>
                     <p>and this:</p>
                     <div class="code-container">
@@ -273,10 +310,40 @@
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/toggleable-button-group-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/toggle-button-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>button</strong> can hold these following properties:</p>
+                    <blockquote class="property">flat, type-info, type-warning, type-error, type-success,
+                        data-button-value
+                    </blockquote>
                     <p>The <strong>toggle button group</strong> can hold these following properties:</p>
                     <blockquote class="property">vertical, horizontal</blockquote>
+                    <p>The <strong>programmatical creation</strong> of toggle buttons can hold these following
+                        properties:</p>
+                    <blockquote class="property">Toggle Button Name, Toggle Button Data Value, Toggle Button Group
+                        Parent, Toggle Button Group Class,
+                        Toggle Button Type, Toggle Button Group Orientation, Toggle Button Icon, Toggle Button
+                        Icon Location, Activated Toggle Button</blockquote>
+                    <br>
+                    <p><strong>Toggle Button Group Parent</strong> can accept id with <strong>#</strong> or a class with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p><strong>Toggle Button Type</strong> can accept <strong>flat</strong>, <strong>type-info</strong>,
+                        <strong>type-warning</strong>, <strong>type-error</strong> and <strong>type-success</strong>. If
+                        nothing is specified, it defaults to <strong>standard, no style</strong> button type.
+                    </p>
+                    <p><strong>Toggle Button Group Orientation</strong> can accept <strong>horizontal</strong> or
+                        <strong>vertical</strong> property. If nothing is specified, it defaults to
+                        <strong>horizontal</strong>.
+                    </p>
+                    <p><strong>Toggle Button Icon Location</strong> can accept <strong>before</strong> or
+                        <strong>after</strong> property. If nothing is specified, it defaults to
+                        <strong>before</strong>.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Activated Toggle Button</strong> can accept <strong>-1</strong>
+                        for not toggling anything or <strong>0 to greater number (1, 2, 3, ...)</strong> for toggling
+                        specific buttons. If nothing is specified, it defaults to <strong>-1</strong>.</p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -303,16 +370,43 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/radio-button-group-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/radio-button-group-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/radio-button-group-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/radio-button-group-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>radio button</strong> can hold these following properties:</p>
+                    <blockquote class="property">data-radio-value</blockquote>
                     <p>The <strong>radio button group</strong> can hold these following properties:</p>
                     <blockquote class="property">vertical, horizontal</blockquote>
+                    <p>The <strong>programmatical creation</strong> of radio buttons can hold these following
+                        properties:</p>
+                    <blockquote class="property">Radio Button Label, Radio Button Data Value, Radio Button Group Parent,
+                        Radio Button Group Class, Radio Button Class, Radio Button Group Orientation, Radio Button Name,
+                        Activated Radio Button</blockquote>
+                    <br>
+                    <p><strong>Radio Button Group Parent</strong> can accept id with <strong>#</strong> or a class with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p><strong>Radio Button Group Orientation</strong> can accept <strong>horizontal</strong> or
+                        <strong>vertical</strong> property. If nothing is specified, it defaults to
+                        <strong>horizontal</strong>.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Activated Radio Button</strong> can accept <strong>-1</strong>
+                        for not toggling anything or <strong>0 to greater number (1, 2, 3, ...)</strong> for toggling
+                        specific buttons. If nothing is specified, it defaults to <strong>-1</strong>.</p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -339,22 +433,53 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/checkbox-button-group-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/checkbox-button-group-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/checkbox-button-group-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/checkbox-button-group-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>checkbox button</strong> can hold these following properties:</p>
+                    <blockquote class="property">data-checkbox-value</blockquote>
                     <p>The <strong>checkbox button group</strong> can hold these following properties:</p>
                     <blockquote class="property">vertical, horizontal</blockquote>
+                    <p>The <strong>programmatical creation</strong> of checkbox buttons can hold these following
+                        properties:</p>
+                    <blockquote class="property">Checkbox Button Label, Checkbox Button Data Value, Checkbox Button
+                        Group Parent,
+                        Checkbox Button Group Class, Checkbox Button Class, Checkbox Button Group Orientation, Activated
+                        Checkbox Button</blockquote>
+                    <br>
+                    <p><strong>Checkbox Button Group Parent</strong> can accept id with <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p><strong>Checkbox Button Group Orientation</strong> can accept <strong>horizontal</strong> or
+                        <strong>vertical</strong> property. If nothing is specified, it defaults to
+                        <strong>horizontal</strong>.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Activated Checkbox Button</strong> can accept
+                        <strong>-1</strong>
+                        for not toggling anything or <strong>0 to greater number (1, 2, 3, ...)</strong> for toggling
+                        specific buttons. If nothing is specified, it defaults to <strong>-1</strong>.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
                     <legend>Dropdown</legend>
                     <div class="dropdown-container">
-                        <button class="dropdown-button">
+                        <button class="dropdown-button" data-dropdownbutton-value="Sample Dropdown">
                             Sample Dropdown
                             <svg class="fill-icon" viewBox="0 0 24 24">
                                 <path
@@ -399,14 +524,37 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/dropdown-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/dropdown-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/dropdown-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/dropdown-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>dropdown</strong> can hold these following properties:</p>
+                    <blockquote class="property">flat, type-neutral, type-warning, type-error, type-success,
+                        data-button-value
+                    </blockquote>
+                    <p>The <strong>programmatical creation</strong> of dropdown can hold these following
+                        properties:</p>
+                    <blockquote class="property">Dropdown Button Label, Dropdown Button Data Value, Dropdown Container
+                        Parent, Dropdown List, Dropdown Container Class, Dropdown Button Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Dropdown Container Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -442,14 +590,39 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/slider-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/slider-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/slider-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/slider-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>slider group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                    <p>The <strong>programmatical creation</strong> of slider can hold these following
+                        properties:</p>
+                    <blockquote class="property">Slider Label, Slider Minimum Value, Slider Maximum Value, Slider
+                        Current Value, Slider Group Parent, Slider Group Class, Slider Class, Slider Group Orientation
+                    </blockquote>
+                    <br>
+                    <p><strong>Slider Group Parent</strong> can accept id with <strong>#</strong> or a class with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Slider Group Orientation</strong> can accept
+                        <strong>horizontal</strong> or
+                        <strong>vertical</strong> property. If nothing is specified, it defaults to
+                        <strong>vertical</strong>.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -467,19 +640,44 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/text-input-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/text-input-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/text-input-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/text-input-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>text input group</strong> can hold these following properties:</p>
+                    <blockquote class="property">vertical, horizontal</blockquote>
+                    <p>The <strong>programmatical creation</strong> of slider can hold these following
+                        properties:</p>
+                    <blockquote class="property">Text Input Text, Text Input Placeholder, Text Input Group Parent, Text
+                        Input Group Class, Text Input Class, Text Input Group Orientation, Text Input Character Limit
+                    </blockquote>
+                    <br>
+                    <p><strong>Text Input Group Parent</strong> can accept id with <strong>#</strong> or a class with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Text Input Group Orientation</strong> can accept
+                        <strong>horizontal</strong> or
+                        <strong>vertical</strong> property. If nothing is specified, it defaults to
+                        <strong>vertical</strong>.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
                     <legend>Tab</legend>
-                    <div class="tab-group horizontal">
+                    <div class="tab-group">
                         <div class="tab-selection"></div>
                         <div class="tab active" data-tab-value="First">Tab 1</div>
                         <div class="tab" data-tab-value="Second">Tab 2</div>
@@ -493,21 +691,39 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/tab-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/tab-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/tab-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/tab-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>programmatical creation</strong> of tab can hold these following
+                        properties:</p>
+                    <blockquote class="property">Tab Text, Tab Data Value, Tab Group Parent, Tab Group Class, Tab Class,
+                        Activated Tab</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Tab Group Parent</strong> can accept id with <strong>#</strong>
+                        or a class with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
                     <legend>Separator</legend>
                     <div id="separator-showcaser" class="separator-container" data-separator-value="Sample Container">
-                        <div class="separator horizontal-container">
-                            <div class="separator vertical-container">
+                        <div class="separator vertical-container">
+                            <div class="separator horizontal-container">
                                 <div class="separator pane">
                                     <h2 class="separator content">Top Left</h2>
                                     <p class="separator content">Some Extra</p>
@@ -530,7 +746,7 @@
                             </div>
                             <div class="separator drag-bar horizontal" data-separator-value="Horizontal Drag-Bar 1">
                             </div>
-                            <div class="separator vertical-container">
+                            <div class="separator horizontal-container">
                                 <div class="separator pane">
                                     <h2 class="separator content">Bottom Left</h2>
                                     <p class="separator content">Some Extra</p>
@@ -554,14 +770,33 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/separator-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/separator-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/separator-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/separator-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>programmatical creation</strong> of separator can hold these following
+                        properties:</p>
+                    <blockquote class="property">Separator Container Parent, Separator Configuration, Separator
+                        Container Data Value, Separator Container Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Separator Container Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -583,14 +818,32 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/socket-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/socket-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/socket-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/socket-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>programmatical creation</strong> of socket can hold these following
+                        properties:</p>
+                    <blockquote class="property">Socket Container Parent, Socket Container Class, Socket Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Socket Container Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -601,12 +854,12 @@
                     <p>In order to create it, you need to write this code:</p>
                     <div class="code-container">
                         <div class="code-header">
-                            <span>your_javascript.js</span>
+                            <span>your_html.js</span>
                             <button>Copy</button>
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/message-box-html.txt"></code></pre>
                     </div>
-                    <p>this:</p>
+                    <p>and this:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
@@ -614,7 +867,7 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/message-box-js-1.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
@@ -740,14 +993,32 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/colorpicker-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/colorpicker-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/colorpicker-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/colorpicker-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>programmatical creation</strong> of color picker can hold these following
+                        properties:</p>
+                    <blockquote class="property">Color Picker Parent, Color Picker Data Value, Color Picker Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Color Picker Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -806,14 +1077,32 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/curve-editor-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/curve-editor-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/curve-editor-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/curve-editor-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>programmatical creation</strong> of curve editor can hold these following
+                        properties:</p>
+                    <blockquote class="property">Curve Editor Parent, Curve Editor Data Value, Curve Editor Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Curve Editor Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
                 <h2>Data Controls</h2>
@@ -856,8 +1145,9 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/code-snippet-html.txt"></code></pre>
                     </div>
-                    <p class="no-bottom-margin">Instead of using a text document path to add text to the code area, you
+                    <p>Instead of using a text document path to add text to the code area, you
                         can also directly write in the <strong>code</strong> tag</p>
+                    <p class="no-bottom-margin">The <strong>Code Snippet</strong> is only for documentation and is not intended for usage</p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -871,6 +1161,7 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/property-html.txt"></code></pre>
                     </div>
+                    <p class="no-bottom-margin">The <strong>Property</strong> is only for documentation and is not intended for usage</p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -897,14 +1188,32 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/action-history-html.txt"></code></pre>
                     </div>
-                    <p>and this:</p>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/action-history-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
                     <div class="code-container">
                         <div class="code-header">
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/action-history-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/action-history-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>programmatical creation</strong> of action history can hold these following
+                        properties:</p>
+                    <blockquote class="property">Action History Parent, Action History Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Action History Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
                 </fieldset>
                 <br>
             </div>
@@ -1526,6 +1835,34 @@
                         <pre><code content="/documentation/assets/code-snippets/injector-js-2.txt"></code></pre>
                     </div>
                 </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Variable Grabber Script</legend>
+                    <p class="no-top-margin">Press the button to make its text <strong>--ok</strong> string</p>
+                    <div class="button-group horizontal">
+                        <button data-button-value="Variable Grabber Sample">Button</button>
+                    </div>
+                    <p>
+                        In order to use this script, it is required to include this dependency to your
+                        html file:
+                    </p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/string-grabber-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/string-grabber-js-2.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
             </div>
             <div id="variables" class="page shown">
                 <h1>💡 Variables</h1>
@@ -1675,6 +2012,45 @@
                 </fieldset>
                 <br>
             </div>
+            <div id="settings" class="page shown">
+                <h1>⚙ Settings</h1>
+                <p>
+                    Here is a list of all the settings that are available in Klik Grid:
+                </p>
+                <fieldset>
+                    <legend>Language Switcher</legend>
+                    <div class="toggle-button-group language-switcher vertical">
+                        <button class="active" data-toggle-value="en_us">English</button>
+                        <button data-toggle-value="ru_ru">Русский</button>
+                        <button data-toggle-value="az_az">Azərbaycanca</button>
+                    </div>
+                    <p class="string-sample-sentence"></p>
+                    <p>In order to switch language, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/language-switching-js.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Theme Switcher</legend>
+                    <div class="toggle-button-group theme-switcher vertical">
+                        <button class="active" data-toggle-value="dark">Dark</button>
+                        <button data-toggle-value="gray">Gray</button>
+                    </div>
+                    <br>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/theme-switching-js.txt"></code></pre>
+                    </div>
+                </fieldset>
+            </div>
         </div>
     </div>
 
@@ -1688,6 +2064,7 @@
 
     <!-- Utilities -->
     <script type="module" src="/assets/scripts/utilities/injector.js"></script>
+    <script type="module" src="/assets/scripts/utilities/variable-grabber.js"></script>
 </body>
 
 </html>

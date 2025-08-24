@@ -1,6 +1,6 @@
 ul {
     font-family: Noto-Sans-Regular;
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 ul.no-dash {

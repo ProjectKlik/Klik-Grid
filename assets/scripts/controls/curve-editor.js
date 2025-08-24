@@ -1,4 +1,12 @@
+let globalCallbacks;
+
+/* Initialization */
 export function curveEditor(callback) {
+    globalCallbacks = callback;
+    scan();
+}
+
+function scan() {
     document.querySelectorAll('.curve-editor-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -272,7 +280,7 @@ export function curveEditor(callback) {
 
             elements.popup.classList.remove('active');
         }
-        
+
         // ==== HELPER: CREATION UTILTIES ====
         function createPointElement(point, index, isControlPoint = false, controlIndex = null) {
             const pointElement = document.createElement('div');
@@ -544,7 +552,7 @@ export function curveEditor(callback) {
             pointElement.classList.add('dragging');
         }
 
-        
+
         // ==== HELPER: POINT ADDITIONS ====
         function addPoint(x, y) {
             x = Math.max(0, Math.min(elements.editingCanvas.width, x));
@@ -626,7 +634,7 @@ export function curveEditor(callback) {
             const dy = py - yy;
             return Math.sqrt(dx * dx + dy * dy);
         }
-        
+
         // ==== HELPER: MODE SELECTION ====
         function setMode(mode) {
             state.mode = mode;
@@ -675,6 +683,8 @@ export function curveEditor(callback) {
 
         // ==== HELPER: MISC UTILITIES ====
         function resetCurve() {
+            elements.curvePresets.forEach(p => p.classList.remove('selected'));
+
             state.points = [];
             state.activeMainPoint = null;
             initializeDefaultCurve();
@@ -867,3 +877,90 @@ export function curveEditor(callback) {
         });
     });
 }
+
+/* Programmatical Creation */
+function createCurveEditor(parentSelector, value, className = '') {
+    // Spawn the curve editor in the specified parent
+    const isId = parentSelector?.startsWith('#');
+    const isClass = parentSelector?.startsWith('.');
+    let targets = [];
+
+    if (!parentSelector) {
+        targets = [document.body];
+    }
+    else if (isId) {
+        const el = document.querySelector(parentSelector);
+        if (el) targets = [el];
+    }
+    else if (isClass) {
+        targets = Array.from(document.querySelectorAll(parentSelector));
+    }
+
+    if (targets.length === 0) {
+        console.warn(`No matching elements found for selector: ${parentSelector}`);
+        return null;
+    }
+
+    const createdCurveEditors = [];
+
+    targets.forEach(target => {
+        const container = document.createElement('div');
+        container.className = `curve-editor-container ${className}`.trim();
+        container.dataset.curveEditorValue = value;
+
+        // HTML template
+        container.innerHTML = `
+            <button class="curve-editor-showeditor">
+                <canvas class="curve-editor-preview" width="64" height="64"></canvas>
+                <svg class="fill-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                </svg>
+            </button>
+            <div class="curve-editor-popup active">
+                <div class="curve-editor-popup-content">
+                    <div class="curve-editor-popup-left">
+                        <div class="curve-editor-canvas-container">
+                            <canvas class="curve-editor-editing-canvas" width="256" height="256"></canvas>
+                            <div class="curve-editor-points-container"></div>
+                        </div>
+            
+                        <div class="curve-editor-popup-action">
+                            <div class="toggle-button-group curve-editor-action-buttons-1 horizontal">
+                                <button class="curve-editor-popup-action-edit-points active">Edit</button>
+                                <button class="curve-editor-popup-action-add-points">Add</button>
+                            </div>
+                            <div class="button-group curve-editor-action-buttons-2 vertical">
+                                <button class="curve-editor-popup-action-reset-curve">Reset Curve</button>
+                            </div>
+                            <div class="button-group curve-editor-action-buttons-3 horizontal">
+                                <button class="curve-editor-popup-action-ok">Ok</button>
+                                <button class="curve-editor-popup-action-cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="curve-editor-popup-right">
+                        <div class="curve-editor-preset-container">
+                            <span class="curve-editor-preset-label">Curve Presets:</span>
+                            <div class="curve-editor-preset-grid"></div>
+                            <button class="curve-editor-preset-action-add" data-button-value="Add Preset Button">Add Preset</button>
+                            <button class="curve-editor-preset-action-remove" data-button-value="Remove Preset Button">Remove Preset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        target.appendChild(container);
+        createdCurveEditors.push(container);
+    });
+
+    // Rescan to initialize new curve editor(s)
+    scan();
+
+    return isClass ? createdCurveEditors : createdCurveEditors[0];
+}
+
+// Expose globally
+window.createCurveEditor = createCurveEditor;

@@ -22,8 +22,8 @@
   padding: var(--padding-xxlarge);
   
   /* Visual */
-  background: var(--color-neutral-900);
-  border: var(--border-small) solid var(--color-neutral-700);
+  background-color: var(--surface-1);
+  border: var(--border-small) solid var(--control-border-accent);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-medium);
   overflow: hidden;
@@ -64,16 +64,17 @@
   gap: var(--gap-medium);
   
   /* Typography */
-  color: var(--color-neutral-50);
+  color: var(--text-primary);
   font-family: 'Noto-Sans-Regular';
   line-height: 1;
 }
 
 .notification-message {
   /* Typography */
-  color: var(--color-neutral-50);
+  color: var(--text-primary);
   font-family: 'Noto-Sans-Regular';
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-large);
+  line-height: 1.5;
 }
 
 .notification-icon {
@@ -83,6 +84,11 @@
   
   /* Visual */
   border-radius: var(--radius-circle);
+}
+
+.notification-close {
+  font-size: var(--font-size-xxlarge);
+  line-height: 0.5;
 }
 
 /* ===================== */
@@ -132,7 +138,7 @@
 .notification.special {
   /* Visual */
   border: 2px solid transparent;
-  background: var(--color-neutral-900);
+  background-color: var(--surface-1);
   
   & .notification-icon {
     background: linear-gradient(to right, var(--color-red-400), var(--color-purple-400));
@@ -153,12 +159,12 @@
     background: linear-gradient(90deg, 
       var(--color-red-400) 0%,
       var(--color-purple-400) 12.5%,
-      var(--color-neutral-700) 25%,
-      var(--color-neutral-700) 37.5%,
+      var(--control-border-accent) 25%,
+      var(--control-border-accent) 37.5%,
       var(--color-red-400) 50%,
       var(--color-purple-400) 62.5%,
-      var(--color-neutral-700) 75%,
-      var(--color-neutral-700) 87.5%,
+      var(--control-border-accent) 75%,
+      var(--control-border-accent) 87.5%,
       var(--color-red-400) 100%
     );
     background-size: 200% 100%;

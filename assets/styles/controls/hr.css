@@ -1,5 +1,5 @@
 hr {
-    border: var(--border-small) solid var(--color-neutral-700);
+    border: var(--border-small) solid var(--control-border-accent);
 }
 
 hr.max-width {

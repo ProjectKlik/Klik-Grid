@@ -1,0 +1,7 @@
+standardInitControls({
+    onDropdownClick: (button, buttonValue, value) => {
+        if (!button || !value) return;
+        // Handle dropdown click
+        console.log(`Dropdown ${buttonValue} clicked, selected option: ${value}`);
+    }
+});

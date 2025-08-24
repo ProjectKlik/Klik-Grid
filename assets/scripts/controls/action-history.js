@@ -1,4 +1,12 @@
+let globalCallbacks;
+
+/* Initialization */
 export function actionHistory(callback) {
+    globalCallbacks = callback;
+    scan();
+}
+
+function scan() {
     const containers = document.querySelectorAll('.action-history-container:not([data-initialized])');
     const apis = [];
     
@@ -59,7 +67,7 @@ export function actionHistory(callback) {
             currentIndex++;
             const actionEl = createActionElement(action, currentIndex);
             content.appendChild(actionEl);
-            if (callback) callback({ type: 'add', index: currentIndex, action, container });
+            if (globalCallbacks) globalCallbacks({ type: 'add', index: currentIndex, action, container });
             updateOpacity();
         }
         
@@ -67,21 +75,21 @@ export function actionHistory(callback) {
             if (currentIndex < 0) return;
             currentIndex--;
             updateOpacity();
-            if (callback) callback({ type: 'undo', index: currentIndex, container });
+            if (globalCallbacks) globalCallbacks({ type: 'undo', index: currentIndex, container });
         }
         
         function redo() {
             if (currentIndex >= actions.length - 1) return;
             currentIndex++;
             updateOpacity();
-            if (callback) callback({ type: 'redo', index: currentIndex, container });
+            if (globalCallbacks) globalCallbacks({ type: 'redo', index: currentIndex, container });
         }
         
         function clear() {
             actions.length = 0;
             currentIndex = -1;
             content.innerHTML = '';
-            if (callback) callback({ type: 'clear', container });
+            if (globalCallbacks) globalCallbacks({ type: 'clear', container });
         }
         
         // Create API object for this container
@@ -100,7 +108,7 @@ export function actionHistory(callback) {
         apis.push(api);
     });
     
-    // Expose global API on window object
+    // Create global API similar to radio button pattern
     const globalAPI = {
         addAction: (icon, text, containerIndex = null) => {
             if (apis.length === 0) return;
@@ -123,7 +131,6 @@ export function actionHistory(callback) {
             } else if (apis.length === 1) {
                 apis[0].undo();
             } else {
-                // Multiple containers - undo on all
                 apis.forEach(api => api.undo());
             }
         },
@@ -136,7 +143,6 @@ export function actionHistory(callback) {
             } else if (apis.length === 1) {
                 apis[0].redo();
             } else {
-                // Multiple containers - redo on all
                 apis.forEach(api => api.redo());
             }
         },
@@ -149,7 +155,6 @@ export function actionHistory(callback) {
             } else if (apis.length === 1) {
                 apis[0].clear();
             } else {
-                // Multiple containers - clear all
                 apis.forEach(api => api.clear());
             }
         },
@@ -173,3 +178,57 @@ export function actionHistory(callback) {
         return apis;
     }
 }
+
+/* Programmatical Creation */
+function createActionHistory(parentSelector, className = '') {
+    // Determine targets similar to radio button logic
+    const isId = parentSelector?.startsWith('#');
+    const isClass = parentSelector?.startsWith('.');
+    let targets = [];
+
+    if (!parentSelector) {
+        targets = [document.body];
+    }
+    else if (isId) {
+        const el = document.querySelector(parentSelector);
+        if (el) targets = [el];
+    }
+    else if (isClass) {
+        targets = Array.from(document.querySelectorAll(parentSelector));
+    }
+
+    if (targets.length === 0) {
+        console.warn(`No matching elements found for selector: ${parentSelector}`);
+        return null;
+    }
+
+    const createdActionHistory = [];
+
+    targets.forEach(target => {
+        // Create container
+        const container = document.createElement('div');
+        container.className = `action-history-container ${className}`.trim();
+        
+        // Create header
+        const header = document.createElement('div');
+        header.className = 'action-history-header';
+        header.textContent = 'Action History';
+        
+        // Create content area
+        const content = document.createElement('div');
+        content.className = 'action-history-content';
+        
+        container.appendChild(header);
+        container.appendChild(content);
+        target.appendChild(container);
+        createdActionHistory.push(container);
+    });
+
+    // Rescan to initialize new container(s)
+    scan();
+
+    return isClass ? createdActionHistory : createdActionHistory[0];
+}
+
+// Expose globally
+window.createActionHistory = createActionHistory;

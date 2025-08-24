@@ -1,0 +1,66 @@
+:root,
+[theme="dark"] {
+    /* Surfaces */
+    --surface-0: var(--color-neutral-950);
+    --surface-1: var(--color-neutral-900);
+    --surface-2: var(--color-neutral-800);
+    --surface-3: var(--color-neutral-700);
+    --surface-4: var(--color-neutral-600);
+    --surface-5: var(--color-neutral-500);
+    --surface-6: var(--color-neutral-400);
+    --surface-7: var(--color-neutral-300);
+    --surface-8: var(--color-neutral-200);
+    --surface-9: var(--color-neutral-100);
+    --surface-10: var(--color-neutral-50);
+
+    /* Text */
+    --text-primary: var(--color-neutral-50);
+    --text-secondary: var(--color-neutral-950);
+    --text-disabled: var(--color-neutral-500);
+
+    /* Controls */
+    --control-bg-normal: var(--color-neutral-50);
+    --control-bg-accent: var(--color-neutral-700);
+    --control-bg-accent-strong: var(--color-neutral-800);
+
+    --control-border-normal: var(--color-neutral-50);
+    --control-border-accent: var(--color-neutral-700);
+    --control-border-accent-strong: var(--color-neutral-800);
+    
+    --control-fg-primary: var(--color-neutral-50);
+    --control-fg-secondary: var(--color-neutral-950);
+    --control-fg-disabled: var(--color-neutral-500);
+}
+
+[theme="gray"] {
+    /* Surfaces */
+    --surface-0: var(--color-neutral-900);
+    --surface-1: var(--color-neutral-800);
+    --surface-2: var(--color-neutral-700);
+    --surface-3: var(--color-neutral-600);
+    --surface-4: var(--color-neutral-500);
+    --surface-5: var(--color-neutral-400);
+    --surface-6: var(--color-neutral-300);
+    --surface-7: var(--color-neutral-200);
+    --surface-8: var(--color-neutral-100);
+    --surface-9: var(--color-neutral-50);
+    --surface-10: var(--color-neutral-50);
+
+    /* Text */
+    --text-primary: var(--color-neutral-50);
+    --text-secondary: var(--color-neutral-950);
+    --text-disabled: var(--color-neutral-500);
+
+    /* Controls */
+    --control-bg-normal: var(--color-neutral-50);
+    --control-bg-accent: var(--color-neutral-600);
+    --control-bg-accent-strong: var(--color-neutral-700);
+
+    --control-border-normal: var(--color-neutral-50);
+    --control-border-accent: var(--color-neutral-600);
+    --control-border-accent-strong: var(--color-neutral-700);
+    
+    --control-fg-primary: var(--color-neutral-50);
+    --control-fg-secondary: var(--color-neutral-950);
+    --control-fg-disabled: var(--color-neutral-500);
+}

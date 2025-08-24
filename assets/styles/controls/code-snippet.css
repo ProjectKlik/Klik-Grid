@@ -8,7 +8,7 @@
     margin: var(--margin-none);
     border-radius: var(--radius-small);
     background-color: transparent;
-    border: var(--border-medium) solid var(--color-neutral-800);
+    border: var(--border-medium) solid var(--surface-2);
 }
 
 /* Code Header */
@@ -19,8 +19,8 @@
     flex-direction: row;
     align-items: center;
     padding: var(--padding-xlarge);
-    background-color: var(--color-neutral-800);
-    color: var(--color-neutral-50);
+    background-color: var(--surface-2);
+    color: var(--text-primary);
     font-family: 'Noto-Sans-Regular';
 }
 
@@ -33,7 +33,7 @@
 
 /* Code Text Itself */
 .code-container code {
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 /* Copy Button */

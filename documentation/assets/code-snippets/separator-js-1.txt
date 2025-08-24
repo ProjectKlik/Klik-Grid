@@ -1,0 +1,31 @@
+const options = {
+    type: 'vertical',
+    children: [
+        {
+            type: 'horizontal',
+            children: [
+                { type: 'pane', class: 'pane-top-left' },
+                { type: 'drag-bar', orientation: 'vertical', value: 'Vertical Drag-Bar 1' },
+                { type: 'pane', class: 'pane-top-center' },
+                { type: 'drag-bar', orientation: 'vertical', value: 'Vertical Drag-Bar 2' },
+                { type: 'pane', class: 'pane-top-right' }
+            ]
+        },
+        { type: 'drag-bar', orientation: 'horizontal', value: 'Horizontal Drag-Bar 1' },
+        {
+            type: 'horizontal',
+            children: [
+                { type: 'pane', class: 'pane-bottom-left' },
+                { type: 'drag-bar', orientation: 'vertical', value: 'Vertical Drag-Bar 3' },
+                { type: 'pane', class: 'pane-bottom-right' }
+            ]
+        }
+    ]
+};
+
+window.createSeparator(
+    'PARENTELEMENT', // For specifying where to create
+    options, // For adding options to the separator
+    'Sample Separator', // For the separator container data value
+    '' // For adding class to the separator container
+);

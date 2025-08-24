@@ -1,0 +1,8 @@
+// For English
+document.documentElement.setAttribute('lang', 'en-US');
+
+// For Russian
+document.documentElement.setAttribute('lang', 'ru-Ru');
+
+// For Azerbaijani
+document.documentElement.setAttribute('lang', 'az-AZ');

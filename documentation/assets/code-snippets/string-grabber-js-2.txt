@@ -1,0 +1,1 @@
+button.textContent = window.getVariable('--ok');

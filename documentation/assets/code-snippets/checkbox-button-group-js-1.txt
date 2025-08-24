@@ -1,0 +1,9 @@
+window.createCheckboxButton(
+    'Sample Spawned Checkbox Button', // For the button text
+    'Spawned Checkbox Button', // For the button data value
+    'PARENTELEMENT', // For specifying where to create
+    '', // For adding class to the button group
+    '', // For adding class to the button
+    'vertical', // For specifying what orientation to list the buttons within button group
+    0 // For specifying which button to create already toggled
+);

@@ -1,0 +1,8 @@
+window.createTab(
+    'Sample Spawned Tab', For the tab text
+    'Spawned Tab', // For the tab data value
+    'PARENTELEMENT', // For specifying where to create
+    '', // For adding class to the tab group
+    '', // For adding class to the tab
+    -1 // For specifying which tab to create already toggled
+);

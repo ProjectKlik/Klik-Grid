@@ -1,8 +1,7 @@
 drawingInitControls({
     onMessageBoxButtonClick: (button, value) => {
-        if (button && value) {
-            console.log(`Message Box button ${button} clicked, value: ${value}`);
-            document.getElementById('dialog-overlay').style.display = 'none';
-        }
+        if (!button || !value) return;
+        console.log(`Message Box button ${button} clicked, value: ${value}`);
+        document.getElementById('dialog-overlay').style.display = 'none';
     }
 });

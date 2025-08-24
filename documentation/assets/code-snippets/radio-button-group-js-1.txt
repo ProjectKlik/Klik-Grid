@@ -1,0 +1,10 @@
+window.createRadioButton(
+    'Sample Spawned Radio Button', // For the button text
+    'Spawned Radio Button', // For the button data value
+    'PARENTELEMENT', // For specifying where to create
+    '', // For adding class to the button group
+    '', // For adding class to the button
+    'vertical', // For specifying what orientation to list the buttons within button group
+    'spawned-radio', // For specifying name of the radio button
+    0 // For specifying which button to create already toggled
+);

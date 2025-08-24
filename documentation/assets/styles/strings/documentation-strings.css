@@ -1,0 +1,17 @@
+:root {
+    --sample-sentence: "Sample Sentence";
+}
+
+:root[lang="en-US"] {
+    --sample-sentence: "Sample Sentence";
+}
+
+:root[lang="ru-RU"] {
+    --sample-sentence: "Примерное предложения";
+}
+
+:root[lang="az-AZ"] {
+    --sample-sentence: "Nümunə cümləsi";
+}
+
+.string-sample-sentence::before { content: var(--sample-sentence); }

@@ -13,7 +13,7 @@ input[type="radio"] {
     /* Box Model */
     border-radius: var(--radius-circle);
     background-color: transparent;
-    outline: var(--outline-medium) solid white;
+    outline: var(--outline-medium) solid var(--control-border-normal);
     outline-offset: -2px;
 
     /* Visual */
@@ -41,7 +41,7 @@ label:has(> input[type="radio"]) span {
     /* Typography */
     font-family: 'Noto Sans', sans-serif;
     font-size: var(--font-size-large);
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 /* ===================== */
@@ -55,7 +55,7 @@ input[type="radio"]:checked::after {
     content: "";
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: var(--control-fg-primary);
     border-radius: var(--radius-circle);
     animation: grow-to-shrink-big var(--transition-fast) linear forwards;
     animation-direction: reverse;

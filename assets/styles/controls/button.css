@@ -12,12 +12,12 @@ button {
     font-family: 'Noto-Sans-Regular';
     font-size: var(--font-size-large);
     text-align: center;
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 
     /* Box Model */
     box-sizing: border-box;
     padding: var(--padding-large);
-    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline: var(--outline-small) solid var(--control-border-normal);
     outline-offset: -2px;
     border: none;
     border-radius: var(--radius-small);
@@ -53,34 +53,62 @@ button.type-success {
     color: var(--color-green-200);
 }
 
+button.flat {
+    outline: var(--outline-none);
+}
+
+button.flat.type-info {
+    outline: var(--outline-none);
+    background-color: var(--color-cyan-800);;
+    color: var(--text-primary);
+}
+
+button.flat.type-warning {
+    outline: var(--outline-none);
+    background-color: var(--color-yellow-800);
+    color: var(--text-primary);
+}
+
+button.flat.type-error {
+    outline: var(--outline-none);
+    background-color: var(--color-red-800);
+    color: var(--text-primary);
+}
+
+button.flat.type-success {
+    outline: var(--outline-none);
+    background-color: var(--color-green-800);
+    color: var(--text-primary);
+}
+
 
 /* ===================== */
 /* ACTIVE STATE STYLES */
 /* ===================== */
 button.active {
-    background-color: var(--color-neutral-50);
-    color: var(--color-neutral-950);
+    background-color: var(--control-bg-normal);
+    color: var(--text-secondary);
 }
 
 /* Type-specific active states */
 button.type-info.active {
     background-color: var(--color-cyan-500);
-    color: var(--color-neutral-950);
+    color: var(--text-secondary);
 }
 
 button.type-warning.active {
     background-color: var(--color-yellow-500);
-    color: var(--color-neutral-950);
+    color: var(--text-secondary);
 }
 
 button.type-error.active {
     background-color: var(--color-red-500);
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 button.type-success.active {
     background-color: var(--color-green-500);
-    color: var(--color-neutral-950);
+    color: var(--text-secondary);
 }
 
 
@@ -103,24 +131,24 @@ button:active {
 button > .fill-icon {
     width: var(--icon-large);
     height: var(--icon-large);
-    fill: var(--color-neutral-50);
+    fill: var(--control-fg-primary);
 }
 
 button > .outline-icon {
     width: var(--icon-large);
     height: var(--icon-large);
     fill: transparent;
-    stroke: var(--color-neutral-50);
+    stroke: var(--control-fg-primary);
     stroke-width: var(--stroke-medium);
 }
 
 /* Active state icons */
 button.active > .fill-icon {
-    fill: var(--color-neutral-950);
+    fill: var(--control-fg-secondary);
 }
 
 button.active > .outline-icon {
-    stroke: var(--color-neutral-950);
+    stroke: var(--control-fg-secondary);
 }
 
 
@@ -131,6 +159,8 @@ button.active > .outline-icon {
 .button-group {
     display: flex;
     box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
     gap: var(--gap-large);
 }
 
@@ -138,12 +168,10 @@ button.active > .outline-icon {
 .toggle-button-group.vertical,
 .button-group.vertical {
     flex-direction: column;
-    height: 100%;
 }
 
 /* Horizontal layout */
 .toggle-button-group.horizontal,
 .button-group.horizontal {
     flex-direction: row;
-    width: 100%;
 }

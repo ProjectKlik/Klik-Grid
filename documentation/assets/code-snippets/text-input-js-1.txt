@@ -1,0 +1,9 @@
+window.createTextInput(
+    'Sample Text Input', // For the text input text
+    'Placeholder', // For the text input placeholder
+    'PARENTELEMENT', // For specifying where to create
+    '', // For adding class to the text input group
+    '', // For adding class to the text input
+    'vertical', // For specifying what orientation to list the text inputs within text input group
+    null // For specifying max character limit
+);

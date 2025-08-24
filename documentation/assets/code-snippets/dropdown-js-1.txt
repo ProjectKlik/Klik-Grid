@@ -1,0 +1,28 @@
+const options = [
+    'Option 1',
+    {
+        text: 'Option 2',
+        value: '2',
+        submenu: [
+            'Suboption 2.1',
+            {
+                text: 'Suboption 2.2',
+                value: '2.2',
+                submenu: ['Deep 2.2.1', 'Deep 2.2.2']
+            },
+            'Suboption 2.3'
+        ]
+    },
+    'Option 3',
+    '---', // or 'hr' for separator
+    'Option 4'
+];
+
+window.createDropdown(
+    'Sample Spawned Dropdown', // For the dropdown text
+    'Spawned Dropdown', // For the dropdown data value
+    'PARENTELEMENT', // For specifying where to create
+    options, // For adding options to the dropdown
+    '', // For adding class to the dropdown container
+    '' // For adding class to the dropdown button
+);

@@ -5,9 +5,9 @@ export function messageBox(callback) {
     window.showMessageBox = showMessageBox;
 }
 
-function showMessageBox(title, description, buttons = [], customCallback = null) {
+function showMessageBox(title, description, buttons = []) {
     const container = getMessageBoxContainer();
-    container.innerHTML = createMessageBoxHTML(title, description, buttons, customCallback);
+    container.innerHTML = createMessageBoxHTML(title, description, buttons);
 
     // Attach event listeners to the new buttons
     container.querySelectorAll('button').forEach(button => {
@@ -16,7 +16,6 @@ function showMessageBox(title, description, buttons = [], customCallback = null)
             const value = button.dataset.buttonValue;
 
             button.closest('.message-box-container')?.remove();
-            customCallback?.(text, value);
             messageBoxCallback?.(text, value);
         });
     });
@@ -38,7 +37,7 @@ function getMessageBoxContainer() {
     return container;
 }
 
-function createMessageBoxHTML(title, description, buttons, customCallback) {
+function createMessageBoxHTML(title, description, buttons) {
     return `
     <div class="message-box">
       <div class="message-box-title">

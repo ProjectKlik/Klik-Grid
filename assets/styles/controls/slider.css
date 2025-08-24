@@ -13,8 +13,8 @@
   /* Visual */
   background: linear-gradient(
     to right,
-    var(--color-neutral-50) 0%,
-    var(--color-neutral-800) 0%
+    var(--control-bg-normal) 0%,
+    var(--control-bg-accent-strong) 0%
   );
   -webkit-appearance: none;
   appearance: none;
@@ -32,11 +32,11 @@
   /* Box Model */
   border: var(--border-none);
   border-radius: var(--radius-circle);
-  outline: var(--outline-medium) solid white;
+  outline: var(--outline-medium) solid var(--control-border-normal);
   outline-offset: -2px;
   
   /* Visual */
-  background-color: var(--color-neutral-950);
+  background-color: var(--control-fg-secondary);
   cursor: pointer;
   transition: var(--transition-fast);
   
@@ -61,7 +61,7 @@
   /* Typography */
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--font-size-large);
-  color: var(--color-neutral-50);
+  color: var(--text-primary);
   
   /* Layout */
   width: fit-content;

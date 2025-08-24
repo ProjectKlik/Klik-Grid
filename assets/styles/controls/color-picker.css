@@ -24,9 +24,9 @@
     gap: var(--gap-xxlarge);
     
     /* Appearance */
-    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline: var(--outline-small) solid var(--control-border-normal);
     border-radius: var(--radius-small);
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
     
     /* Stacking */
     z-index: var(--z-index-overlay);
@@ -85,7 +85,7 @@
     height: 5px;
     top: 0px;
     left: 200px;
-    border: var(--border-medium) solid var(--color-neutral-50);
+    border: var(--border-medium) solid var(--control-fg-primary);
     border-radius: var(--radius-circle);
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -130,7 +130,7 @@
     left: -2.5px;
     width: 5px;
     height: 20px;
-    background-color: white;
+    background-color: var(--control-fg-primary);
     border-radius: var(--radius-small);
     pointer-events: none;
 }
@@ -156,7 +156,7 @@
     right: -2.5px;
     width: 5px;
     height: 20px;
-    background-color: white;
+    background-color: var(--control-fg-primary);
     border-radius: var(--radius-small);
     pointer-events: none;
 }
@@ -190,7 +190,7 @@
 .colorpicker-swatch-label {
     font-family: 'Noto Sans';
     font-size: var(--font-size-large);
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
 }
 
 .colorpicker-swatch-grid {
@@ -199,7 +199,7 @@
     gap: var(--gap-medium);
     height: 112px;
     padding: var(--padding-large);
-    border: var(--border-small) solid var(--color-neutral-50);
+    border: var(--border-small) solid var(--control-border-normal);
     border-radius: var(--radius-small);
     overflow-y: scroll;
     overflow-x: hidden;
@@ -218,7 +218,7 @@
 }
 
 .colorpicker-swatch-color.selected {
-    outline: var(--border-small) solid var(--color-neutral-50);
+    outline: var(--border-small) solid var(--control-fg-primary);
 }
 
 .colorpicker-swatch-color:hover {

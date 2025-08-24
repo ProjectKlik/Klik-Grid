@@ -23,6 +23,81 @@
     --logout: "Log-out";
 }
 
+:root[lang="en-US"] {
+    --ok: "OK";
+    --yes: "Yes";
+    --no: "No";
+    --cancel: "Cancel";
+    --start: "Start";
+    --stop: "Stop";
+    --exit: "Exit";
+    --error: "Error";
+    --save: "Save";
+    --delete: "Delete";
+    --retry: "Retry";
+    --help: "Help";
+    --menu: "Menu";
+    --next: "Next";
+    --back: "Back";
+    --skip: "Skip";
+    --update: "Update";
+    --upload: "Upload";
+    --download: "Download";
+    --settings: "Settings";
+    --login: "Log-in";
+    --logout: "Log-out";
+}
+
+:root[lang="ru-RU"] {
+    --ok: "ОК";
+    --yes: "Да";
+    --no: "Нет";
+    --cancel: "Отмена";
+    --start: "Старт";
+    --stop: "Стоп";
+    --exit: "Выход";
+    --error: "Ошибка";
+    --save: "Сохранить";
+    --delete: "Удалить";
+    --retry: "Повторить";
+    --help: "Помощь";
+    --menu: "Меню";
+    --next: "Далее";
+    --back: "Назад";
+    --skip: "Пропустить";
+    --update: "Обновить";
+    --upload: "Загрузить";
+    --download: "Скачать";
+    --settings: "Настройки";
+    --login: "Войти";
+    --logout: "Выйти";
+}
+
+:root[lang="az-AZ"] {
+    --ok: "OK";
+    --yes: "Bəli";
+    --no: "Xeyr";
+    --cancel: "Ləğv et";
+    --start: "Başla";
+    --stop: "Dayan";
+    --exit: "Çıxış";
+    --error: "Səhv";
+    --save: "Saxla";
+    --delete: "Sil";
+    --retry: "Təkrar cəhd et";
+    --help: "Kömək";
+    --menu: "Menyu";
+    --next: "Növbəti";
+    --back: "Geri";
+    --skip: "Atla";
+    --update: "Yenilə";
+    --upload: "Yüklə";
+    --download: "Endir";
+    --settings: "Ayarlar";
+    --login: "Daxil ol";
+    --logout: "Çıxış et";
+}
+
 .string-ok::before { content: var(--ok); }
 .string-yes::before { content: var(--yes); }
 .string-no::before { content: var(--no); }

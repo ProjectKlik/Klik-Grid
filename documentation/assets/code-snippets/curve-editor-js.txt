@@ -1,8 +1,0 @@
-drawingInitControls({
-    onCurveEditorAction: (value, showEditorButton) => {
-        if(showEditorButton) {
-            // Handle curve editor action
-            console.log(`Curve Editor ${showEditorButton}'s curve is ${value}`);
-        }
-    }
-});

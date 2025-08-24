@@ -8,17 +8,17 @@
     border-radius: var(--radius-small);
     
     /* Background */
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
     background-image: radial-gradient(
         circle,
-        var(--color-neutral-800) 1px,
+        var(--surface-2) 1px,
         transparent 1px
     );
     background-position: 0 0;
     background-size: 16px 16px;
     
     /* Border */
-    outline: var(--outline-small) solid var(--color-neutral-500);
+    outline: var(--outline-small) solid var(--control-border-accent);
 }
 
 
@@ -38,9 +38,9 @@
     gap: var(--gap-xxlarge);
     
     /* Appearance */
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
     border-radius: var(--radius-small);
-    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline: var(--outline-small) solid var(--control-border-normal);
     
     /* Stacking */
     z-index: var(--z-index-overlay);
@@ -76,17 +76,17 @@
     border-radius: var(--radius-medium);
     
     /* Background */
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
     background-image: radial-gradient(
         circle,
-        var(--color-neutral-800) 2px,
+        var(--surface-2) 2px,
         transparent 2px
     );
     background-position: 0 0;
     background-size: 32px 32px;
     
     /* Border */
-    outline: var(--outline-small) solid var(--color-neutral-500);
+    outline: var(--outline-small) solid var(--control-border-accent-strong);
 }
 
 .curve-editor-points-container {
@@ -125,7 +125,7 @@
     width: 16px;
     height: 16px;
     background-color: var(--color-red-600);
-    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline: var(--outline-small) solid var(--control-fg-primary);
 }
 
 .curve-editor-main-point.active {
@@ -133,14 +133,14 @@
 }
 
 .curve-editor-main-point.fixed {
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
 }
 
 .curve-editor-control-point {
     width: 12px;
     height: 12px;
     background-color: var(--color-blue-600);
-    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline: var(--outline-small) solid var(--control-fg-primary);
     z-index: 11;
 }
 
@@ -149,7 +149,7 @@
 .curve-editor-control-point:hover,
 .curve-editor-main-point.dragging,
 .curve-editor-control-point.dragging {
-    outline: var(--outline-large) solid var(--color-neutral-50);
+    outline: var(--outline-large) solid var(--control-fg-primary);
 }
 
 .curve-editor-main-point.dragging,
@@ -175,8 +175,8 @@
         90deg,
         transparent,
         transparent 5px,
-        var(--color-neutral-50) 5px,
-        var(--color-neutral-50) 10px
+        var(--control-fg-primary) 5px,
+        var(--control-fg-primary) 10px
     );
     
     /* Behavior */
@@ -199,6 +199,7 @@
 .curve-editor-action-buttons-3 {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .curve-editor-action-buttons-1 > *,
@@ -231,7 +232,7 @@
     padding: var(--padding-large);
     
     /* Appearance */
-    border: var(--border-small) solid var(--color-neutral-50);
+    border: var(--border-small) solid var(--control-border-normal);
     border-radius: var(--radius-small);
     
     /* Scrolling */
@@ -251,19 +252,24 @@
     border-radius: var(--radius-small);
     
     /* Background */
-    background-color: var(--color-neutral-900);
+    background-color: var(--surface-1);
     background-image: radial-gradient(
         circle,
-        var(--color-neutral-800) 1px,
+        var(--surface-2) 1px,
         transparent 1px
     );
     background-position: 0 0;
     background-size: 16px 16px;
     
     /* Border */
-    outline: var(--outline-small) solid var(--color-neutral-500);
+    outline: var(--outline-small) solid var(--control-border-accent-strong);
 }
 
 .curve-editor-preset.selected {
-    outline: var(--outline-small) solid var(--color-neutral-50);
+    outline: var(--outline-small) solid var(--control-fg-primary);
+}
+
+.curve-editor-preset-label {
+    font-family: 'Noto-Sans-Regular';
+    color: var(--text-primary);
 }

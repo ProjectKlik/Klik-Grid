@@ -5,7 +5,7 @@
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  border: 1px solid var(--color-neutral-700);
+  border: 1px solid var(--control-border-accent);
   border-radius: var(--radius-small);
 }
 
@@ -14,7 +14,7 @@
 /* ===================== */
 .separator.horizontal-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100%;
   width: 100%;
   min-width: 0;
@@ -23,7 +23,7 @@
 
 .separator.vertical-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   min-width: 0;
@@ -44,7 +44,7 @@
 /* DRAG BAR */
 /* ===================== */
 .separator.drag-bar {
-  background-color: var(--color-neutral-700);
+  background-color: var(--control-border-accent-strong);
   position: relative;
   transition: 
     background-color var(--transition-fast),
@@ -54,6 +54,7 @@
 
 /* Horizontal Drag Bar */
 .separator.drag-bar.horizontal {
+  min-width: 5px;
   min-height: 5px;
   width: auto;
   cursor: ns-resize;
@@ -63,6 +64,7 @@
 /* Vertical Drag Bar */
 .separator.drag-bar.vertical {
   min-width: 5px;
+  min-height: 5px;
   height: auto;
   cursor: ew-resize;
   margin: var(--margin-medium) 0;

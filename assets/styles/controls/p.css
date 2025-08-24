@@ -3,6 +3,10 @@ p {
     color: var(--color-neutral-50);
 }
 
+p.no-top-margin {
+    margin-top: var(--margin-none);
+}
+
 p.no-bottom-margin {
     margin-bottom: var(--margin-none);
 }

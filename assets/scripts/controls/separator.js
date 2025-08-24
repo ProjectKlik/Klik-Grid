@@ -1,17 +1,118 @@
+let globalCallbacks;
+
+/* Initialization */
 export function separator(callback) {
+    globalCallbacks = callback;
+    scan();
+}
+
+function scan() {
     document.querySelectorAll('.separator-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
 
         // Initialize drag functionality
-        initSeparatorDrag(container, callback);
+        initSeparatorDrag(container, globalCallbacks);
     });
 }
+
+/* Programmatical Creation */
+function createSeparator(parentSelector, structure, separatorValue = '', containerClassName = '') {
+    const isId = parentSelector?.startsWith('#');
+    const isClass = parentSelector?.startsWith('.');
+    let targets = [];
+
+    // Use existing group or create a new one
+    if (!parentSelector) {
+        targets = [document.body];
+    } else if (isId) {
+        const el = document.querySelector(parentSelector);
+        if (el) targets = [el];
+    } else if (isClass) {
+        targets = Array.from(document.querySelectorAll(parentSelector));
+    }
+
+    if (targets.length === 0) {
+        console.warn(`No matching elements found for selector: ${parentSelector}`);
+        return null;
+    }
+
+    function buildStructure(structureItem, isRoot = false) {
+        if (!structureItem || !structureItem.type) {
+            console.warn('Invalid structure item:', structureItem);
+            return null;
+        }
+
+        const element = document.createElement('div');
+
+        switch (structureItem.type) {
+            case 'horizontal':
+                element.className = isRoot ? 'horizontal-container' : 'separator horizontal-container';
+                element.dataset.separatorValue = separatorValue;
+                if (containerClassName) element.classList.add(containerClassName);
+                break;
+
+            case 'vertical':
+                element.className = isRoot ? 'vertical-container' : 'separator vertical-container';
+                element.dataset.separatorValue = separatorValue;
+                if (containerClassName) element.classList.add(containerClassName);
+                break;
+
+            case 'pane':
+                element.className = `separator pane ${structureItem.class || ''}`.trim();
+                break;
+
+            case 'drag-bar':
+                element.className = `separator drag-bar ${structureItem.orientation === 'vertical' ? 'vertical' : 'horizontal'}`;
+                element.dataset.separatorValue = structureItem.value || '';
+                break;
+
+            default:
+                console.warn('Unknown structure type:', structureItem.type);
+                return null;
+        }
+
+        // Recursively build children
+        if (structureItem.children && Array.isArray(structureItem.children)) {
+            structureItem.children.forEach(child => {
+                const childElement = buildStructure(child, false);
+                if (childElement) element.appendChild(childElement);
+            });
+        }
+
+        return element;
+    }
+
+    const createdSeparators = [];
+
+    targets.forEach(target => {
+        // Create a generic root container
+        const rootContainer = document.createElement('div');
+        rootContainer.classList.add('separator-container');
+        rootContainer.dataset.separatorValue = separatorValue;
+        if (containerClassName) rootContainer.classList.add(containerClassName);
+
+        // Build the actual structure as a child
+        const structureContainer = buildStructure(structure, false);
+        if (structureContainer) {
+            rootContainer.appendChild(structureContainer);
+            target.appendChild(rootContainer);
+            createdSeparators.push(rootContainer);
+        }
+    });
+
+    // Rescan to initialize new Separators
+    scan();
+
+    return parentSelector?.startsWith('.') ? createdSeparators : createdSeparators[0];
+}
+
+// Expose globally
+window.createSeparator = createSeparator;
 
 /* ===================== */
 /* HELPER FUNCTIONS */
 /* ===================== */
-
 function initSeparatorDrag(container, callback) {
     let isDragging = false;
     let currentBar = null;

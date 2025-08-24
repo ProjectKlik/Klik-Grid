@@ -1,0 +1,5 @@
+// For Dark Theme
+document.documentElement.setAttribute('theme', 'dark');
+
+// For Gray Theme
+document.documentElement.setAttribute('theme', 'gray');

@@ -1,0 +1,7 @@
+standardInitControls({
+    onSocketDrag: (socket, socketItem) => {
+        if (!socket || !socketItem) return;
+        // Handle socket item drag
+        console.log(`The socket ${socket}'s item is now ${socketItem}`);
+    }
+});

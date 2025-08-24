@@ -1,8 +1,0 @@
-drawingInitControls({
-    onColorPickerAction: (r, g, b, showPickerButton) => {
-        if(showPickerButton) {
-            // Handle color picker action
-            console.log(`Color Picker ${showPickerButton}'s color is R = ${r}, G = ${g}, B = ${b}`);
-        }
-    }
-});

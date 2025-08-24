@@ -1,4 +1,12 @@
+let globalCallbacks;
+
+/* Initialization */
 export function colorPicker(callback) {
+    globalCallbacks = callback;
+    scan();
+}
+
+function scan() {
     document.querySelectorAll('.colorpicker-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -632,8 +640,8 @@ export function colorPicker(callback) {
         elements.okButton.addEventListener('click', () => {
             elements.preview.style.backgroundColor = rgbaToString(currentColor);
             elements.popup.classList.remove('active');
-            if (callback) {
-                callback(currentColor.r, currentColor.g, currentColor.b, elements.container.dataset.colorpickerValue);
+            if (globalCallbacks) {
+                globalCallbacks(currentColor.r, currentColor.g, currentColor.b, elements.container.dataset.colorpickerValue);
             }
         });
 
@@ -653,3 +661,95 @@ export function colorPicker(callback) {
         });
     });
 }
+
+/* Programmatical Creation */
+function createColorPicker(parentSelector, value, className = '') {
+    // Spawn the color picker in the specified parent
+    const isId = parentSelector?.startsWith('#');
+    const isClass = parentSelector?.startsWith('.');
+    let targets = [];
+    
+    if (!parentSelector) {
+        targets = [document.body];
+    }
+    else if (isId) {
+        const el = document.querySelector(parentSelector);
+        if (el) targets = [el];
+    }
+    else if (isClass) {
+        targets = Array.from(document.querySelectorAll(parentSelector));
+    }
+    
+    if (targets.length === 0) {
+        console.warn(`No matching elements found for selector: ${parentSelector}`);
+        return null;
+    }
+    
+    const createdColorPickers = [];
+    
+    targets.forEach(target => {
+        const container = document.createElement('div');
+        container.className = `colorpicker-container ${className}`.trim();
+        container.dataset.colorpickerValue = value;
+        
+        // HTML template
+        container.innerHTML = `
+            <button class="colorpicker-showpicker">
+                <div class="colorpicker-preview"></div>
+                <svg class="fill-icon" viewBox="0 0 24 24">
+                    <path d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                </svg>
+            </button>
+            <div class="colorpicker-popup active">
+                <div class="colorpicker-popup-content">
+                    <div class="colorpicker-popup-left">
+                        <div class="colorpicker-color-canvas-container">
+                            <canvas class="colorpicker-color-canvas"></canvas>
+                            <div class="colorpicker-color-canvas-marker"></div>
+                        </div>
+                        <div class="colorpicker-color-row">
+                            <div class="colorpicker-picker-old-preview"></div>
+                            <div class="colorpicker-picker-new-preview"></div>
+                        </div>
+                        <hr class="no-margin">
+                        <div class="colorpicker-hue-slider-container">
+                            <canvas class="colorpicker-hue-slider"></canvas>
+                            <div class="colorpicker-hue-slider-marker"></div>
+                        </div>
+                        <div class="colorpicker-alpha-slider-container">
+                            <canvas class="colorpicker-alpha-slider"></canvas>
+                            <div class="colorpicker-alpha-slider-marker"></div>
+                        </div>
+                        <hr class="no-margin">
+                        <div class="colorpicker-hex-code-container">
+                            <input class="colorpicker-hex-code text-input" type="text" placeholder="Hex Code">
+                        </div>
+                    </div>
+                    <div class="colorpicker-popup-right">
+                        <div class="colorpicker-swatch-container">
+                            <span class="colorpicker-swatch-label">Color Swatches:</span>
+                            <div class="colorpicker-swatch-grid"></div>
+                            <button class="colorpicker-swatch-action-add" data-button-value="Add Swatch Button">Add Swatch</button>
+                            <button class="colorpicker-swatch-action-remove" data-button-value="Remove Swatch Button">Remove Swatch</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="colorpicker-popup-action">
+                    <button class="colorpicker-popup-action-ok" data-button-value="Ok Button">Ok</button>
+                    <button class="colorpicker-popup-action-cancel" data-button-value="Cancel Button">Cancel</button>
+                </div>
+            </div>
+        `;
+        
+        target.appendChild(container);
+        createdColorPickers.push(container);
+    });
+    
+    // Rescan to initialize new color picker(s)
+    scan();
+    
+    return isClass ? createdColorPickers : createdColorPickers[0];
+}
+
+// Expose globally
+window.createColorPicker = createColorPicker;

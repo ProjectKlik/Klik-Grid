@@ -1,0 +1,5 @@
+window.createColorPicker(
+    'PARENTELEMENT', // For specifying where to create
+    'Spawned Color Picker', // For the color picker data value
+    '' // For adding class to the color picker
+);

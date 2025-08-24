@@ -15,7 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'Warning':
                 case 'Error':
                 case 'Success':
+                case 'Filled Icon':
+                case 'Outline Icon':
                     console.log(`Button ${button.textContent.trim()} with value of ${value} clicked`);
+                    break;
+
+                case 'Variable Grabber Sample':
+                    button.textContent = window.getVariable('--ok');
                     break;
 
                 // Message Box
@@ -26,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Sample Message Box Title',
                         'Sample Message Box Description',
                         [
-                            { text: 'Yes', buttonValue: 'Yes MSGBOX Button' },
-                            { text: 'No', buttonValue: 'No MSGBOX Button' }
+                            { text: window.getVariable('--yes'), buttonValue: 'Yes MSGBOX Button' },
+                            { text: window.getVariable('--no'), buttonValue: 'No MSGBOX Button' }
                         ],
                         (_, value) => {
                             if (value === 'Yes MSGBOX Button') {
@@ -89,13 +95,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Default
                 default:
-                    console.log(`Button "${button.textContent.trim()}" (${value}) clicked`);
+                    console.log(`Unknown button "${button.textContent.trim()}" with value of "${value}" clicked`);
+                    break;
             }
         },
         onToggleButtonClick: (button, value) => {
             if (!button || !value) return;
             // Get the closest parent group
             const group = button.closest('.toggle-button-group');
+
+            const languageHandlers = {
+                en_us: () => {
+                    document.documentElement.setAttribute('lang', 'en-US');
+                },
+                ru_ru: () => {
+                    document.documentElement.setAttribute('lang', 'ru-RU');
+                },
+                az_az: () => {
+                    document.documentElement.setAttribute('lang', 'az-AZ');
+                }
+            };
+
+            const themeHandlers = {
+                dark: () => {
+                    document.documentElement.setAttribute('theme', 'dark');
+                },
+                gray: () => {
+                    document.documentElement.setAttribute('theme', 'gray');
+                }
+            };
 
             switch (true) {
                 case group.classList.contains('page-switcher'):
@@ -109,6 +137,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 case group.classList.contains('sample-toggle-button'):
                     // Handle sample popup
                     console.log(`Toggle Button ${button.textContent.trim()} with value of ${value} clicked!`);
+                    break;
+
+                case group.classList.contains('language-switcher'):
+                    // Handle language switching
+                    if (languageHandlers[value]) {
+                        languageHandlers[value]();
+                    } else {
+                        console.log('Unknown language selected:', value);
+                    }
+                    break;
+
+                case group.classList.contains('theme-switcher'):
+                    // Handle theme switching
+                    if (themeHandlers[value]) {
+                        themeHandlers[value]();
+                    } else {
+                        console.log('Unknown theme selected:', value);
+                    }
                     break;
 
                 default:
@@ -127,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Handle checkbox button click
             console.log(`Checkbox button ${label} with value of ${value} clicked, current state: ${isChecked}`);
         },
-        onDropdownClick: (button, value) => {
+        onDropdownClick: (button, buttonValue, value) => {
             if (!button || !value) return;
             // Handle dropdown click
-            console.log(`Dropdown ${button.textContent.trim()} clicked, selected option: ${value}`);
+            console.log(`Dropdown ${buttonValue} clicked, selected option: ${value}`);
         },
         onSliderMove: (title, value) => {
             if (!title || !value) return;
@@ -146,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!tab || !value) return;
             // Handle tab click
             console.log(`Tab ${tab} clicked, value: ${value}`);
-
         },
         onSeparatorDrag: (container, dragbar) => {
             if (!container || !dragbar) return;
@@ -177,16 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize drawing controls
     drawingInitControls({
         onColorPickerAction: (r, g, b, showPickerButton) => {
-            if (showPickerButton) {
-                // Handle color picker action
-                console.log(`Color Picker ${showPickerButton}'s color is R = ${r}, G = ${g}, B = ${b}`);
-            }
+            if (!showPickerButton) return;
+            // Handle color picker action
+            console.log(`Color Picker ${showPickerButton}'s color is R = ${r}, G = ${g}, B = ${b}`);
         },
         onCurveEditorAction: (value, showEditorButton) => {
-            if (showEditorButton) {
-                // Handle curve editor action
-                console.log(`Curve Editor ${showEditorButton}'s curve is ${value}`);
-            }
+            if (!showEditorButton) return;
+            // Handle curve editor action
+            console.log(`Curve Editor ${showEditorButton}'s curve is ${value}`);
         }
     });
 

@@ -1,0 +1,4 @@
+window.createActionHistory(
+    'PARENTELEMENT', // For specifying where to create
+    '' // For adding class to the action history
+);

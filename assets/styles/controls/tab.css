@@ -13,7 +13,7 @@
     border-radius: var(--radius-medium);
 
     /* Visual */
-    background-color: var(--color-neutral-800);
+    background-color: var(--control-bg-accent-strong);
 }
 
 /* ===================== */
@@ -28,7 +28,7 @@
     height: calc(100% - 2 * var(--padding-large));
 
     /* Visual */
-    background-color: white;
+    background-color: var(--control-bg-normal);
     border-radius: var(--radius-small);
 
     /* Animation */
@@ -42,7 +42,7 @@
     /* Typography */
     font-family: 'Noto-Sans-Regular';
     font-size: var(--font-size-large);
-    color: var(--color-neutral-50);
+    color: var(--text-primary);
     text-align: center;
 
     /* Box Model */
@@ -58,7 +58,7 @@
 /* TAB STATES */
 /* ===================== */
 .tab.active {
-    color: var(--color-neutral-950);
+    color: var(--text-secondary);
 }
 
 /* ===================== */
@@ -66,6 +66,6 @@
 /* ===================== */
 
 /* Hover Effect (if desired) */
-.tab:hover:not(.active) {
+.tab:hover {
     animation: grow var(--transition-fast) forwards;
 }

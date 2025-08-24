@@ -1,0 +1,7 @@
+standardInitControls({
+    onCheckboxButtonClick: (button, label, value, isChecked) => {
+        if (!button || !value) return;
+        // Handle checkbox button click
+        console.log(`Checkbox button ${label} with value of ${value} clicked, current state: ${isChecked}`);
+    }
+});

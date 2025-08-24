@@ -1,8 +1,0 @@
-standardInitControls({
-    onSliderMove: (title, value) => {
-        if(title && value) {
-            // Handle slider move
-            console.log(`Slider ${title.textContent.trim()} moved, current value: ${value}`);
-        }
-    }
-});

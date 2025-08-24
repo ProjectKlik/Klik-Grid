@@ -7,6 +7,6 @@
 
     /* Typography */
     font-family: monospace;
-    background-color: var(--color-neutral-800);
-    color: var(--color-neutral-50);
+    background-color: var(--surface-2);
+    color: var(--text-primary);
 }
