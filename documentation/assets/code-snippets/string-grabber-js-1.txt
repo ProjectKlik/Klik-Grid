@@ -1,2 +1,0 @@
-<!-- Utilities -->
-<script type="module" src="/assets/scripts/utilities/variable-grabber.js"></script>
