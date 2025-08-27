@@ -26,7 +26,7 @@ body {
 }
 
 #loading-text {
-    font-family: Onest-Bold;
+    font-family: Recursive-Bold;
     font-size: var(--font-size-xxlarge);
     font-weight: bold;
     color: var(--text-primary);
@@ -74,7 +74,7 @@ body {
 }
 
 #version-tag-text {
-    font-family: Onest-Bold;
+    font-family: Recursive-Bold;
     font-size: var(--font-size-xlarge);
     font-weight: bold;
     color: var(--text-primary);
@@ -87,7 +87,7 @@ body {
 }
 
 #logo-text {
-    font-family: Onest-Bold;
+    font-family: Noto-Sans-Bold;
     font-size: var(--font-size-xxlarge);
     line-height: 0px;
     font-weight: bold;
@@ -168,6 +168,19 @@ body {
     font-size: var(--font-size-small);
 }
 
+.context-menu-sample {
+    display: flex;
+    width: 300px;
+    height: 200px;
+    background-color: var(--surface-2);
+    border: var(--border-medium) dashed var(--color-neutral-500);
+    border-radius: var(--radius-large);
+}
+
+.context-menu-sample h3 {
+    margin: auto;
+}
+
 .action-history-sample {
     display: flex;
     flex-direction: column;
@@ -211,7 +224,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, 128px);
     grid-auto-rows: 128px;
-    gap: 10px;
+    gap: var(--gap-xxlarge);
 }
 
 #animations-container>div {
@@ -276,17 +289,21 @@ body {
     animation: spin-clockwise var(--transition-xxslow) linear infinite;
 }
 
+#animation-box-spin-counterclockwise {
+    animation: spin-counterclockwise var(--transition-xxslow) linear infinite;
+}
+
 /* Font Page */
-.onest-thin {
-    font-family: Onest-Thin;
+.recursive-thin {
+    font-family: Recursive-Thin;
 }
 
-.onest-regular {
-    font-family: Onest-Regular;
+.recursive-regular {
+    font-family: Recursive-Regular;
 }
 
-.onest-bold {
-    font-family: Onest-Bold;
+.recursive-bold {
+    font-family: Recursive-Bold;
 }
 
 .noto-sans-thin {

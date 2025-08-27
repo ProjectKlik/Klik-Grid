@@ -1,0 +1,6 @@
+standardInitControls({
+    onNotificationClose: (id, type, title, message) => {
+        if(!id) return;
+        console.log(`Notification with id of ${id} was closed`);
+    }
+});

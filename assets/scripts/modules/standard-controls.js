@@ -8,6 +8,8 @@ import { textInput } from '../controls/text-input.js';
 import { tab } from '../controls/tab.js';
 import { separator } from '../controls/separator.js';
 import { socket } from '../controls/socket.js';
+import { collapsibleMenu } from '../controls/collapsible-menu.js';
+import { contextMenu } from '../controls/context-menu.js';
 import { messageBox } from '../controls/message-box.js';
 import { notification } from '../controls/notification.js';
 
@@ -22,6 +24,8 @@ export function initControls(callbacks = {}) {
     tab(callbacks.onTabClick);
     separator(callbacks.onSeparatorDrag);
     socket(callbacks.onSocketDrag);
+    collapsibleMenu(callbacks.onCollapsibleClick);
+    contextMenu(callbacks.onContextMenuClick);
     messageBox(callbacks.onMessageBoxButtonClick);
     notification(callbacks.onNotificationClose);
 }

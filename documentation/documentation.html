@@ -40,7 +40,7 @@
         </div>
 
         <div id="version-tag">
-            <span id="version-tag-text">Alpha v1.3</span>
+            <span id="version-tag-text">Alpha v1.4</span>
         </div>
     </div>
 
@@ -140,7 +140,9 @@
                     to
                     speed up developement. It is built for developers who want a consistent and easy to use structure
                     for
-                    developing desktop apps with <strong><a href="https://wails.io/" target="_blank" rel="noopener noreferrer" style="color: #FF5733;">Wails</a></strong> or any other desktop frameworks of their choice.
+                    developing desktop apps with <strong><a href="https://wails.io/" target="_blank"
+                            rel="noopener noreferrer" style="color: #FF5733;">Wails</a></strong> or any other desktop
+                    frameworks of their choice.
                 </p>
                 <p>
                     In order to use Klik Grid, you need to include the following folder in your project:
@@ -836,9 +838,135 @@
                     </div>
                     <p>The <strong>programmatical creation</strong> of socket can hold these following
                         properties:</p>
-                    <blockquote class="property">Socket Container Parent, Socket Container Class, Socket Class</blockquote>
+                    <blockquote class="property">Socket Container Parent, Socket Container Class, Socket Class
+                    </blockquote>
                     <br>
                     <p class="no-bottom-margin"><strong>Socket Container Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Collapsible Menu</legend>
+                    <div class="collapsible-menu-container">
+                        <div class="menu-header">
+                            <span>Sample Collapsible Menu</span>
+                            <svg class="fill-icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                            </svg>
+                        </div>
+                        <div class="menu-content">
+                            <p class="no-margin">The quick brown fox jumps over the lazy dog</p>
+                        </div>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/collapsible-menu-html.txt"></code></pre>
+                    </div>
+                    <p>or this, programmatically:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.html</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/collapsible-menu-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/collapsible-menu-js-2.txt"></code></pre>
+                    </div>
+                    <p>The <strong>programmatical creation</strong> of collapsible menu can hold these following
+                        properties:</p>
+                    <blockquote class="property">Collapsible Menu Container Parent, Collapsible Menu Header Text, Collapsible Menu Container Class,
+                        Collapsible Menu Content Class, Collapsible Menu Open State
+                    </blockquote>
+                    <br>
+                    <p><strong>Collapsible Menu Container Parent</strong> can accept id with
+                        <strong>#</strong> or a class
+                        with
+                        <strong>.</strong> selectors. If nothing is specified, it defaults to
+                        <strong>&lt;body&gt;</strong> element.
+                    </p>
+                    <p class="no-bottom-margin"><strong>Collapsible Menu Open State</strong> can accept <strong>true</strong>
+                        or <strong>false</strong> property. If nothing is specified, it defaults to
+                        <strong>false</strong>.
+                    </p>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Context Menu</legend>
+                    <div class="has-ctx-menu context-menu-sample" data-ctx-menu-value="Sample Context Menu Value">
+                        <h3>Right-Click Me</h3>
+                        <ul class="ctx-menu-list">
+                            <li data-ctx-menu-value="1">Option 1</li>
+                            <li class="has-submenu" data-ctx-menu-value="2">
+                                Option 2
+                                <svg class="fill-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                                </svg>
+                                <ul class="ctx-submenu">
+                                    <li data-ctx-menu-value="2.1">Suboption 2.1</li>
+                                    <li class="has-submenu" data-ctx-menu-value="2.2">
+                                        Suboption 2.2
+                                        <svg class="fill-icon" viewBox="0 0 24 24">
+                                            <path
+                                                d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
+                                        </svg>
+                                        <ul class="ctx-submenu">
+                                            <li data-ctx-menu-value="2.2.1">Deep 2.2.1</li>
+                                            <li data-ctx-menu-value="2.2.2">Deep 2.2.2</li>
+                                        </ul>
+                                    </li>
+                                    <li data-ctx-menu-value="2.3">Suboption 2.3</li>
+                                </ul>
+                            </li>
+                            <li data-ctx-menu-value="3">Option 3</li>
+                            <hr />
+                            <li data-ctx-menu-value="4">Option 4</li>
+                        </ul>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/context-menu-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/context-menu-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/context-menu-js-2.txt"></code></pre>
+                    </div>
+                    <p>The <strong>programmatical creation</strong> of context menu can hold these following
+                        properties:</p>
+                    <blockquote class="property">Context Menu Parent, Context Menu Data Value, Context Menu List, Context Menu Parent Class</blockquote>
+                    <br>
+                    <p class="no-bottom-margin"><strong>Context Menu Parent</strong> can accept id with
                         <strong>#</strong> or a class
                         with
                         <strong>.</strong> selectors. If nothing is specified, it defaults to
@@ -895,7 +1023,15 @@
                             <span>your_javascript.js</span>
                             <button>Copy</button>
                         </div>
-                        <pre><code content="/documentation/assets/code-snippets/notification-js.txt"></code></pre>
+                        <pre><code content="/documentation/assets/code-snippets/notification-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code content="/documentation/assets/code-snippets/notification-js-2.txt"></code></pre>
                     </div>
                 </fieldset>
                 <br>
@@ -1011,7 +1147,8 @@
                     </div>
                     <p>The <strong>programmatical creation</strong> of color picker can hold these following
                         properties:</p>
-                    <blockquote class="property">Color Picker Parent, Color Picker Data Value, Color Picker Class</blockquote>
+                    <blockquote class="property">Color Picker Parent, Color Picker Data Value, Color Picker Class
+                    </blockquote>
                     <br>
                     <p class="no-bottom-margin"><strong>Color Picker Parent</strong> can accept id with
                         <strong>#</strong> or a class
@@ -1095,7 +1232,8 @@
                     </div>
                     <p>The <strong>programmatical creation</strong> of curve editor can hold these following
                         properties:</p>
-                    <blockquote class="property">Curve Editor Parent, Curve Editor Data Value, Curve Editor Class</blockquote>
+                    <blockquote class="property">Curve Editor Parent, Curve Editor Data Value, Curve Editor Class
+                    </blockquote>
                     <br>
                     <p class="no-bottom-margin"><strong>Curve Editor Parent</strong> can accept id with
                         <strong>#</strong> or a class
@@ -1147,7 +1285,8 @@
                     </div>
                     <p>Instead of using a text document path to add text to the code area, you
                         can also directly write in the <strong>code</strong> tag</p>
-                    <p class="no-bottom-margin">The <strong>Code Snippet</strong> is only for documentation and is not intended for usage</p>
+                    <p class="no-bottom-margin">The <strong>Code Snippet</strong> is only for documentation and is not
+                        intended for usage</p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -1161,7 +1300,8 @@
                         </div>
                         <pre><code content="/documentation/assets/code-snippets/property-html.txt"></code></pre>
                     </div>
-                    <p class="no-bottom-margin">The <strong>Property</strong> is only for documentation and is not intended for usage</p>
+                    <p class="no-bottom-margin">The <strong>Property</strong> is only for documentation and is not
+                        intended for usage</p>
                 </fieldset>
                 <br>
                 <fieldset>
@@ -1685,9 +1825,9 @@
                 </p>
                 <h2>Font Names</h2>
                 <ul class="no-dash">
-                    <li class="onest-thin">Onest-Thin</li>
-                    <li class="onest-regular">Onest-Regular</li>
-                    <li class="onest-bold">Onest-Bold</li><br>
+                    <li class="recursive-thin">Recursive-Thin</li>
+                    <li class="recursive-regular">Recursive-Regular</li>
+                    <li class="recursive-bold">Recursive-Bold</li><br>
                     <li class="noto-sans-thin">Noto-Sans-Thin</li>
                     <li class="noto-sans-regular">Noto-Sans-Regular</li>
                     <li class="noto-sans-bold">Noto-Sans-Bold</li>
@@ -1738,6 +1878,9 @@
                     </div>
                     <div id="animation-box-spin-clockwise">
                         <p>--spin-clockwise</p>
+                    </div>
+                    <div id="animation-box-spin-counterclockwise">
+                        <p>--spin-counterclockwise</p>
                     </div>
                 </div>
             </div>

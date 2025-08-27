@@ -18,3 +18,5 @@
 @import "../controls/socket.css";
 @import "../controls/message-box.css";
 @import "../controls/notification.css";
+@import "../controls/collapsible-menu.css";
+@import "../controls/context-menu.css";

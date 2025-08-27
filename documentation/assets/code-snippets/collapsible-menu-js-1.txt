@@ -1,0 +1,7 @@
+window.createCollapsibleMenu(
+    'PARENTELEMENT', // For specifying where to create
+    'Sample Collapsible Menu Title', // For the header text
+    '', // For adding class to the menu container
+    '', // For adding class to the menu content
+    false // For adding opened or closed state
+);

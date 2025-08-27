@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Recursive-Thin";
+    font-weight: 200;
+    src: url(../../fonts/recursive-font-ofl.ttf);
+}
+
+@font-face {
+    font-family: "Recursive-Regular";
+    font-weight: 400;
+    src: url(../../fonts/recursive-font-ofl.ttf);
+}
+
+@font-face {
+    font-family: "Recursive-Bold";
+    font-weight: 700;
+    src: url(../../fonts/recursive-font-ofl.ttf);
+}

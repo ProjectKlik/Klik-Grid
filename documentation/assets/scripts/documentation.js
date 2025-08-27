@@ -203,10 +203,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // Handle socket item drag
             console.log(`The socket ${socket}'s item is now ${socketItem}`);
         },
+        onCollapsibleClick: (container, state) => {
+            if (!container) return;
+            console.log(`The collapsible menu ${container}'s state is now ${state}`);
+        },
+        onContextMenuClick: (container, ctxMenuValue, value) => {
+            if (!container || !value) return;
+            // Handle dropdown click
+            console.log(`Context Menu ${ctxMenuValue} clicked, selected option: ${value}`);
+        },
         onMessageBoxButtonClick: (button, value) => {
             if (!button || !value) return;
             console.log(`Message Box button ${button} clicked, value: ${value}`);
             document.getElementById('dialog-overlay').style.display = 'none';
+        },
+        onNotificationClose: (id, type, title, message) => {
+            if (!id) return;
+            console.log(`Notification with id of ${id} was closed`);
         }
     });
 

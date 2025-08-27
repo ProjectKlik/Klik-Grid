@@ -1,0 +1,7 @@
+standardInitControls({
+    onContextMenuClick: (container, ctxMenuValue, value) => {
+        if (!container || !value) return;
+        // Handle dropdown click
+        console.log(`Context Menu ${ctxMenuValue} clicked, selected option: ${value}`);
+    }
+});

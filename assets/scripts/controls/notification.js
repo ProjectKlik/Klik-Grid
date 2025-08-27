@@ -1,4 +1,4 @@
-let notificationCallback = null;
+let notificationCallback;
 let activeNotifications = [];
 
 export function notification(callback) {
@@ -68,8 +68,8 @@ function setupNotificationBehavior(el, id, type, title, message, duration, custo
 
     // Click handler
     el.addEventListener('click', () => {
-        customCallback?.(type, title, message);
-        notificationCallback?.(type, title, message);
+        customCallback?.(id, type, title, message);
+        notificationCallback?.(id, type, title, message);
     });
 
     // Auto-close timer
@@ -107,7 +107,6 @@ function closeNotification(id) {
     // Remove from DOM after animation completes
     setTimeout(() => {
         element.remove();
-        notificationCallback?.('close', id);
     }, 500);
 }
 

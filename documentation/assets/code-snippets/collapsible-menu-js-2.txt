@@ -1,0 +1,6 @@
+standardInitControls({
+    onCollapsibleClick: (container, state) => {
+        if(!container) return;
+        console.log(`The collapsible menu ${container}'s state is now ${state}`);
+    }
+});

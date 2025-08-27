@@ -1,12 +1,11 @@
 /* ===================== */
-/* DROPDOWN BASE STYLES */
+/* CONTEXT MENU BASE STYLES */
 /* ===================== */
-.dropdown-container {
-    width: fit-content;
+.has-ctx-menu {
     position: relative;
 }
 
-.dropdown-list {
+.ctx-menu-list {
     /* Layout */
     display: none;
     flex-direction: column;
@@ -26,16 +25,16 @@
 }
 
 /* ===================== */
-/* DROPDOWN STATES */
+/* CONTEXT MENU STATES */
 /* ===================== */
-.dropdown-container.active .dropdown-list {
+.has-ctx-menu.active .ctx-menu-list {
     display: flex;
 }
 
 /* ===================== */
-/* DROPDOWN ITEMS */
+/* CONTEXT MENU ITEMS */
 /* ===================== */
-.dropdown-list li {
+.ctx-menu-list li {
     /* Layout */
     display: flex;
     align-items: center;
@@ -57,35 +56,35 @@
     transition: var(--transition-fast);
 }
 
-.dropdown-list li:hover {
+.ctx-menu-list li:hover {
     background-color: var(--surface-0);
 }
 
 /* ===================== */
-/* DROPDOWN ICONS */
+/* CONTEXT MENU ICONS */
 /* ===================== */
-.dropdown-list li .fill-icon,
-.dropdown-list li .outline-icon {
+.ctx-menu-list li .fill-icon,
+.ctx-menu-list li .outline-icon {
     min-width: var(--icon-large);
     min-height: var(--icon-large);
     max-width: var(--icon-large);
     max-height: var(--icon-large);
 }
 
-.dropdown-list li .fill-icon {
+.ctx-menu-list li .fill-icon {
     fill: var(--control-fg-primary);
 }
 
-.dropdown-list li .outline-icon {
+.ctx-menu-list li .outline-icon {
     fill: transparent;
     stroke: var(--control-fg-primary);
     stroke-width: var(--stroke-medium);
 }
 
 /* ===================== */
-/* DROPDOWN DIVIDER */
+/* CONTEXT MENU DIVIDER */
 /* ===================== */
-.dropdown-list hr {
+.ctx-menu-list hr {
     width: 100%;
     margin: var(--gap-medium) 0;
 }
@@ -97,7 +96,7 @@
     position: relative;
 }
 
-.dropdown-submenu {
+.ctx-submenu {
     /* Layout */
     display: none;
     flex-direction: column;
@@ -122,6 +121,6 @@
     z-index: calc(var(--z-index-overlay) + 1);
 }
 
-.has-submenu:hover > .dropdown-submenu {
+.has-submenu:hover > .ctx-submenu {
     display: flex;
 }

@@ -1,0 +1,70 @@
+/* Collapsible Menu Container */
+.collapsible-menu-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    /* Spacing and Borders */
+    margin: var(--margin-none);
+    border-radius: var(--radius-small);
+    background-color: transparent;
+    outline: var(--border-medium) solid var(--control-border-accent);
+
+    /* Visual Effects */
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.collapsible-menu-container:hover {
+    outline-width: var(--outline-large);
+}
+
+/* Collapsible Menu Header */
+.collapsible-menu-container .menu-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: var(--radius-small) var(--radius-small) var(--radius-none) var(--radius-none);
+    padding: var(--padding-xlarge);
+    background-color: var(--surface-2);
+    color: var(--text-primary);
+    font-family: 'Noto-Sans-Regular';
+}
+
+/* Collapsible Menu Header Text */
+.collapsible-menu-container pre {
+    margin: var(--margin-none);
+    padding: var(--padding-xlarge);
+    white-space: pre-wrap;
+}
+
+/* Icon */
+.collapsible-menu-container svg {
+    margin-left: auto;
+
+    fill: var(--control-fg-primary);
+
+    min-width: var(--icon-large);
+    min-height: var(--icon-large);
+    max-width: var(--icon-large);
+    max-height: var(--icon-large);
+
+    transition: var(--transition-medium);
+}
+
+.collapsible-menu-container .menu-header.active svg {
+    transform: rotate(180deg);
+}
+
+.collapsible-menu-container .menu-content {
+    max-height: 0;
+    padding: var(--padding-none);
+    transition: var(--transition-medium);
+    overflow: hidden;
+}
+
+.collapsible-menu-container .menu-content.active {
+    padding: var(--padding-xlarge);
+}

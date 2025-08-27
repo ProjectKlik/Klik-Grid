@@ -1,0 +1,26 @@
+const options = [
+    'Option 1',
+    {
+        text: 'Option 2',
+        value: '2',
+        submenu: [
+            'Suboption 2.1',
+            {
+                text: 'Suboption 2.2',
+                value: '2.2',
+                submenu: ['Deep 2.2.1', 'Deep 2.2.2']
+            },
+            'Suboption 2.3'
+        ]
+    },
+    'Option 3',
+    '---', // or 'hr' for separator
+    'Option 4'
+];
+
+window.createContextMenu(
+    'PARENTELEMENT', // For specifying where to create
+    'Sample Context Menu', // For the context menu data value
+    options, // For adding options to the context menu
+    '', // For adding class to the context menu parent
+);
