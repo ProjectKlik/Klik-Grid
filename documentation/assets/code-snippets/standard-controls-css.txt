@@ -1,2 +1,2 @@
 <!-- Modules -->
-<link rel="stylesheet" href="/assets/styles/modules/standard-controls.css">
+<link rel="stylesheet" type="text/css" href="../assets/styles/modules/standard-controls.css">

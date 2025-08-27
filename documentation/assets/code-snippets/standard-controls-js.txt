@@ -1,2 +1,2 @@
 <!-- Modules -->
-<script type="module" src="/assets/scripts/modules/standard-controls.js"></script>
+<script type="module" src="../assets/scripts/modules/standard-controls.js"></script>
