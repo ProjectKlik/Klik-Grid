@@ -68,8 +68,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-left: auto;
-    background-color: var(--color-yellow-900);
-    border: var(--border-small) solid var(--color-yellow-500);
+    background-color: var(--color-cyan-900);
+    border: var(--border-small) solid var(--color-cyan-500);
     border-radius: var(--radius-medium);
 }
 

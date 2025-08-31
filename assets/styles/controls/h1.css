@@ -5,3 +5,7 @@ h1 {
     font-weight: bold;
     color: var(--text-primary);
 }
+
+h1.no-margin {
+	margin: var(--margin-none);
+}

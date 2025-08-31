@@ -1,2 +1,2 @@
-<!-- Modules -->
-<script type="module" src="../assets/scripts/modules/standard-controls.js"></script>
+/* Access to Function */
+import { standardInitControls } from "../../../assets/scripts/modules/standard-controls.js";

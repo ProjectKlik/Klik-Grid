@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function actionHistory(callback) {
     globalCallbacks = callback;
-    scan();
+    scanActionHistory();
 }
 
-function scan() {
+export function scanActionHistory() {
     const containers = document.querySelectorAll('.action-history-container:not([data-initialized])');
     const apis = [];
     
@@ -180,7 +180,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createActionHistory(parentSelector, className = '') {
+function createActionHistory(parentSelector, className) {
     // Determine targets similar to radio button logic
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

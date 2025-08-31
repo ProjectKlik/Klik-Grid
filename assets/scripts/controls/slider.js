@@ -3,11 +3,11 @@ let globalCallbacks;
 /* Initialization */
 export function slider(callback) {
     globalCallbacks = callback;
-    scan();
+    scanSlider();
     setupThemeObserver();
 }
 
-function scan() {
+export function scanSlider() {
     document.querySelectorAll('.slider:not([data-initialized])').forEach(slider => {
         // Mark as initialized to prevent duplicate handlers
         slider.dataset.initialized = 'true';
@@ -27,7 +27,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createSlider(title, min = 0, max = 100, value = 50, parentSelector, groupClassName = '', className = '', orientation = 'vertical') {
+function createSlider(title, min = 0, max = 100, value = 50, parentSelector, groupClassName, className, orientation) {
     // Find target elements
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

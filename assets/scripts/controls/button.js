@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function button(callback) {
   globalCallbacks = callback;
-  scan();
+  scanButton();
 }
 
-function scan() {
+export function scanButton() {
   document.querySelectorAll('.button-group').forEach(group => {
     group.querySelectorAll('button:not([data-initialized])').forEach(button => {
       // Mark as initialized to prevent duplicate handlers
@@ -21,7 +21,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createButton(label, value, parentSelector, className = '', variant = '', orientation = 'horizontal', iconHTML = '', iconPosition = 'before') {
+function createButton(label, value, parentSelector, className, variant, orientation, iconHTML, iconPosition) {
   // Spawn the button in the specified parent
   const isId = parentSelector?.startsWith('#');
   const isClass = parentSelector?.startsWith('.');
@@ -81,8 +81,8 @@ function createButton(label, value, parentSelector, className = '', variant = ''
     }
 
     if (value) btn.dataset.buttonValue = value;
-    if (className) btn.classList.add(className);
-    if (variant) btn.classList.add(variant);
+    if (className) className.split(' ').forEach(c => group.classList.add(c));
+	if (variant) variant.split(' ').forEach(c => btn.classList.add(c));
     if (orientation) group.classList.add(orientation);
 
     group.appendChild(btn);

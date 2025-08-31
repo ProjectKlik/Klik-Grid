@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function toggleButton(callback) {
     globalCallbacks = callback;
-    scan();
+    scanToggleButton();
 }
 
-function scan() {
+export function scanToggleButton() {
     document.querySelectorAll('.toggle-button-group').forEach(group => {
         group.querySelectorAll('button:not([data-initialized])').forEach(button => {
             // Mark as initialized to prevent duplicate handlers
@@ -26,7 +26,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createToggleButton(label, value, parentSelector, className = '', variant = '', orientation = 'horizontal', iconHTML = '', iconPosition = 'before', activeIndex = -1) {
+function createToggleButton(label, value, parentSelector, className = '', variant = '', orientation = '', iconHTML = '', iconPosition = 'before', activeIndex = -1) {
     // Spawn the toggle button in the specified parent
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');
@@ -84,9 +84,9 @@ function createToggleButton(label, value, parentSelector, className = '', varian
         else {
             if (label) btn.textContent = label;
         }
-        if (value) btn.dataset.buttonValue = value;
-        if (className) group.classList.add(className);
-        if (variant) btn.classList.add(variant);
+        if (value) btn.dataset.toggleValue = value;
+        if (className) className.split(' ').forEach(c => group.classList.add(c));
+		if (variant) variant.split(' ').forEach(c => btn.classList.add(c));
         if (orientation) group.classList.add(orientation);
 
         group.appendChild(btn);

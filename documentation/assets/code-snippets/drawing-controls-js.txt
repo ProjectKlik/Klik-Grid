@@ -1,2 +1,2 @@
-<!-- Modules -->
-<script type="module" src="../assets/scripts/modules/drawing-controls.js"></script>
+/* Access to Function */
+import { drawingInitControls } from "../../../assets/scripts/modules/drawing-controls.js";

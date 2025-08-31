@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function colorPicker(callback) {
     globalCallbacks = callback;
-    scan();
+    scanColorPicker();
 }
 
-function scan() {
+export function scanColorPicker() {
     document.querySelectorAll('.colorpicker-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -663,7 +663,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createColorPicker(parentSelector, value, className = '') {
+function createColorPicker(parentSelector, value, className) {
     // Spawn the color picker in the specified parent
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

@@ -34,53 +34,58 @@ window.inject = (() => {
         return [];
     };
 
-    return async function (filePath, targetSelector = null) {
-        try {
-            const response = await fetch(filePath);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${filePath}: ${response.status}`);
+    return function (filePath, targetSelector = null) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch ${filePath}: ${response.status}`);
+                }
+
+                const fileExtension = filePath.split('.').pop().toLowerCase();
+                const content = await response.text();
+
+                if (injectedFiles.has(filePath)) {
+                    console.warn(`File already injected: ${filePath}`);
+                    return;
+                }
+
+                switch (fileExtension) {
+                    case 'css':
+                        createStyleElement(content, filePath);
+                        injectedFiles.add(filePath);
+                        resolve();
+                        break;
+
+                    case 'js':
+                        createScriptElement(content, filePath);
+                        injectedFiles.add(filePath);
+                        resolve();
+                        break;
+
+                    case 'html':
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(content, 'text/html');
+                        const targetElements = getTargetElements(targetSelector);
+
+                        if (targetElements.length === 0) {
+                            throw new Error(`Target element not found: ${targetSelector}`);
+                        }
+
+                        const bodyContent = doc.body.innerHTML;
+                        targetElements.forEach(element => {
+                            element.insertAdjacentHTML('beforeend', bodyContent);
+                        });
+                        resolve();
+                        break;
+
+                    default:
+                        throw new Error(`Unsupported file type: ${fileExtension}`);
+                }
+            } catch (error) {
+                console.error('Injection failed:', error);
+                reject(error);
             }
-
-            const fileExtension = filePath.split('.').pop().toLowerCase();
-            const content = await response.text();
-
-            if (injectedFiles.has(filePath)) {
-                console.warn(`File already injected: ${filePath}`);
-                return;
-            }
-
-            switch (fileExtension) {
-                case 'css':
-                    createStyleElement(content, filePath);
-                    injectedFiles.add(filePath);
-                    break;
-
-                case 'js':
-                    createScriptElement(content, filePath);
-                    injectedFiles.add(filePath);
-                    break;
-
-                case 'html':
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(content, 'text/html');
-                    const targetElements = getTargetElements(targetSelector);
-
-                    if (targetElements.length === 0) {
-                        throw new Error(`Target element not found: ${targetSelector}`);
-                    }
-
-                    const bodyContent = doc.body.innerHTML;
-                    targetElements.forEach(element => {
-                        element.innerHTML += bodyContent;
-                    });
-                    break;
-
-                default:
-                    throw new Error(`Unsupported file type: ${fileExtension}`);
-            }
-        } catch (error) {
-            console.error('Injection failed:', error);
-            throw error;
-        }
+        })
     };
 })();

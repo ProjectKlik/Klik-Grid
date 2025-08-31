@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function dropdown(callback) {
     globalCallbacks = callback;
-    scan();
+    scanDropdown();
 }
 
-function scan() {
+export function scanDropdown() {
     document.querySelectorAll('.dropdown-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -44,7 +44,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createDropdown(buttonText, buttonValue = '', parentSelector, options, containerClassName = '', buttonClassName = '') {
+function createDropdown(buttonText, buttonValue, parentSelector, options, containerClassName, buttonClassName) {
     const SVG_NS = 'http://www.w3.org/2000/svg';
 
     /* tiny helper for namespaced elements */

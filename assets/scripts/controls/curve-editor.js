@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function curveEditor(callback) {
     globalCallbacks = callback;
-    scan();
+    scanCurveEditor();
 }
 
-function scan() {
+export function scanCurveEditor() {
     document.querySelectorAll('.curve-editor-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -879,7 +879,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createCurveEditor(parentSelector, value, className = '') {
+function createCurveEditor(parentSelector, value, className) {
     // Spawn the curve editor in the specified parent
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

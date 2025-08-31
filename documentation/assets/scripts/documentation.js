@@ -1,10 +1,10 @@
-import { initControls as standardInitControls } from "../../../assets/scripts/modules/standard-controls.js";
-import { initControls as dataInitControls } from "../../../assets/scripts/modules/data-controls.js";
-import { initControls as drawingInitControls } from "../../../assets/scripts/modules/drawing-controls.js";
+import { standardInitControls } from "../../../assets/scripts/modules/standard-controls.js";
+import { dataInitControls } from "../../../assets/scripts/modules/data-controls.js";
+import { drawingInitControls } from "../../../assets/scripts/modules/drawing-controls.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     standardInitControls({
-        onButtonClick: async (button, value) => {
+        onButtonClick: (button, value) => {
             if (!button || !value) return;
 
             // Handle button click
@@ -87,11 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Injection Cases
                 case 'Sample Inject HTML':
-                    return await window.inject("./assets/components/html/sample-component.html", "injector-sample-container");
+                    window.inject("./assets/components/html/sample-component.html", "injector-sample-container");
+                    break;
                 case 'Sample Inject CSS':
-                    return await window.inject("./assets/components/css/sample-component.css");
+                    window.inject("./assets/components/css/sample-component.css");
+                    break;
                 case 'Sample Inject JS':
-                    return await window.inject("./assets/components/js/sample-component.js");
+                    window.inject("./assets/components/js/sample-component.js");
+                    break;
 
                 // Default
                 default:

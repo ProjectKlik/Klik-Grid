@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function separator(callback) {
     globalCallbacks = callback;
-    scan();
+    scanSeparator();
 }
 
-function scan() {
+export function scanSeparator() {
     document.querySelectorAll('.separator-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -17,7 +17,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createSeparator(parentSelector, structure, separatorValue = '', containerClassName = '') {
+function createSeparator(parentSelector, structure, separatorValue, containerClassName) {
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');
     let targets = [];

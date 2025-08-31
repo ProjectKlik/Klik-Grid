@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function socket(callback) {
     globalCallbacks = callback;
-    scan();
+    scanSocket();
 }
 
-function scan() {
+export function scanSocket() {
     document.querySelectorAll('.socket:not([data-initialized])').forEach(socket => {
         // Mark as initialized to prevent duplicate handlers
         socket.dataset.initialized = 'true';
@@ -17,7 +17,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createSocket(parentSelector, containerClassName = '', className = '') {
+function createSocket(parentSelector, containerClassName, className) {
     // Determine target elements
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

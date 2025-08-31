@@ -73,10 +73,10 @@ input[type="checkbox"]:checked::after {
 
 .checkbox-button-group.vertical {
     flex-direction: column;
-    height: 100%;
+    height: fit-content;
 }
 
 .checkbox-button-group.horizontal {
     flex-direction: row;
-    width: 100%;
+    width: fit-content;
 }

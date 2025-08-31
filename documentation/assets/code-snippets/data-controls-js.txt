@@ -1,2 +1,2 @@
-<!-- Modules -->
-<script type="module" src="../assets/scripts/modules/data-controls.js"></script>
+/* Access to Function */
+import { dataInitControls } from "../../../assets/scripts/modules/data-controls.js";

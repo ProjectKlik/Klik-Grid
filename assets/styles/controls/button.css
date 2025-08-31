@@ -59,7 +59,7 @@ button.flat {
 
 button.flat.type-info {
     outline: var(--outline-none);
-    background-color: var(--color-cyan-800);;
+    background-color: var(--color-cyan-800);
     color: var(--text-primary);
 }
 

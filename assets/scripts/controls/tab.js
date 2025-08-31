@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function tab(callback) {
     globalCallbacks = callback;
-    scan();
+    scanTab();
 }
 
-function scan() {
+export function scanTab() {
     document.querySelectorAll('.tab-group').forEach(group => {
         // Mark as initialized to prevent duplicate handlers
         group.dataset.initialized = 'true';
@@ -26,7 +26,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createTab(label, value, parentSelector, groupClassName = '', className = '', activeIndex = -1) {
+function createTab(label, value, parentSelector, groupClassName, className, activeIndex = -1) {
     // Find target elements
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

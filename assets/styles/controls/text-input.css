@@ -53,10 +53,10 @@
 
 .text-input-group.vertical {
   flex-direction: column;
-  height: 100%;
+  height: fit-content;
 }
 
 .text-input-group.horizontal {
   flex-direction: row;
-  width: 100%;
+  width: fit-content;
 }

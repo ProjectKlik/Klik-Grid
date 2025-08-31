@@ -13,7 +13,7 @@ import { contextMenu } from '../controls/context-menu.js';
 import { messageBox } from '../controls/message-box.js';
 import { notification } from '../controls/notification.js';
 
-export function initControls(callbacks = {}) {
+export function standardInitControls(callbacks = {}) {
     button(callbacks.onButtonClick);
     toggleButton(callbacks.onToggleButtonClick);
     radioButton(callbacks.onRadioButtonClick);

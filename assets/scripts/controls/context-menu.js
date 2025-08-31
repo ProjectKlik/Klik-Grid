@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function contextMenu(callback) {
     globalCallbacks = callback;
-    scan();
+    scanContextMenu();
 }
 
-function scan() {
+export function scanContextMenu() {
     document.querySelectorAll('.has-ctx-menu:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';
@@ -45,7 +45,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createContextMenu(parentSelector, ctxMenuValue, options, containerClassName = '') {
+function createContextMenu(parentSelector, ctxMenuValue, options, containerClassName) {
     const SVG_NS = 'http://www.w3.org/2000/svg';
 
     /* tiny helper for namespaced elements */

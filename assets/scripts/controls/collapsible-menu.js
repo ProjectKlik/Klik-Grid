@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function collapsibleMenu(callback) {
     globalCallbacks = callback;
-    scan();
+    scanCollapsibleMenu();
 }
 
-function scan() {
+export function scanCollapsibleMenu() {
     document.querySelectorAll('.collapsible-menu-container:not([data-initialized])').forEach(container => {
         // Mark as initialized to prevent duplicate handlers
         container.dataset.initialized = 'true';

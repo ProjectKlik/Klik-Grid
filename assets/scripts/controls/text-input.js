@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function textInput(callback) {
     globalCallbacks = callback;
-    scan();
+    scanTextInput();
 }
 
-function scan() {
+export function scanTextInput() {
     document.querySelectorAll('.text-input:not([data-initialized])').forEach(input => {
         // Mark as initialized to prevent duplicate handlers
         input.dataset.initialized = 'true';

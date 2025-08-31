@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function checkboxButton(callback) {
     globalCallbacks = callback
-    scan();
+    scanCheckboxButton();
 }
 
-function scan() {
+export function scanCheckboxButton() {
     document.querySelectorAll('.checkbox-button-group').forEach(group => {
         group.querySelectorAll('input[type="checkbox"]:not([data-initialized])').forEach(checkbox => {
             // Mark as initialized to prevent duplicate handlers
@@ -29,7 +29,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createCheckboxButton(label, value, parentSelector, groupClassName = '', className = '', orientation = 'horizontal', activeIndex = -1) {
+function createCheckboxButton(label, value, parentSelector, groupClassName, className, orientation, activeIndex = -1) {
     // Spawn the button in the specified parent
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');

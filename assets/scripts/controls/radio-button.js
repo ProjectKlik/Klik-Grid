@@ -3,10 +3,10 @@ let globalCallbacks;
 /* Initialization */
 export function radioButton(callback) {
     globalCallbacks = callback;
-    scan();
+    scanRadioButton();
 }
 
-function scan() {
+export function scanRadioButton() {
     document.querySelectorAll('.radio-button-group').forEach(group => {
         group.querySelectorAll('input[type="radio"]:not([data-initialized])').forEach(radio => {
             // Mark as initialized to prevent duplicate handlers
@@ -23,7 +23,7 @@ function scan() {
 }
 
 /* Programmatical Creation */
-function createRadioButton(label, value, parentSelector, groupClassName = '', className = '', orientation = 'horizontal', radioName = `radio-group-${Math.random().toString(36).substr(2, 9)}`, activeIndex = -1) {
+function createRadioButton(label, value, parentSelector, groupClassName, className, orientation, radioName, activeIndex = -1) {
     // Spawn the button in the specified parent
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');
@@ -74,6 +74,7 @@ function createRadioButton(label, value, parentSelector, groupClassName = '', cl
         const input = document.createElement('input');
         input.type = 'radio';
         if (value) input.dataset.radioValue = value;
+        if (!radioName) radioName = `radio-group-${Math.random().toString(36).substr(2, 9)}`;
         input.name = radioName;
 
         const span = document.createElement('span');
