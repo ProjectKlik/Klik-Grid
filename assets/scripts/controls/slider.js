@@ -116,7 +116,7 @@ function createSlider(title, min = 0, max = 100, value = 50, parentSelector, gro
     });
     
     // Rescan to initialize new slider(s)
-    scan();
+    scanSlider();
     
     return isClass ? createdSliders : createdSliders[0];
 }

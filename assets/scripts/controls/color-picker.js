@@ -746,7 +746,7 @@ function createColorPicker(parentSelector, value, className) {
     });
     
     // Rescan to initialize new color picker(s)
-    scan();
+    scanColorPicker();
     
     return isClass ? createdColorPickers : createdColorPickers[0];
 }

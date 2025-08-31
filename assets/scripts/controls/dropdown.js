@@ -142,7 +142,7 @@ function createDropdown(buttonText, buttonValue, parentSelector, options, contai
     });
 
     // Rescan to initialize new Dropdown
-    scan();
+    scanDropdown();
 
     return parentSelector?.startsWith('.') ? createdDropdowns : createdDropdowns[0];
 }

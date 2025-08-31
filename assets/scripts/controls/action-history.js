@@ -225,7 +225,7 @@ function createActionHistory(parentSelector, className) {
     });
 
     // Rescan to initialize new container(s)
-    scan();
+    scanActionHistory();
 
     return isClass ? createdActionHistory : createdActionHistory[0];
 }

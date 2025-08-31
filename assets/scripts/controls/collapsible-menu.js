@@ -112,7 +112,7 @@ function createCollapsibleMenu(parentSelector, headerText, containerClassName, c
     });
 
     // Rescan to initialize new menu(s)
-    scan();
+    scanCollapsibleMenu();
 
     return isClass ? createdMenus : createdMenus[0];
 }

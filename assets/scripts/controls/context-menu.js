@@ -140,7 +140,7 @@ function createContextMenu(parentSelector, ctxMenuValue, options, containerClass
     });
 
     // Rescan to initialize new context menus
-    scan();
+    scanContextMenu();
 
     return parentSelector?.startsWith('.') ? createdContextMenus : createdContextMenus[0];
 }

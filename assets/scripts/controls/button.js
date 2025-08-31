@@ -90,7 +90,7 @@ function createButton(label, value, parentSelector, className, variant, orientat
   });
 
   // Rescan to initialize new button(s)
-  scan();
+  scanButton();
 
   return isClass ? createdButtons : createdButtons[0];
 }

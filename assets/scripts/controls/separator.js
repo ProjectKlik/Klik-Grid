@@ -102,7 +102,7 @@ function createSeparator(parentSelector, structure, separatorValue, containerCla
     });
 
     // Rescan to initialize new Separators
-    scan();
+    scanSeparator();
 
     return parentSelector?.startsWith('.') ? createdSeparators : createdSeparators[0];
 }

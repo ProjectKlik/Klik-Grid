@@ -85,7 +85,7 @@ function createTextInput(value = '', placeholder = '', parentSelector, groupClas
     });
     
     // Rescan to initialize new input(s)
-    scan();
+    scanTextInput();
     
     return isClass ? createdInputs : createdInputs[0];
 }

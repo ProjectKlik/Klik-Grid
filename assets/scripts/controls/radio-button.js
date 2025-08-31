@@ -97,7 +97,7 @@ function createRadioButton(label, value, parentSelector, groupClassName, classNa
     });
 
     // Rescan to initialize new button(s)
-    scan();
+    scanRadioButton();
 
     return isClass ? createdInputs : createdInputs[0];
 }

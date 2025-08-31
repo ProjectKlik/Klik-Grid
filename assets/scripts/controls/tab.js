@@ -119,7 +119,7 @@ function createTab(label, value, parentSelector, groupClassName, className, acti
     });
     
     // Rescan to initialize new tab(s)
-    scan();
+    scanTab();
     
     return isClass ? createdTabs : createdTabs[0];
 }

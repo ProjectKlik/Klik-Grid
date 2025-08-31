@@ -99,7 +99,7 @@ function createToggleButton(label, value, parentSelector, className = '', varian
     });
 
     // Rescan to initialize new button(s)
-    scan();
+    scanToggleButton();
 
     return isClass ? createdToggleButtons : createdToggleButtons[0];
 }

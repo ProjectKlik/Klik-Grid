@@ -68,7 +68,7 @@ function createSocket(parentSelector, containerClassName, className) {
     });
 
     // Rescan to initialize new socket(s)
-    scan();
+    scanSocket();
 
     return isClass ? createdSockets : createdSockets[0];
 }

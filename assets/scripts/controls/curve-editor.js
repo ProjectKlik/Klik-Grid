@@ -957,7 +957,7 @@ function createCurveEditor(parentSelector, value, className) {
     });
 
     // Rescan to initialize new curve editor(s)
-    scan();
+    scanCurveEditor();
 
     return isClass ? createdCurveEditors : createdCurveEditors[0];
 }

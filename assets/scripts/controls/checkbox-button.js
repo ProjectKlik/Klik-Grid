@@ -101,7 +101,7 @@ function createCheckboxButton(label, value, parentSelector, groupClassName, clas
     });
 
     // Rescan to initialize new button(s)
-    scan();
+    scanCheckboxButton();
 
     return isClass ? createdInputs : createdInputs[0];
 }
