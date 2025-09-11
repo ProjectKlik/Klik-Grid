@@ -28,7 +28,7 @@ export function scanDropdown() {
                 // Update button text to show selected option
                 const selectedText = item.textContent.trim();
                 const svg = btn.querySelector('.fill-icon');
-                btn.textContent = selectedText;
+                if (!btn.classList.contains('fixed-dd-text')) btn.textContent = selectedText;
                 if (svg) btn.appendChild(svg);
 
                 globalCallbacks?.(btn, btn.dataset.dropdownbuttonValue, item.textContent.trim());

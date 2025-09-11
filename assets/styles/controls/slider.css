@@ -8,7 +8,8 @@
   
   /* Box Model */
   margin: var(--margin-none);
-  border-radius: var(--radius-small);
+  border: var(--border-medium) solid var(--control-bg-accent);
+  border-radius: var(--radius-medium);
   
   /* Visual */
   background: linear-gradient(
@@ -23,25 +24,45 @@
 /* ===================== */
 /* SLIDER THUMB */
 /* ===================== */
-.slider::-webkit-slider-thumb,
-.slider::-moz-range-thumb {
+
+/* These are separate because for some fucking reason chromium ignores it when combined*/
+.slider::-webkit-slider-thumb {
   /* Dimensions */
   width: 20px;
   height: 20px;
-  
+
   /* Box Model */
   border: var(--border-none);
   border-radius: var(--radius-circle);
   outline: var(--outline-medium) solid var(--control-border-normal);
   outline-offset: -2px;
-  
+
   /* Visual */
   background-color: var(--control-fg-secondary);
   cursor: pointer;
   transition: var(--transition-fast);
-  
+
   /* Browser Reset */
   -webkit-appearance: none;
+}
+
+.slider::-moz-range-thumb {
+  /* Dimensions */
+  width: 20px;
+  height: 20px;
+
+  /* Box Model */
+  border: var(--border-none);
+  border-radius: var(--radius-circle);
+  outline: var(--outline-medium) solid var(--control-border-normal);
+  outline-offset: -2px;
+
+  /* Visual */
+  background-color: var(--control-fg-secondary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  /* Browser Reset */
   appearance: none;
 }
 
@@ -74,6 +95,11 @@
 /* ===================== */
 /* SLIDER LAYOUTS */
 /* ===================== */
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
 .slider-wrapper {
   display: flex;
   align-items: center;
