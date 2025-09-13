@@ -1,7 +1,7 @@
 standardInitControls({
-    onTextInput: (input, value) => {
+    onTextInput: (input, text, value) => {
         if (!input || !value) return;
         // Handle text input
-        console.log(`Text input ${input.placeholder} changed to ${value}`);
+        console.log(`Text input ${input.placeholder} changed to ${text}`);
     }
 });

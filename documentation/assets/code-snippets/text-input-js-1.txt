@@ -1,5 +1,6 @@
 window.createTextInput(
     'Sample Text Input', // For the text input text
+    'Spawned Button', // For the text input data value
     'Placeholder', // For the text input placeholder
     'PARENTELEMENT', // For specifying where to create
     '', // For adding class to the text input group

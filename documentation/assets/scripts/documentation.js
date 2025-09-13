@@ -186,10 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Handle slider move
             console.log(`Slider ${title.textContent.trim()} moved, current value: ${value}`);
         },
-        onTextInput: (input, value) => {
+        onTextInput: (input, text, value) => {
             if (!input || !value) return;
             // Handle text input
-            console.log(`Text input ${input.placeholder} changed to ${value}`);
+            console.log(`Text input ${input.placeholder} changed to ${text}`);
         },
         onTabClick: (tab, value) => {
             if (!tab || !value) return;

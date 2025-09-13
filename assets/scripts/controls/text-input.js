@@ -18,13 +18,13 @@ export function scanTextInput() {
 
         // Handle input changes
         input.addEventListener('input', () => {
-            globalCallbacks?.(input, input.value);
+            globalCallbacks?.(input, input.value, input.dataset.textInputValue);
         });
     });
 }
 
 /* Programmatical Creation */
-function createTextInput(value = '', placeholder = '', parentSelector, groupClassName = '', className = '', orientation = 'vertical', maxlength = null) {
+function createTextInput(text = '', value = '', placeholder = '', parentSelector, groupClassName = '', className = '', orientation = 'vertical', maxlength = null) {
     // Spawn the input in the specified parent
     const isId = parentSelector?.startsWith('#');
     const isClass = parentSelector?.startsWith('.');
@@ -75,9 +75,10 @@ function createTextInput(value = '', placeholder = '', parentSelector, groupClas
         input.type = 'text';
         input.className = `text-input ${className}`.trim();
         
+		if (value) input.dataset.textInputValue = value;
         if (placeholder) input.placeholder = placeholder;
         if (maxlength) input.maxLength = maxlength;
-        if (value) input.value = value;
+        if (text) input.value = text;
         if (orientation) group.classList.add(orientation);
         
         group.appendChild(input);
@@ -96,7 +97,6 @@ window.createTextInput = createTextInput;
 /* ===================== */
 /* HELPER FUNCTIONS */
 /* ===================== */
-
 function initNumberInput(input) {
     // Allow these control keys
     const ALLOWED_KEYS = [
