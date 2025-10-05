@@ -1,4 +1,4 @@
-// For English
+// For English (American)
 document.documentElement.setAttribute('lang', 'en-US');
 
 // For Russian

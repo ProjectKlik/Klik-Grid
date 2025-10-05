@@ -31,9 +31,9 @@
 }
 
 /* ===================== */
-/* PANE STYLES */
+/* PANEL STYLES */
 /* ===================== */
-.separator.pane {
+.separator.panel {
   flex: 1;
   padding: var(--padding-medium);
   box-sizing: border-box;

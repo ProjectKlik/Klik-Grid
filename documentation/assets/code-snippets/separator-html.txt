@@ -1,21 +1,21 @@
 <div id="separator-showcaser" class="separator-container" data-separator-value="Sample Container">
     <div class="separator vertical-container">
         <div class="separator horizontal-container">
-            <div class="separator pane">
+            <div class="separator panel">
                 <h2 class="separator content">Top Left</h2>
                 <p class="separator content">Some Extra</p>
                 <p class="separator content">Text to Fill</p>
             </div>
             <div class="separator drag-bar vertical" data-separator-value="Vertical Drag-Bar 1">
             </div>
-            <div class="separator pane">
+            <div class="separator panel">
                 <h2 class="separator content">Top Center</h2>
                 <p class="separator content">Some Extra</p>
                 <p class="separator content">Text to Fill</p>
             </div>
             <div class="separator drag-bar vertical" data-separator-value="Vertical Drag-Bar 2">
             </div>
-            <div class="separator pane">
+            <div class="separator panel">
                 <h2 class="separator content">Top Right</h2>
                 <p class="separator content">Some Extra</p>
                 <p class="separator content">Text to Fill</p>
@@ -24,14 +24,14 @@
         <div class="separator drag-bar horizontal" data-separator-value="Horizontal Drag-Bar 1">
         </div>
         <div class="separator horizontal-container">
-            <div class="separator pane">
+            <div class="separator panel">
                 <h2 class="separator content">Bottom Left</h2>
                 <p class="separator content">Some Extra</p>
                 <p class="separator content">Text to Fill</p>
             </div>
             <div class="separator drag-bar vertical" data-separator-value="Vertical Drag-Bar 3">
             </div>
-            <div class="separator pane">
+            <div class="separator panel">
                 <h2 class="separator content">Bottom Right</h2>
                 <p class="separator content">Some Extra</p>
                 <p class="separator content">Text to Fill</p>

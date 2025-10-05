@@ -57,7 +57,7 @@ function buildNotificationHTML(id, type, title, message) {
         <button class="flat notification-close">&times;</button>
       </div>
       <div class="notification-message">${escapeHTML(message)}</div>
-      <div class="notification-progress" style="width:100%"></div>
+      <div class="notification-progress"></div>
     </div>
   `;
 }

@@ -58,8 +58,8 @@ function createSeparator(parentSelector, structure, separatorValue, containerCla
                 if (containerClassName) element.classList.add(containerClassName);
                 break;
 
-            case 'pane':
-                element.className = `separator pane ${structureItem.class || ''}`.trim();
+            case 'panel':
+                element.className = `separator panel ${structureItem.class || ''}`.trim();
                 break;
 
             case 'drag-bar':
@@ -117,7 +117,7 @@ function initSeparatorDrag(container, callback) {
     let isDragging = false;
     let currentBar = null;
     let startPos = 0;
-    let prevPane, nextPane, parentContainer;
+    let prevPanel, nextPanel, parentContainer;
     const MIN_SIZE = 100;
 
     // Event handlers
@@ -129,8 +129,8 @@ function initSeparatorDrag(container, callback) {
         const isHorizontal = currentBar.classList.contains('horizontal');
 
         startPos = isHorizontal ? e.clientY : e.clientX;
-        prevPane = currentBar.previousElementSibling;
-        nextPane = currentBar.nextElementSibling;
+        prevPanel = currentBar.previousElementSibling;
+        nextPanel = currentBar.nextElementSibling;
         parentContainer = currentBar.parentElement;
 
         document.body.style.userSelect = 'none';
@@ -144,14 +144,14 @@ function initSeparatorDrag(container, callback) {
         const currentPos = isHorizontal ? e.clientY : e.clientX;
         const rawDelta = currentPos - startPos;
 
-        const panes = getPanes(parentContainer);
-        const { prevSize, nextSize } = getPaneSizes(prevPane, nextPane, isHorizontal);
+        const panels = getPanels(parentContainer);
+        const { prevSize, nextSize } = getPanelSizes(prevPanel, nextPanel, isHorizontal);
 
         // Calculate constrained delta
         const delta = constrainDelta(rawDelta, prevSize, nextSize, MIN_SIZE);
 
         // Apply sizing changes
-        updatePaneSizes(prevPane, nextPane, panes, prevSize + delta, isHorizontal);
+        updatePanelSizes(prevPanel, nextPanel, panels, prevSize + delta, isHorizontal);
 
         // Update drag origin for smooth continuous dragging
         startPos += delta;
@@ -179,15 +179,15 @@ function initSeparatorDrag(container, callback) {
     };
 }
 
-function getPanes(container) {
+function getPanels(container) {
     return Array.from(container.children)
-        .filter(node => node.classList.contains('pane'));
+        .filter(node => node.classList.contains('panel'));
 }
 
-function getPaneSizes(prevPane, nextPane, isHorizontal) {
+function getPanelSizes(prevPanel, nextPanel, isHorizontal) {
     return {
-        prevSize: isHorizontal ? prevPane.offsetHeight : prevPane.offsetWidth,
-        nextSize: isHorizontal ? nextPane.offsetHeight : nextPane.offsetWidth
+        prevSize: isHorizontal ? prevPanel.offsetHeight : prevPanel.offsetWidth,
+        nextSize: isHorizontal ? nextPanel.offsetHeight : nextPanel.offsetWidth
     };
 }
 
@@ -197,15 +197,15 @@ function constrainDelta(rawDelta, prevSize, nextSize, minSize) {
     return Math.max(minDelta, Math.min(rawDelta, maxDelta));
 }
 
-function updatePaneSizes(prevPane, nextPane, allPanes, newPrevSize, isHorizontal) {
-    prevPane.style.flex = `0 0 ${newPrevSize}px`;
+function updatePanelSizes(prevPanel, nextPanel, allPanels, newPrevSize, isHorizontal) {
+    prevPanel.style.flex = `0 0 ${newPrevSize}px`;
 
-    allPanes.forEach(pane => {
-        if (pane !== prevPane && pane !== nextPane) {
-            const size = isHorizontal ? pane.offsetHeight : pane.offsetWidth;
-            pane.style.flex = `0 0 ${size}px`;
+    allPanels.forEach(panel => {
+        if (panel !== prevPanel && panel !== nextPanel) {
+            const size = isHorizontal ? panel.offsetHeight : panel.offsetWidth;
+            panel.style.flex = `0 0 ${size}px`;
         }
     });
 
-    nextPane.style.flex = '1 1 auto';
+    nextPanel.style.flex = '1 1 auto';
 }

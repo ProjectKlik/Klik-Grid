@@ -4,20 +4,20 @@ const options = {
         {
             type: 'horizontal',
             children: [
-                { type: 'pane', class: 'pane-top-left' },
+                { type: 'panel', class: 'panel-top-left' },
                 { type: 'drag-bar', orientation: 'vertical', value: 'Vertical Drag-Bar 1' },
-                { type: 'pane', class: 'pane-top-center' },
+                { type: 'panel', class: 'panel-top-center' },
                 { type: 'drag-bar', orientation: 'vertical', value: 'Vertical Drag-Bar 2' },
-                { type: 'pane', class: 'pane-top-right' }
+                { type: 'panel', class: 'panel-top-right' }
             ]
         },
         { type: 'drag-bar', orientation: 'horizontal', value: 'Horizontal Drag-Bar 1' },
         {
             type: 'horizontal',
             children: [
-                { type: 'pane', class: 'pane-bottom-left' },
+                { type: 'panel', class: 'panel-bottom-left' },
                 { type: 'drag-bar', orientation: 'vertical', value: 'Vertical Drag-Bar 3' },
-                { type: 'pane', class: 'pane-bottom-right' }
+                { type: 'panel', class: 'panel-bottom-right' }
             ]
         }
     ]
