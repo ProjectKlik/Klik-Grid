@@ -30,7 +30,7 @@ export function scanContextMenu() {
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
 
-                globalCallbacks?.(container, menuList.dataset.ctxMenuValue, item.textContent.trim());
+                globalCallbacks?.(container, menuList.dataset.ctxMenuValue, item.dataset.ctxMenuValue);
                 closeContextMenu(container);
             });
         });

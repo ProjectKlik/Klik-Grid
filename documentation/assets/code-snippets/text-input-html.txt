@@ -1,5 +1,30 @@
+// Standard Input Fields
 <div class="text-input-group vertical">
     <input type="text" placeholder="Text Input" class="text-input">
-    <input type="text" placeholder="Number Only" class="text-input number">
+    <input type="text" placeholder="Number Only" class="text-input integer">
     <input type="text" placeholder="Max 8 characters" maxlength="8" class="text-input">
+</div>
+
+// Value Input Fields
+<div class="text-input-group horizontal">
+    <label class="text-input-label">X: </label>
+    <input type="text" placeholder="Integers" class="text-input integer">
+</div>
+<div class="text-input-group horizontal">
+    <label class="text-input-label">Y: </label>
+    <input type="text" placeholder="Floats" class="text-input float">
+</div>
+<div class="text-input-group horizontal">
+    <label class="text-input-label">Z: </label>
+    <input type="text" placeholder="Positive Integers" class="text-input positive-integer">
+</div>
+<div class="text-input-group horizontal">
+    <label class="text-input-label">W: </label>
+    <input type="text" placeholder="Positive Floats" class="text-input positive-float">
+</div>
+
+// Value Input Fields With Constraints
+<div class="text-input-group horizontal">
+    <label class="text-input-label">Constrained: </label>
+    <input type="text" placeholder="Integers" class="text-input integer" data-min="-25" data-max="25">
 </div>

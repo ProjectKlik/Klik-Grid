@@ -6,5 +6,8 @@ window.createTextInput(
     '', // For adding class to the text input group
     '', // For adding class to the text input
     'vertical', // For specifying what orientation to list the text inputs within text input group
-    null // For specifying max character limit
+    null, // For specifying max character limit
+    'Drag Me:', // For adding draggable label
+    -255, // For adding minimum value limit
+    255 // For adding maximum value limit
 );

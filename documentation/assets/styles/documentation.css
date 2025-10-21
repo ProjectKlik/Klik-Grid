@@ -1,6 +1,10 @@
 body {
     display: flex;
     flex-direction: column;
+    padding: var(--padding-xxlarge);
+    box-sizing: border-box;
+    gap: var(--gap-large);
+    background-color: var(--surface-0);
 }
 
 #loading-screen {
@@ -51,8 +55,9 @@ body {
 
     box-sizing: border-box;
     background-color: var(--surface-0);
-    box-shadow: var(--shadow-bottom-hard);
     padding: var(--padding-none) var(--padding-xxlarge);
+    border: var(--border-small) solid var(--control-border-accent-strong);
+    border-radius: var(--radius-medium);
     z-index: var(--z-index-low);
 }
 
@@ -98,6 +103,8 @@ body {
 #documentation-container {
     display: flex;
     flex-direction: row;
+    border: var(--border-small) solid var(--control-border-accent-strong);
+    border-radius: var(--radius-medium);
     flex: 1;
 }
 

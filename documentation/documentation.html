@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klik Grid Documentation</title>
 
-    <!-- Documentation Styles -->
-    <link rel="stylesheet" type="text/css" href="../documentation/assets/styles/documentation.css">
-    <link rel="stylesheet" type="text/css" href="../documentation/assets/styles/strings/documentation-strings.css">
-
     <!-- Modules -->
     <link rel="stylesheet" type="text/css" href="../assets/styles/modules/normalizer.css">
     <link rel="stylesheet" type="text/css" href="../assets/styles/modules/variables.css">
@@ -21,6 +17,10 @@
     <link rel="stylesheet" type="text/css" href="../assets/styles/modules/standard-controls.css">
     <link rel="stylesheet" type="text/css" href="../assets/styles/modules/drawing-controls.css">
     <link rel="stylesheet" type="text/css" href="../assets/styles/modules/data-controls.css">
+
+    <!-- Documentation Styles -->
+    <link rel="stylesheet" type="text/css" href="../documentation/assets/styles/documentation.css">
+    <link rel="stylesheet" type="text/css" href="../documentation/assets/styles/strings/documentation-strings.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
         </div>
 
         <div id="version-tag">
-            <span id="version-tag-text">Beta v1.3</span>
+            <span id="version-tag-text">Beta v1.4</span>
         </div>
     </div>
 
@@ -141,8 +141,9 @@
                     speed up developement. It is built for developers who want a consistent and easy to use structure
                     for
                     developing desktop apps with <strong><a href="https://wails.io/" target="_blank"
-                            rel="noopener noreferrer" style="color: #FF5733;">Wails</a></strong>, <strong><a href="https://www.electronjs.org/" target="_blank"
-                            rel="noopener noreferrer" style="color: #33b4ff;">Electron</a></strong> or any other desktop
+                            rel="noopener noreferrer" style="color: #FF5733;">Wails</a></strong>, <strong><a
+                            href="https://www.electronjs.org/" target="_blank" rel="noopener noreferrer"
+                            style="color: #33b4ff;">Electron</a></strong> or any other desktop
                     frameworks of their choice.
                 </p>
                 <p>
@@ -559,7 +560,8 @@
                         <pre><code content="../documentation/assets/code-snippets/dropdown-js-2.txt"></code></pre>
                     </div>
                     <p>The <strong>dropdown</strong> can hold these following properties:</p>
-                    <blockquote class="property">flat, type-neutral, type-warning, type-error, type-success, fixed-dd-text, data-dropdown-value
+                    <blockquote class="property">flat, type-neutral, type-warning, type-error, type-success,
+                        fixed-dd-text, data-dropdown-value
                     </blockquote>
                     <p>The <strong>programmatical creation</strong> of dropdown can hold these following
                         properties:</p>
@@ -644,10 +646,36 @@
                 <br>
                 <fieldset>
                     <legend>Text Input</legend>
+                    <p class="no-top-margin">Standard Input Fields</p>
                     <div class="text-input-group vertical">
                         <input type="text" placeholder="Text Input" class="text-input">
-                        <input type="text" placeholder="Number Only" class="text-input number">
+                        <input type="text" placeholder="Number Only" class="text-input integer">
                         <input type="text" placeholder="Max 8 characters" maxlength="8" class="text-input">
+                    </div>
+                    <br>
+                    <p class="no-top-margin">Value Input Fields</p>
+                    <div class="text-input-group horizontal">
+                        <label class="text-input-label">X: </label>
+                        <input type="text" placeholder="Integers" class="text-input integer">
+                    </div>
+                    <div class="text-input-group horizontal">
+                        <label class="text-input-label">Y: </label>
+                        <input type="text" placeholder="Floats" class="text-input float">
+                    </div>
+                    <div class="text-input-group horizontal">
+                        <label class="text-input-label">Z: </label>
+                        <input type="text" placeholder="Positive Integers" class="text-input positive-integer">
+                    </div>
+                    <div class="text-input-group horizontal">
+                        <label class="text-input-label">W: </label>
+                        <input type="text" placeholder="Positive Floats" class="text-input positive-float">
+                    </div>
+                    <br>
+                    <p class="no-top-margin">Value Input Field With Constraint</p>
+                    <div class="text-input-group horizontal">
+                        <label class="text-input-label">Constrained: </label>
+                        <input type="text" placeholder="Integers" class="text-input integer" data-min="-25"
+                            data-max="25">
                     </div>
                     <p>In order to create it, you need to write this code:</p>
                     <div class="code-container">
@@ -673,14 +701,15 @@
                         </div>
                         <pre><code content="../documentation/assets/code-snippets/text-input-js-2.txt"></code></pre>
                     </div>
+                    <p>The <strong>text input</strong> can hold these following properties:</p>
+                    <blockquote class="property">integer, positive-integer, float, positive-float, data-min, data-max, data-text-input-value</blockquote>
                     <p>The <strong>text input group</strong> can hold these following properties:</p>
                     <blockquote class="property">vertical, horizontal</blockquote>
-					<p>The <strong>text input</strong> can hold these following properties:</p>
-                    <blockquote class="property">data-text-input-value</blockquote>
-                    <p>The <strong>programmatical creation</strong> of slider can hold these following
+                    <p>The <strong>programmatical creation</strong> of text input can hold these following
                         properties:</p>
                     <blockquote class="property">Text Input Text, Text Input Placeholder, Text Input Group Parent, Text
-                        Input Group Class, Text Input Class, Text Input Group Orientation, Text Input Character Limit
+                        Input Group Class, Text Input Class, Text Input Group Orientation, Text Input Character Limit,
+                        Text Input Label, Text Input Minimum Number, Text Input Maximum Number
                     </blockquote>
                     <br>
                     <p><strong>Text Input Group Parent</strong> can accept id with <strong>#</strong> or a class with
@@ -906,7 +935,8 @@
                     </div>
                     <p>The <strong>programmatical creation</strong> of collapsible menu can hold these following
                         properties:</p>
-                    <blockquote class="property">Collapsible Menu Container Parent, Collapsible Menu Header Text, Collapsible Menu Container Class,
+                    <blockquote class="property">Collapsible Menu Container Parent, Collapsible Menu Header Text,
+                        Collapsible Menu Container Class,
                         Collapsible Menu Content Class, Collapsible Menu Open State
                     </blockquote>
                     <br>
@@ -916,7 +946,8 @@
                         <strong>.</strong> selectors. If nothing is specified, it defaults to
                         <strong>&lt;body&gt;</strong> element.
                     </p>
-                    <p class="no-bottom-margin"><strong>Collapsible Menu Open State</strong> can accept <strong>true</strong>
+                    <p class="no-bottom-margin"><strong>Collapsible Menu Open State</strong> can accept
+                        <strong>true</strong>
                         or <strong>false</strong> property. If nothing is specified, it defaults to
                         <strong>false</strong>.
                     </p>
@@ -981,7 +1012,8 @@
                     </div>
                     <p>The <strong>programmatical creation</strong> of context menu can hold these following
                         properties:</p>
-                    <blockquote class="property">Context Menu Parent, Context Menu Data Value, Context Menu List, Context Menu Parent Class</blockquote>
+                    <blockquote class="property">Context Menu Parent, Context Menu Data Value, Context Menu List,
+                        Context Menu Parent Class</blockquote>
                     <br>
                     <p class="no-bottom-margin"><strong>Context Menu Parent</strong> can accept id with
                         <strong>#</strong> or a class

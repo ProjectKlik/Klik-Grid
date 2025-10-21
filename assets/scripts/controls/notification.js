@@ -111,8 +111,14 @@ function closeNotification(id) {
 }
 
 function updatePositions() {
+    const standardNotification = activeNotifications.find(notif =>
+        !notif.element.classList.contains('special')
+    );
+
+    const baseHeight = standardNotification ? standardNotification.element.offsetHeight : activeNotifications[0].element.offsetHeight;
+
     activeNotifications.forEach((notif, index) => {
-        notif.element.style.setProperty('--current-y', `${index * (notif.element.offsetHeight + 8)}px`);
+        notif.element.style.setProperty('--current-y', `${index * (baseHeight + 8)}px`);
     });
 }
 
