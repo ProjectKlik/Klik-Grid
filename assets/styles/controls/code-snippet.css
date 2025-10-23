@@ -40,3 +40,19 @@
 .code-header button {
     margin-left: auto;
 }
+
+/* PrismJS Styling */
+pre[class*="language-"] {
+    background: transparent !important;
+    margin: var(--margin-none) !important;
+    padding: var(--padding-large);
+    width: fit-content;
+    overflow-x: auto !important;
+}
+
+pre[class*="language-"] code {
+    font-size: var(--font-size-large);
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    display: block;
+}

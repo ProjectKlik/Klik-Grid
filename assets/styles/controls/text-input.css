@@ -3,7 +3,7 @@
 /* ===================== */
 .text-input {
   /* Typography */
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto-Sans-Regular';
   font-size: var(--font-size-large);
   color: var(--text-primary);
   text-align: left;
@@ -28,7 +28,7 @@
 /* TEXT INPUT LABEL STYLES */
 /* ===================== */
 .text-input-group .text-input-label {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto-Sans-Regular';
   font-size: var(--font-size-large);
   color: var(--text-primary);
   cursor: ew-resize;

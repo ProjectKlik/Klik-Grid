@@ -11,7 +11,6 @@
     outline: var(--border-medium) solid var(--control-border-accent);
 
     /* Visual Effects */
-    cursor: pointer;
     transition: var(--transition-fast);
 }
 
@@ -31,19 +30,19 @@
     background-color: var(--surface-2);
     color: var(--text-primary);
     font-family: 'Noto-Sans-Regular';
+    cursor: pointer;
 }
 
 /* Collapsible Menu Header Text */
-.collapsible-menu-container pre {
-    margin: var(--margin-none);
-    padding: var(--padding-xlarge);
+.collapsible-menu-container span {
+    font-family: Noto-Sans-Regular;
+    color: var(--text-primary);
     white-space: pre-wrap;
+    user-select: none;
 }
 
 /* Icon */
 .collapsible-menu-container svg {
-    margin-left: auto;
-
     fill: var(--control-fg-primary);
 
     min-width: var(--icon-large);
@@ -54,7 +53,8 @@
     transition: var(--transition-medium);
 }
 
-.collapsible-menu-container .menu-header.active svg {
+.collapsible-menu-container .menu-header.active .collapse-icon {
+    transition: var(--transition-medium);
     transform: rotate(180deg);
 }
 
@@ -67,4 +67,8 @@
 
 .collapsible-menu-container .menu-content.active {
     padding: var(--padding-xlarge);
+}
+
+.collapsible-menu-container .menu-header .spacer {
+    margin-left: auto;
 }

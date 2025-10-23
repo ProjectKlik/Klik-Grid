@@ -14,6 +14,7 @@ export function codeSnippet(callback) {
                     if (!res.ok) throw new Error('File is missing or file path is incorrect');
                     const text = await res.text();
                     codeBlock.textContent = text;
+                    Prism.highlightElement(codeBlock);
                 } catch (err) {
                     codeBlock.textContent = 'Error fetching code snippet. Cause: ' + err.message + '\n\nFile path: ' + filePath;
                 }
