@@ -1,0 +1,12 @@
+standardInitControls({
+    onDrilldownMenuButtonClick: (button, value) => {
+        if (!button || !value) return;
+        console.log(`Drilldown Menu button ${button} clicked, value: ${value}`);
+
+        switch (value) {
+            case 'close':
+                document.getElementById('dialog-overlay').style.display = 'none';
+                break;
+        }
+    }
+});

@@ -6,6 +6,14 @@ h3 {
     color: var(--text-primary);
 }
 
+h3.no-top-margin {
+    margin-top: var(--margin-none);
+}
+
+h3.no-bottom-margin {
+    margin-bottom: var(--margin-none);
+}
+
 h3.no-margin {
 	margin: var(--margin-none);
 }

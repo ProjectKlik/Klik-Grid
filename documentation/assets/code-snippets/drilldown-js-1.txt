@@ -1,0 +1,76 @@
+const cube = `
+<svg class="outline-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21 16.008v-8.018a1.98 1.98 0 0 0 -1 -1.717l-7 -4.008a2.016 2.016 0 0 0 -2 0l-7 4.008c-.619 .355 -1 1.01 -1 1.718v8.018c0 .709 .381 1.363 1 1.717l7 4.008a2.016 2.016 0 0 0 2 0l7 -4.008c.619 -.355 1 -1.01 1 -1.718z"/>
+    <path d="M12 22v-10"/>
+    <path d="M12 12l8.73 -5.04"/>
+    <path d="M3.27 6.96l8.73 5.04"/>
+</svg>
+`;
+
+const stackFront = `
+<svg class="outline-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 4l-8 4l8 4l8 -4l-8 -4" fill="currentColor"/>
+    <path d="M8 14l-4 2l8 4l8 -4l-4 -2"/>
+    <path d="M8 10l-4 2l8 4l8 -4l-4 -2"/>
+</svg>
+`;
+
+const stackMiddle = `
+<svg class="outline-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 10l4 -2l-8 -4l-8 4l4 2"/>
+    <path d="M12 12l-4 -2l-4 2l8 4l8 -4l-4 -2l-4 2z" fill="currentColor"/>
+    <path d="M8 14l-4 2l8 4l8 -4l-4 -2"/>
+</svg>
+`;
+
+const stackBack = `
+<svg class="outline-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 8l8 4l8 -4l-8 -4z"/>
+    <path d="M12 16l-4 -2l-4 2l8 4l8 -4l-4 -2l-4 2z" fill="currentColor"/>
+    <path d="M8 10l-4 2l4 2m8 0l4 -2l-4 -2"/>
+</svg>
+`;
+
+document.getElementById('dialog-overlay').style.display = 'block';
+
+window.showDrilldownMenu(
+    "Sample Drilldown",
+    [
+        { text: "Sample Item 1", buttonValue: "item_button_sample_item_layer_1", icon: cube },
+        {
+            text: "Sample Category 1",
+            buttonValue: "page_button_sample_category_layer_1",
+            icon: stackFront,
+            items: [
+                { text: "Sample Item 2", buttonValue: "item_button_sample_item_layer_2", icon: cube },
+                {
+                    text: "Sample Category 2",
+                    buttonValue: "page_button_sample_category_layer_2",
+                    icon: stackMiddle,
+                    items: [
+                        { text: "Sample Item 3", buttonValue: "item_button_sample_item_layer_3", icon: cube },
+                        {
+                            text: "Sample Category 3",
+                            buttonValue: "page_button_sample_category_layer_3",
+                            icon: stackBack,
+                            items: [
+                                { text: "Sample Item 4", buttonValue: "item_button_sample_item_layer_4", icon: cube },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    (button, value) => {
+        switch (value) {
+            case 'item_button_sample_item_layer_1':
+            case 'item_button_sample_item_layer_2':
+            case 'item_button_sample_item_layer_3':
+            case 'item_button_sample_item_layer_4':
+                document.querySelector('.drilldown-container').remove();
+                document.getElementById('dialog-overlay').style.display = 'none';
+                break;
+        }
+    }
+);

@@ -5,9 +5,21 @@ export function messageBox(callback) {
     window.showMessageBox = showMessageBox;
 }
 
-function showMessageBox(title, description, buttons = []) {
+function showMessageBox(title, description, buttons = [], callback) {
     const container = getMessageBoxContainer();
     container.innerHTML = createMessageBoxHTML(title, description, buttons);
+    
+    const globalCallback = messageBoxCallback;
+
+    const combinedCallback = (text, value) => {
+        if (globalCallback) {
+            globalCallback(text, value);
+        }
+        
+        if (callback) {
+            callback(text, value);
+        }
+    };
 
     // Attach event listeners to the new buttons
     container.querySelectorAll('button').forEach(button => {
@@ -16,7 +28,7 @@ function showMessageBox(title, description, buttons = []) {
             const value = button.dataset.buttonValue;
 
             button.closest('.message-box-container')?.remove();
-            messageBoxCallback?.(text, value);
+            combinedCallback(text, value);
         });
     });
 
@@ -26,7 +38,6 @@ function showMessageBox(title, description, buttons = []) {
 /* ===================== */
 /* HELPER FUNCTIONS */
 /* ===================== */
-
 function getMessageBoxContainer() {
     let container = document.querySelector('.message-box-container');
     if (!container) {

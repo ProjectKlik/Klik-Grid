@@ -11,6 +11,7 @@ import { socket } from '../controls/socket.js';
 import { collapsibleMenu } from '../controls/collapsible-menu.js';
 import { contextMenu } from '../controls/context-menu.js';
 import { messageBox } from '../controls/message-box.js';
+import { drilldownMenu } from '../controls/drilldown-menu.js';
 import { notification } from '../controls/notification.js';
 
 export function standardInitControls(callbacks = {}) {
@@ -27,5 +28,6 @@ export function standardInitControls(callbacks = {}) {
     collapsibleMenu(callbacks.onCollapsibleClick);
     contextMenu(callbacks.onContextMenuClick);
     messageBox(callbacks.onMessageBoxButtonClick);
+    drilldownMenu(callbacks.onDrilldownMenuButtonClick);
     notification(callbacks.onNotificationClose);
 }

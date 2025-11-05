@@ -174,12 +174,14 @@ function showContextMenu(container, menuList, x, y) {
 
     // Adjust horizontal position
     if (rect.right > viewportWidth) {
-        menuList.style.left = `${x - rect.width}px`;
+        const adjustedX = relativeX - rect.width;
+        menuList.style.left = `${adjustedX}px`;
     }
 
     // Adjust vertical position
     if (rect.bottom > viewportHeight) {
-        menuList.style.top = `${y - rect.height}px`;
+        const adjustedY = relativeY - rect.height;
+        menuList.style.top = `${adjustedY}px`;
     }
 
     // Ensure menu doesn't go off the left or top edges

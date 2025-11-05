@@ -50,7 +50,7 @@
         </div>
 
         <div id="version-tag">
-            <span id="version-tag-text">Beta v1.5</span>
+            <span id="version-tag-text">Beta v1.6</span>
         </div>
     </div>
 
@@ -213,7 +213,7 @@
                 </p>
                 <div class="code-container">
                     <div class="code-header">
-                        <span>your_js.html</span>
+                        <span>your_javascript.js</span>
                         <button>Copy</button>
                     </div>
                     <pre><code class="language-js" content="../documentation/assets/code-snippets/standard-controls-js.txt"></code></pre>
@@ -1063,6 +1063,37 @@
                             <button>Copy</button>
                         </div>
                         <pre><code class="language-js" content="../documentation/assets/code-snippets/message-box-js-2.txt"></code></pre>
+                    </div>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Drilldown Menu</legend>
+                    <div class="button-group horizontal">
+                        <button class="drilldown-button" data-button-value="Sample Drilldown Menu">Click Me</button>
+                    </div>
+                    <p>In order to create it, you need to write this code:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_html.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code class="language-html" content="../documentation/assets/code-snippets/drilldown-html.txt"></code></pre>
+                    </div>
+                    <p>and this:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code class="language-js" content="../documentation/assets/code-snippets/drilldown-js-1.txt"></code></pre>
+                    </div>
+                    <p>and this for logic:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>your_javascript.js</span>
+                            <button>Copy</button>
+                        </div>
+                        <pre><code class="language-js" content="../documentation/assets/code-snippets/drilldown-js-2.txt"></code></pre>
                     </div>
                 </fieldset>
                 <br>
@@ -2294,6 +2325,58 @@
     <!-- Third-Party Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-javascript.min.js"></script>
+
+    <!--<div class="drilldown-container">
+        <div class="drilldown">
+            <div class="drilldown-header">
+                <div>
+                    <h3 class="drilldown-title no-top-margin">Sample Drilldown</h3>
+                    <blockquote class="drilldown-breadcrumb property">transform > asda</blockquote>
+                </div>
+                <button class="flat drilldown-close">&times;</button>
+            </div>
+            <div class="drilldown-body">
+                <button class="drilldown-back-button">
+                    <svg class="outline-icon" viewBox="0 0 24 24">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 14l-4 -4l4 -4" />
+                        <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+                    </svg>
+                    Go Back
+                </button>
+                <div class="drilldown-items-container">
+                    <div class="drilldown-item">
+                        <svg class="fill-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                        </svg>
+                        sadasd
+                    </div>
+                    <div class="drilldown-item">
+                        <svg class="fill-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                        </svg>
+                        sadasd
+                    </div>
+                    <div class="drilldown-item">
+                        <svg class="fill-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                        </svg>
+                        sadasd
+                    </div>
+                    <div class="drilldown-item">
+                        <svg class="fill-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                        </svg>
+                        sadasd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
 </body>
 
 </html>
