@@ -14,7 +14,7 @@ function showDrilldownMenu(title, items, callback) {
     
     const globalCallback = drilldownMenuCallback;
     
-    drilldownMenuCallback = (button, value) => {
+    const currentCallback = (button, value) => {
         if (globalCallback) {
             globalCallback(button, value);
         }
@@ -24,13 +24,13 @@ function showDrilldownMenu(title, items, callback) {
         }
     };
     
-    currentContainer = getDrilldownContainer();
-    renderDrilldown(items, []);
+    currentContainer = getDrilldownContainer(currentCallback);
+    renderDrilldown(items, [], currentCallback);
     
     return currentContainer;
 }
 
-function renderDrilldown(items, breadcrumb) {
+function renderDrilldown(items, breadcrumb, callback) {
     if (!currentContainer) return;
     
     const breadcrumbText = breadcrumb.length > 0 ? breadcrumb.join(' > ') : '';
@@ -68,7 +68,7 @@ function renderDrilldown(items, breadcrumb) {
         if (navigationStack.length > 0) {
             newBackButton.addEventListener('click', () => {
                 const previous = navigationStack.pop();
-                renderDrilldown(previous.items, previous.breadcrumb);
+                renderDrilldown(previous.items, previous.breadcrumb, callback);
             });
         }
     }
@@ -90,16 +90,20 @@ function renderDrilldown(items, breadcrumb) {
             itemEl.addEventListener('click', () => {
                 if (item.items && item.items.length > 0) {
                     navigationStack.push({ items, breadcrumb });
-                    renderDrilldown(item.items, [...breadcrumb, item.text]);
+                    renderDrilldown(item.items, [...breadcrumb, item.text], callback);
                 } else {
-                    drilldownMenuCallback?.(item.text, item.buttonValue);
+					callback?.(item, item.buttonValue);
+                    
+                    currentContainer?.remove();
+                    currentContainer = null;
+                    document.getElementById('dialog-overlay').style.display = 'none';
                 }
             });
         });
     }
 }
 
-function getDrilldownContainer() {
+function getDrilldownContainer(callback) {
     document.querySelector('.drilldown-container')?.remove();
     
     const container = document.createElement('div');
@@ -112,7 +116,7 @@ function getDrilldownContainer() {
             <div>
                 <h3 class="drilldown-title no-top-margin">${escapeHTML(menuTitle)}</h3>
             </div>
-            <button class="flat drilldown-close" data-button-value="close">&times;</button>
+            <button class="flat drilldown-close" data-button-value="close-drilldown">&times;</button>
         </div>
         <div class="drilldown-body">
             <button class="drilldown-back-button">
@@ -132,7 +136,7 @@ function getDrilldownContainer() {
     
     // Attach close event listener once
     container.querySelector('.drilldown-close')?.addEventListener('click', () => {
-        drilldownMenuCallback?.('close', 'close');
+        callback?.('close-drilldown', 'close-drilldown');
         container.remove();
         currentContainer = null;
     });

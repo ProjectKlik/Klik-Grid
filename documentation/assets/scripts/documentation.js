@@ -117,8 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 case 'item_button_sample_item_layer_2':
                                 case 'item_button_sample_item_layer_3':
                                 case 'item_button_sample_item_layer_4':
-                                    document.querySelector('.drilldown-container').remove();
-                                    document.getElementById('dialog-overlay').style.display = 'none';
+                                    console.log(`User clicked ${value}`);
                                     break;
                             }
                         }

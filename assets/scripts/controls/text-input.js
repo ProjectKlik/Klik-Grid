@@ -21,6 +21,10 @@ export function scanTextInput() {
         input.addEventListener('input', () => {
             globalCallbacks?.(input, input.value, input.dataset.textInputValue);
         });
+
+        input.addEventListener('blur', () => {
+            handleEmptyInput(input);
+        });
     });
 
     initDragLabels();
@@ -180,7 +184,7 @@ function initNumberInput(input) {
         setTimeout(() => {
             let currentValue = input.value;
             let constrainedValue = applyMinMaxConstraints(input, currentValue);
-            
+
             if (constrainedValue !== currentValue) {
                 input.value = constrainedValue;
                 input.dispatchEvent(new Event('input', { bubbles: true }));
@@ -208,13 +212,17 @@ function initNumberInput(input) {
             cleanedValue = cleanedValue.replace(/(\..*)\./g, '$1');
             cleanedValue = cleanedValue.replace(/^\./, '0.');
         }
-        
+
         cleanedValue = applyMinMaxConstraints(input, cleanedValue);
 
         // Update input value if it was cleaned
         if (cleanedValue !== input.value) {
             input.value = cleanedValue;
         }
+    });
+
+    input.addEventListener('blur', () => {
+        handleEmptyInput(input);
     });
 }
 
@@ -274,6 +282,9 @@ function startDrag(event) {
         isPositiveOnly: isPositiveOnly,
         isInteger: input.classList.contains('integer') || input.classList.contains('positive-integer')
     };
+    
+    // Lock Mouse
+    label.requestPointerLock();
 
     // Add event listeners
     document.addEventListener('mousemove', handleDrag);
@@ -283,12 +294,14 @@ function startDrag(event) {
 function handleDrag(event) {
     if (!dragState) return;
 
-    const deltaX = event.clientX - dragState.startX;
+    const deltaX = event.movementX;
     const pixelStep = 5;
     const stepChange = (deltaX / pixelStep) * dragState.step;
 
-    let newValue = dragState.startValue + stepChange;
+    dragState.startValue += stepChange;
     
+    let newValue = dragState.startValue;
+
     // Apply min/max constraints from data attributes
     const min = dragState.input.dataset.min ? parseFloat(dragState.input.dataset.min) : null;
     const max = dragState.input.dataset.max ? parseFloat(dragState.input.dataset.max) : null;
@@ -339,6 +352,8 @@ function stopDrag() {
         label.style.backgroundColor = '';
     }
 
+    document.exitPointerLock();
+
     dragState = null;
 }
 
@@ -361,12 +376,13 @@ function getStepSize(input) {
 
 function applyMinMaxConstraints(input, value) {
     if (value === '' || value === '-') return value;
+    if (value.endsWith('.')) return value;
 
     const min = input.dataset.min ? parseFloat(input.dataset.min) : null;
     const max = input.dataset.max ? parseFloat(input.dataset.max) : null;
-    
+
     let numValue = parseFloat(value);
-    
+
     // If it's not a valid number after parsing, return the original value
     if (isNaN(numValue)) return value;
 
@@ -384,5 +400,25 @@ function applyMinMaxConstraints(input, value) {
     } else {
         // For floats, maintain reasonable decimal precision
         return numValue.toString();
+    }
+}
+
+function handleEmptyInput(input) {
+    // Only apply to numeric input types
+    const isNumeric = input.classList.contains('integer') ||
+        input.classList.contains('positive-integer') ||
+        input.classList.contains('float') ||
+        input.classList.contains('positive-float');
+
+    if (isNumeric) {
+        const trimmedValue = input.value.trim();
+
+        // If input is empty, replace with '0'
+        if (trimmedValue === '') {
+            input.value = '0';
+
+            // Trigger the input event to notify callbacks
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        }
     }
 }
